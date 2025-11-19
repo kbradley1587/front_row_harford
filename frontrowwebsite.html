@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Front Row Harford!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050608;
+      --bg-soft: #101118;
+      --gold: #f3c96b;
+      --gold-soft: #e0b45a;
+      --accent: #c38cff;
+      --text-main: #f7f7f7;
+      --text-soft: #c9c9d4;
+      --chip-bg: rgba(243, 201, 107, 0.08);
+      --card-bg: rgba(7, 8, 12, 0.92);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.7);
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+      --transition-fast: 180ms ease-out;
+    }
+
+    * ,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #2b1b08 0, #050608 42%, #010104 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header.hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+      padding: 26px 18px 32px;
+      margin-bottom: 32px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at top left, rgba(243, 201, 107, 0.35), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(195, 140, 255, 0.24), transparent 60%),
+        linear-gradient(135deg, rgba(8, 8, 14, 0.95), rgba(4, 5, 9, 0.98));
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(243, 201, 107, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08), transparent 55%);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      z-index: 1;
+    }
+
+    .logo-wrap img {
+      width: 460px;          /* larger logo */
+      max-width: 55vw;
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-text {
+      text-align: left;
+      max-width: 560px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(243, 201, 107, 0.4);
+      background: rgba(4, 4, 8, 0.7);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .eyebrow span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(243, 201, 107, 0.7);
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      letter-spacing: 0.03em;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-soft);
+      max-width: 34rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(10, 10, 16, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-meta-item .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, rgba(250, 245, 224, 0.35), transparent 55%), linear-gradient(135deg, #f9d77d, #f3b65c);
+      color: #1a1307;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 24px 44px rgba(0, 0, 0, 0.92);
+      background: linear-gradient(135deg, #ffe9a5, #f4c878);
+    }
+
+    .btn-ghost {
+      background: rgba(6, 6, 12, 0.7);
+      color: var(--gold-soft);
+      border-color: rgba(243, 201, 107, 0.5);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(12, 12, 18, 0.98);
+    }
+
+    .btn-icon {
+      font-size: 1.1rem;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .layout-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        align-items: flex-start;
+      }
+
+      .logo-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-text {
+        text-align: left;
+      }
+    }
+
+    section.card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    section.card + section.card {
+      margin-top: 18px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .section-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .section-title h2 {
+      font-size: 1.02rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .section-title p {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      border: 1px solid transparent;
+      background: var(--chip-bg);
+      color: var(--gold-soft);
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .chip[data-active="true"] {
+      background: linear-gradient(135deg, rgba(243, 201, 107, 0.28), rgba(195, 140, 255, 0.22));
+      border-color: rgba(243, 201, 107, 0.9);
+      color: #fff5da;
+      transform: translateY(-1px);
+    }
+
+    .chip span.dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-right: 6px;
+    }
+
+    .calendar-grid {
+      margin-top: 8px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 60%);
+      overflow: hidden;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: rgba(3, 3, 6, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .calendar-header-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .calendar-header-main h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .calendar-header-main span {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .calendar-controls {
+      display: inline-flex;
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .calendar-controls button {
+      background: transparent;
+      border: none;
+      color: var(--text-soft);
+      padding: 6px 9px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .calendar-controls button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .calendar-body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      font-size: 0.75rem;
+      background: rgba(3, 3, 6, 0.92);
+    }
+
+    .calendar-day-label {
+      text-align: center;
+      padding: 6px 4px;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .calendar-cell {
+      min-height: 64px;
+      border-right: 1px solid rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 6px 6px 4px;
+      position: relative;
+    }
+
+    .calendar-cell:nth-child(7n) {
+      border-right: none;
+    }
+
+    .calendar-date {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .calendar-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 6px;
+      margin-top: 2px;
+      border-radius: var(--radius-pill);
+      font-size: 0.68rem;
+      background: rgba(243, 201, 107, 0.18);
+      color: #fff9e4;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .calendar-tag span {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .calendar-footnote {
+      padding: 8px 10px 10px;
+      font-size: 0.74rem;
+      color: var(--text-soft);
+      background: radial-gradient(circle at bottom, rgba(195, 140, 255, 0.16), transparent 50%);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .calendar-footnote a {
+      color: var(--gold-soft);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(243, 201, 107, 0.6);
+      padding-bottom: 1px;
+    }
+
+    .calendar-footnote a:hover {
+      color: #ffe7a5;
+      border-bottom-style: solid;
+    }
+
+    .show-list {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .show-card {
+      display: grid;
+      grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.2fr);
+      gap: 10px;
+      padding: 10px 11px;
+      border-radius: 16px;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 60%), rgba(6, 6, 12, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .show-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.85);
+      border-color: rgba(243, 201, 107, 0.64);
+      background: radial-gradient(circle at top left, rgba(243, 201, 107, 0.18), transparent 68%), rgba(7, 7, 13, 0.98);
+    }
+
+    .show-main {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .show-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .show-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .show-meta-line {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    .show-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 3px;
+    }
+
+    .tag-pill {
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      background: rgba(10, 10, 18, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-soft);
+    }
+
+    .tag-pill.gold {
+      background: rgba(243, 201, 107, 0.16);
+      color: #ffeac0;
+      border-color: rgba(243, 201, 107, 0.6);
+    }
+
+    .show-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 6px;
+      text-align: right;
+    }
+
+    .show-actions .btn {
+      padding-inline: 12px;
+      font-size: 0.78rem;
+    }
+
+    .show-actions .price-line {
+      font-size: 0.74rem;
+      color: var(--text-soft);
+    }
+
+    .empty-state {
+      padding: 16px 14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255, 255, 255, 0.26);
+      background: rgba(7, 7, 13, 0.96);
+      font-size: 0.83rem;
+      color: var(--text-soft);
+    }
+
+    .empty-state strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .sidebar-section {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sidebar-blurb {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .sidebar-highlight {
+      padding: 10px 11px;
+      border-radius: 14px;
+      border: 1px solid rgba(243, 201, 107, 0.5);
+      background: radial-gradient(circle at top left, rgba(243, 201, 107, 0.22), transparent 65%), rgba(9, 8, 12, 0.98);
+      font-size: 0.8rem;
+      color: #fff7e0;
+    }
+
+    .sidebar-highlight strong {
+      color: #fff;
+    }
+
+    .sidebar-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .sidebar-columns h3 {
+      font-size: 0.8rem;
+      margin-bottom: 3px;
+      color: var(--gold-soft);
+    }
+
+    .sidebar-columns ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 12px;
+      font-size: 0.84rem;
+      color: var(--text-soft);
+    }
+
+    .about-grid h3 {
+      font-size: 0.9rem;
+      color: var(--gold-soft);
+      margin-bottom: 4px;
+    }
+
+    .about-grid p + p {
+      margin-top: 6px;
+    }
+
+    .submit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 12px;
+    }
+
+    .submit-grid h3 {
+      font-size: 0.9rem;
+      color: var(--gold-soft);
+      margin-bottom: 5px;
+    }
+
+    .submit-copy {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      font-size: 0.82rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 4px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.76rem;
+      color: var(--text-soft);
+    }
+
+    input,
+    select,
+    textarea {
+      border-radius: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(9, 9, 16, 0.96);
+      padding: 7px 9px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.82rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(201, 201, 212, 0.58);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(243, 201, 107, 0.8);
+      box-shadow: 0 0 0 1px rgba(243, 201, 107, 0.35);
+      background: rgba(11, 10, 16, 0.98);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+      max-height: 200px;
+    }
+
+    .helper-text {
+      font-size: 0.72rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 16px 24px;
+      font-size: 0.76rem;
+      color: var(--text-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 12px;
+    }
+
+    footer a {
+      color: var(--gold-soft);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #ffe4a4;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      header.hero {
+        padding: 20px 16px 26px;
+      }
+
+      .logo-wrap img {
+        width: 190px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .calendar-body {
+        font-size: 0.72rem;
+      }
+
+      .show-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .show-actions {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+      }
+
+      .submit-grid,
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+/* Use Raleway for the main hero headline */
+.hero-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 3.3rem;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #ffffff; /* ensure white baseline */
+}
+
+/* Apply gold gradient ONLY to the words inside <span> */
+.hero-title span {
+  background: linear-gradient(90deg, #f5d491, #f9e7c4, #d9b670);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800; /* extra-bold for drama */
+}
+
+  </style>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="logo-wrap">
+        <!-- Make sure the image file in the same folder is named EXACTLY "Front Row Logo v2.png" -->
+        <img src="Front Row Logo v2.png" alt="Front Row Harford logo" />
+        <div class="hero-text">
+          <div class="eyebrow">
+            <span class="dot"></span>
+            FRONT ROW HARFORD! • STUDENT MUSICALS & LIVE STAGE SHOWS
+          </div>
+          <h1 class="hero-title">
+            Experience the 
+<span>Front Row</span> of Harford County Theater
+          </h1>
+          <p class="hero-subtitle">
+            A comprehensive and elegant home for every high school and community musical and stage show in Harford County, MD.
+            Discover performance dates, ticket links, cast spotlights, and more — all in one place.
+          </p>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span class="pill-dot"></span>
+              Fall, Holiday, and Spring Seasons
+            </div>
+            <div class="hero-meta-item">
+              <span class="pill-dot"></span>
+              Ticket links and show details
+            </div>
+            <div class="hero-meta-item">
+              <span class="pill-dot"></span>
+              Free listings for schools and programs
+            </div>
+          </div>
+          <div class="hero-cta-row">
+            <a href="#calendar" class="btn btn-primary">
+              <span class="btn-icon">🎟</span>
+              View Upcoming Shows
+            </a>
+            <a href="#submit" class="btn btn-ghost">
+              <span class="btn-icon">⭐</span>
+              Submit a school or community show
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout-grid">
+      <section id="calendar" class="card">
+        <div class="section-header">
+          <div class="section-title">
+            <h2>Season Calendar</h2>
+            <p>Browse upcoming performances by season, then tap a show card for full details and ticket links.</p>
+          </div>
+          <div class="chip-row" id="seasonFilters">
+            <button class="chip" data-season-filter="all" data-active="true">
+              <span class="dot"></span>
+              All
+            </button>
+            <button class="chip" data-season-filter="fall">
+              Fall
+            </button>
+            <button class="chip" data-season-filter="holiday">
+              Holiday
+            </button>
+            <button class="chip" data-season-filter="spring">
+              Spring
+            </button>
+          </div>
+        </div>
+
+        <div class="calendar-grid">
+          <div class="calendar-header">
+            <div class="calendar-header-main">
+              <h3>Sample Month • November</h3>
+              <span>Final layout will connect to a live calendar feed.</span>
+            </div>
+            <div class="calendar-controls">
+              <button aria-label="Previous month">‹</button>
+              <button aria-label="Next month">›</button>
+            </div>
+          </div>
+          <div class="calendar-body">
+            <div class="calendar-day-label">Sun</div>
+            <div class="calendar-day-label">Mon</div>
+            <div class="calendar-day-label">Tue</div>
+            <div class="calendar-day-label">Wed</div>
+            <div class="calendar-day-label">Thu</div>
+            <div class="calendar-day-label">Fri</div>
+            <div class="calendar-day-label">Sat</div>
+
+            <div class="calendar-cell"></div>
+            <div class="calendar-cell"></div>
+            <div class="calendar-cell">
+              <div class="calendar-date">1</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">2</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">3</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">4</div>
+              <div class="calendar-tag">
+                <span></span>
+                Addams Family • HHS
+              </div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">5</div>
+            </div>
+
+            <div class="calendar-cell">
+              <div class="calendar-date">6</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">7</div>
+              <div class="calendar-tag">
+                <span></span>
+                Holiday Spectacular • JHS
+              </div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">8</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">9</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">10</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">11</div>
+              <div class="calendar-tag">
+                <span></span>
+                Matilda • CMW
+              </div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">12</div>
+            </div>
+
+            <div class="calendar-cell">
+              <div class="calendar-date">13</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">14</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">15</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">16</div>
+              <div class="calendar-tag">
+                <span></span>
+                White Christmas • Community
+              </div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">17</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">18</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">19</div>
+            </div>
+
+            <div class="calendar-cell">
+              <div class="calendar-date">20</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">21</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">22</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">23</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">24</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">25</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">26</div>
+            </div>
+
+            <div class="calendar-cell">
+              <div class="calendar-date">27</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">28</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">29</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="calendar-date">30</div>
+            </div>
+            <div class="calendar-cell"></div>
+            <div class="calendar-cell"></div>
+            <div class="calendar-cell"></div>
+          </div>
+          <div class="calendar-footnote">
+            <span>Calendars will sync automatically from school &amp; community submissions.</span>
+            <a href="#submit">Add a performance ▸</a>
+          </div>
+        </div>
+
+        <div class="show-list" id="showList">
+          <article class="show-card" data-season="fall">
+            <div class="show-main">
+              <div class="show-title-row">
+                <h3 class="show-title">The Addams Family</h3>
+                <span class="tag-pill gold">Fall Musical</span>
+              </div>
+              <div class="show-meta-line">
+                Bel Air High School • Bel Air, MD
+              </div>
+              <div class="show-meta-line">
+                Thu–Sat • Nov 4–6 • 7:00 PM • Matinee Sat 2:00 PM
+              </div>
+              <div class="show-tags">
+                <span class="tag-pill">Student musical theatre</span>
+                <span class="tag-pill">Family friendly (10+)</span>
+                <span class="tag-pill">Live pit orchestra</span>
+              </div>
+            </div>
+            <div class="show-actions">
+              <a href="#" class="btn btn-primary">Buy tickets</a>
+              <div class="price-line">Adults $15 • Students $10</div>
+            </div>
+          </article>
+
+          <article class="show-card" data-season="holiday">
+            <div class="show-main">
+              <div class="show-title-row">
+                <h3 class="show-title">Holiday Spectacular</h3>
+                <span class="tag-pill gold">Holiday Concert</span>
+              </div>
+              <div class="show-meta-line">
+                North Harford High School • Pylesville, MD
+              </div>
+              <div class="show-meta-line">
+                Fri–Sat • Dec 9–10 • 7:00 PM
+              </div>
+              <div class="show-tags">
+                <span class="tag-pill">Choir • Dance • Drama</span>
+                <span class="tag-pill">Holiday favorites</span>
+              </div>
+            </div>
+            <div class="show-actions">
+              <a href="#" class="btn btn-primary">Reserve seats</a>
+              <div class="price-line">General admission $10</div>
+            </div>
+          </article>
+
+          <article class="show-card" data-season="spring">
+            <div class="show-main">
+              <div class="show-title-row">
+                <h3 class="show-title">Matilda the Musical</h3>
+                <span class="tag-pill gold">Spring Musical</span>
+              </div>
+              <div class="show-meta-line">
+                C. Milton Wright High School • Bel Air, MD
+              </div>
+              <div class="show-meta-line">
+                Thu–Sun • Mar 16–19 • Evenings &amp; Sunday matinee
+              </div>
+              <div class="show-tags">
+                <span class="tag-pill">Based on Roald Dahl</span>
+                <span class="tag-pill">Features young performers</span>
+              </div>
+            </div>
+            <div class="show-actions">
+              <a href="#" class="btn btn-primary">View details</a>
+              <div class="price-line">Ticket link coming soon</div>
+            </div>
+          </article>
+
+          <div class="empty-state" id="emptyState" style="display:none;">
+            <strong>No shows match this season filter yet.</strong><br />
+            As schools and theater companies submit their productions, they will appear here. If you help with a program,
+            scroll down to the submission form and add your performance dates.
+          </div>
+        </div>
+      </section>
+
+      <section class="card sidebar-section">
+        <div class="section-header">
+          <div class="section-title">
+            <h2>Spotlight &amp; Support</h2>
+            <p>Give every student a packed house — and make it simple for families to cheer them on.</p>
+          </div>
+        </div>
+
+        <p class="sidebar-blurb">
+          Front Row Harford is a volunteer-run, community-focused project. There is <strong>no cost</strong> for
+          Harford County schools or youth theater programs to be listed. Our primary goal is to fill the seats and shine
+          a light on the incredible work of local students and educators.
+        </p>
+
+        <div class="sidebar-highlight">
+          <strong>What you’ll find here:</strong><br />
+          • A calendar of every high school or community college musical or live stage performance in the county<br />
+          • Direct links to each school or theater’s ticketing page<br />
+          • Cast &amp; crew spotlights, playbill covers, and production photos<br />
+          • Contact information if you need help with tickets or accessibility
+        </div>
+
+        <div class="sidebar-columns">
+          <div>
+            <h3>Perfect For:</h3>
+            <ul>
+              <li>Parents &amp; Families</li>
+              <li>Students &amp; Alumni</li>
+              <li>Teachers &amp; Directors</li>
+              <li>Community Supporters</li>
+              <li>Local Businesses &amp; Sponsors</li>
+              <li>Media Outlets
+            </ul>
+          </div>
+          <div>
+            <h3>Programs We List:</h3>
+            <ul>
+              <li>High school Musicals and Plays</li>
+              <li>Middle School Shows</li>
+              <li>Youth Theater Companies</li>
+              <li>Community Theater in Harford County</li>
+              <li>Harford Community College Rerformances</li>
+              <li>High School Band, Orchestra and Choir Performances
+            </ul>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <h3>About Front Row Harford!</h3>
+            <p>
+              Our students pour their hearts into every rehearsal and performance. We believe they deserve a full
+              audience and a front row of neighbors cheering them on.
+            </p>
+            <p>
+              This prototype shows the overall feel and layout. As we build the full site, we’ll add live data feeds,
+              richer show pages with cast bios and playbills, and more ways to share and support each production.
+            </p>
+          </div>
+          <div>
+            <h3>Key Contacts</h3>
+            <p>
+              Have a question, correction, or idea?<br />
+              <strong>Front Row Harford team</strong><br />
+              <em>(kbradley@gmail.com or 443-655-5818)</em>
+            </p>
+            <p>
+              Each show listing will also include:<br />
+              • Box office or Ticketing Contact<br />
+              • Director / Program Lead<br />
+              • Accessibility Notes &amp; Parking Details
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="submit" class="card" style="margin-top: 24px;">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Submit a School or Community Show</h2>
+          <p>Free listings for Harford Public & Private Schools, Harford Community College & Community Theater.</p>
+        </div>
+      </div>
+
+      <div class="submit-grid">
+        <div>
+          <h3>How submissions will work</h3>
+          <p class="submit-copy">
+            This form is a working prototype. In the live site, submissions will route to the Front Row Harford! team
+            to review, standardize, and approve. Once verified, your show will appear on the calendar, in the show list,
+            and on its own detail page with room for cast bios, a digital playbill, and more.
+          </p>
+          <p class="submit-copy">
+            Please share as much detail as you can about your production, including ticketing links, key contacts,
+            and any accessibility information that would help guests plan their visit.
+          </p>
+        </div>
+        <div>
+          <form>
+            <div class="field-row">
+              <div class="field">
+                <label for="programName">School / program name</label>
+                <input id="programName" type="text" placeholder="e.g., Bel Air High School Theatre" />
+              </div>
+              <div class="field">
+                <label for="showTitle">Show title</label>
+                <input id="showTitle" type="text" placeholder="e.g., The Addams Family" />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="season">Season</label>
+                <select id="season">
+                  <option value="">Select a season</option>
+                  <option value="fall">Fall</option>
+                  <option value="holiday">Holiday</option>
+                  <option value="spring">Spring</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="dates">Performance dates</label>
+                <input id="dates" type="text" placeholder="Mar 16–19, 2026" />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="times">Performance times</label>
+                <input id="times" type="text" placeholder="Thu–Sat 7 PM • Sun 2 PM" />
+              </div>
+              <div class="field">
+                <label for="location">Venue / location</label>
+                <input id="location" type="text" placeholder="School auditorium, city" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ticketLink">Ticket purchase link</label>
+              <input id="ticketLink" type="url" placeholder="https://…" />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="contactName">Primary contact name</label>
+                <input id="contactName" type="text" placeholder="Director or Program Lead" />
+              </div>
+              <div class="field">
+                <label for="contactEmail">Contact email</label>
+                <input id="contactEmail" type="email" placeholder="name@school.org" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="briefDescription">Short show description</label>
+              <textarea id="briefDescription" placeholder="Two–three sentences about the production, target audience, and any special notes."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="extras">Optional: notes on accessibility, parking, or special performances</label>
+              <textarea id="extras" placeholder="Sensory-friendly performance, ASL interpretation, senior preview night, etc."></textarea>
+              <div class="helper-text">
+                In the full site, you’ll be able to upload your playbill cover, cast list, and production photos as well.
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" style="margin-top: 4px; width: fit-content;">
+              Submit (prototype only)
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      © <span id="year"></span> Front Row Harford. All rights reserved.
+    </div>
+    <div>
+      Prototype layout for review. Final site will include live data feeds and a secure submission workflow.
+    </div>
+  </footer>
+
+  <script>
+    // Simple season filter for prototype
+    const seasonFilters = document.querySelectorAll("[data-season-filter]");
+    const showCards = document.querySelectorAll(".show-card");
+    const emptyState = document.getElementById("emptyState");
+
+    function updateFilter(activeSeason) {
+      let visibleCount = 0;
+      showCards.forEach(card => {
+        const season = card.getAttribute("data-season");
+        if (activeSeason === "all" || activeSeason === season) {
+          card.style.display = "";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+      emptyState.style.display = visibleCount === 0 ? "block" : "none";
+    }
+
+    seasonFilters.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const season = btn.getAttribute("data-season-filter");
+        seasonFilters.forEach(b => b.setAttribute("data-active", "false"));
+        btn.setAttribute("data-active", "true");
+        updateFilter(season);
+      });
+    });
+
+    // Set copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
