@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Front Row Harford • Submit a Show</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #020309;
+      --card-bg: rgba(7, 7, 14, 0.98);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-gold: #f3c96b;
+      --accent-gold-soft: rgba(243, 201, 107, 0.2);
+      --accent-gold-strong: rgba(243, 201, 107, 0.9);
+      --text-main: #ffffff;
+      --text-soft: #b0b3c5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Raleway", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(243, 201, 107, 0.16), transparent 60%),
+        radial-gradient(circle at bottom, rgba(88, 116, 255, 0.12), transparent 55%),
+        #05040a;
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .card {
+      border-radius: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+      padding: 18px 18px 24px;
+      backdrop-filter: blur(20px);
+    }
+
+    header.site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .site-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-wrap img {
+      width: 150px;
+      max-width: 50vw;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .site-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .site-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .site-title-block h1 {
+      font-size: 1.3rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .site-title-block h1 span {
+      background: linear-gradient(90deg, #f5d491, #f9e7c4, #d9b670);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .site-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .site-header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 7px 13px;
+      font-size: 0.8rem;
+      background: rgba(10, 10, 18, 0.96);
+      color: var(--text-main);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, rgba(243, 201, 107, 0.22), transparent 55%),
+        rgba(15, 12, 5, 0.9);
+      border-color: var(--accent-gold-strong);
+      color: #fff9e6;
+    }
+
+    .btn-ghost {
+      background: transparent;
+    }
+
+    .btn-icon {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    /* FORM */
+
+    .form-card.card {
+      margin-top: 4px;
+    }
+
+    .form-intro {
+      margin-bottom: 14px;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 14px;
+    }
+
+    .form-grid-full {
+      grid-column: 1 / -1;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .required {
+      color: #f9c87a;
+      margin-left: 3px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea,
+    select {
+      border-radius: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(9, 9, 16, 0.96);
+      padding: 7px 9px;
+      font-size: 0.8rem;
+      color: #fff;
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(201, 201, 212, 0.6);
+    }
+
+    small.help-text {
+      font-size: 0.72rem;
+      color: var(--text-soft);
+    }
+
+    .form-footer {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .submit-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    button[type="submit"] {
+      border-radius: 999px;
+      border: 1px solid var(--accent-gold-strong);
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: radial-gradient(circle at top left, rgba(243, 201, 107, 0.26), transparent 55%),
+        rgba(15, 12, 5, 0.96);
+      color: #fff9e6;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      filter: brightness(1.08);
+    }
+
+    /* Honeypot (spam trap) */
+    .hidden-field {
+      display: none;
+    }
+
+    @media (max-width: 780px) {
+      body {
+        padding: 18px 8px;
+      }
+
+      .card {
+        padding: 14px 12px 18px;
+        border-radius: 20px;
+      }
+
+      header.site-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .site-header-left {
+        align-items: flex-start;
+      }
+
+      .logo-wrap img {
+        width: 130px;
+      }
+
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- TOP HEADER -->
+    <header class="site-header">
+      <div class="site-header-left">
+        <div class="logo-wrap">
+          <img src="Front Row Logo v2.png" alt="Front Row Harford logo" />
+        </div>
+        <div class="site-title-block">
+          <div class="site-eyebrow">
+            FRONT ROW HARFORD • FREE PROMOTION FOR LIVE STUDENT & COMMUNITY ARTS
+          </div>
+          <h1>
+            Submit a <span>Show or Performance</span>
+          </h1>
+          <p class="site-subtitle">
+            Share your production details below. We’ll review and post approved events so Harford County families can find and attend your show.
+          </p>
+        </div>
+      </div>
+
+      <div class="site-header-actions">
+        <a href="index.html#events" class="btn btn-ghost">
+          <span class="btn-icon">←</span>
+          Back to list view
+        </a>
+        <a href="calendar.html" class="btn btn-primary">
+          <span class="btn-icon">📅</span>
+          View calendar
+        </a>
+      </div>
+    </header>
+
+    <!-- FORM CARD -->
+    <section class="form-card card">
+      <p class="form-intro">
+        There is <strong>no cost</strong> to list your production on Front Row Harford. This project is simply here to help
+        fill your seats and celebrate the incredible work happening in our schools and community theatres.
+        Please provide as much detail as you can so families can make plans and purchase tickets.
+      </p>
+
+      <!-- Netlify form -->
+      <form
+        name="front-row-show-submission"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <!-- Netlify form name -->
+        <input type="hidden" name="form-name" value="front-row-show-submission" />
+
+        <!-- Honeypot field -->
+        <div class="hidden-field">
+          <label>Don’t fill this out if you’re human:
+            <input name="bot-field" />
+          </label>
+        </div>
+
+        <div class="form-grid">
+          <!-- Contact info -->
+          <div class="field-group">
+            <label for="contactName">Your name<span class="required">*</span></label>
+            <input id="contactName" name="contactName" type="text" required placeholder="First and last name" />
+          </div>
+
+          <div class="field-group">
+            <label for="contactRole">Your role<span class="required">*</span></label>
+            <input id="contactRole" name="contactRole" type="text" required placeholder="Drama director, music director, producer, etc." />
+          </div>
+
+          <div class="field-group">
+            <label for="contactEmail">Contact email<span class="required">*</span></label>
+            <input id="contactEmail" name="contactEmail" type="email" required placeholder="you@example.org" />
+          </div>
+
+          <div class="field-group">
+            <label for="contactPhone">Contact phone (optional)</label>
+            <input id="contactPhone" name="contactPhone" type="text" placeholder="For quick questions if needed" />
+          </div>
+
+          <!-- Producing group / organization -->
+          <div class="field-group form-grid-full">
+            <label for="producingGroup">School / theatre / organization<span class="required">*</span></label>
+            <input
+              id="producingGroup"
+              name="producingGroup"
+              type="text"
+              required
+              placeholder="e.g., Bel Air High School, C. Milton Wright HS, local community theatre, etc." />
+          </div>
+
+          <!-- Show core info -->
+          <div class="field-group form-grid-full">
+            <label for="showTitle">Show title<span class="required">*</span></label>
+            <input id="showTitle" name="showTitle" type="text" required placeholder="Official title of the production" />
+          </div>
+
+          <div class="field-group">
+            <label for="season">Season<span class="required">*</span></label>
+            <select id="season" name="season" required>
+              <option value="">Select a season</option>
+              <option value="fall">Fall</option>
+              <option value="holiday">Holiday / Winter</option>
+              <option value="spring">Spring</option>
+              <option value="summer">Summer</option>
+              <option value="other">Other / Special event</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="genre">Genre<span class="required">*</span></label>
+            <select id="genre" name="genre" required>
+              <option value="">Select a genre</option>
+              <option value="musical">Musical</option>
+              <option value="play">Play</option>
+              <option value="orchestra">Orchestra</option>
+              <option value="band">Band</option>
+              <option value="choir">Choir</option>
+              <option value="dance">Dance</option>
+              <option value="other">Other performing arts</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="audience">Recommended audience</label>
+            <select id="audience" name="audience">
+              <option value="">Optional</option>
+              <option value="all-ages">All ages / family friendly</option>
+              <option value="children-4-plus">Children 4+</option>
+              <option value="children-6-plus">Children 6+</option>
+              <option value="pg-13">Teen / PG-13</option>
+              <option value="adult">Adult / mature themes</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="ticketStatus">Ticket status</label>
+            <select id="ticketStatus" name="ticketStatus">
+              <option value="">Optional</option>
+              <option value="on-sale">On sale now</option>
+              <option value="limited">Limited availability</option>
+              <option value="sold-out">Sold out</option>
+              <option value="free">Free admission</option>
+              <option value="tba">TBA / info coming soon</option>
+            </select>
+          </div>
+
+          <!-- Dates / times -->
+          <div class="field-group form-grid-full">
+            <label for="performanceDates">
+              Performance dates &amp; times<span class="required">*</span>
+            </label>
+            <textarea
+              id="performanceDates"
+              name="performanceDates"
+              required
+              placeholder="Example:&#10;Thu Nov 6 – 7:00 PM&#10;Fri Nov 7 – 7:00 PM&#10;Sat Nov 8 – 2:00 PM & 7:00 PM"
+            ></textarea>
+            <small class="help-text">
+              Please list each performance on its own line with date and time.
+            </small>
+          </div>
+
+          <!-- Venue -->
+          <div class="field-group">
+            <label for="venueName">Venue name<span class="required">*</span></label>
+            <input id="venueName" name="venueName" type="text" required placeholder="e.g., Bel Air HS Auditorium" />
+          </div>
+
+          <div class="field-group">
+            <label for="venueAddress">Venue address</label>
+            <input
+              id="venueAddress"
+              name="venueAddress"
+              type="text"
+              placeholder="Street, city, state (optional but helpful for visitors)" />
+          </div>
+
+          <!-- Tickets -->
+          <div class="field-group">
+            <label for="ticketLink">Ticket purchase link</label>
+            <input id="ticketLink" name="ticketLink" type="url" placeholder="URL where patrons can purchase or reserve seats" />
+          </div>
+
+          <div class="field-group">
+            <label for="ticketPrices">Ticket prices</label>
+            <input
+              id="ticketPrices"
+              name="ticketPrices"
+              type="text"
+              placeholder="e.g., Adults $15, Students $10, Seniors $12" />
+          </div>
+
+          <!-- Description / story -->
+          <div class="field-group form-grid-full">
+            <label for="showDescription">Short show description</label>
+            <textarea
+              id="showDescription"
+              name="showDescription"
+              placeholder="A brief, family-friendly description we can share on the site to help families understand what to expect."
+            ></textarea>
+          </div>
+
+          <!-- Cast / creative -->
+          <div class="field-group form-grid-full">
+            <label for="castHighlights">Cast &amp; creative highlights (optional)</label>
+            <textarea
+              id="castHighlights"
+              name="castHighlights"
+              placeholder="Lead roles, student achievements, or a short note about what makes this production special."
+            ></textarea>
+          </div>
+
+          <!-- Artwork -->
+          <div class="field-group form-grid-full">
+            <label for="artworkLink">Poster / artwork link (optional)</label>
+            <input
+              id="artworkLink"
+              name="artworkLink"
+              type="url"
+              placeholder="Link to a show poster image (Google Drive, Dropbox, school site, etc.)" />
+            <small class="help-text">
+              If you share a link to artwork, we’ll do our best to feature it with your listing.
+            </small>
+          </div>
+
+          <!-- Additional notes -->
+          <div class="field-group form-grid-full">
+            <label for="additionalNotes">Anything else we should know?</label>
+            <textarea
+              id="additionalNotes"
+              name="additionalNotes"
+              placeholder="Accessibility notes, content advisories, special talkbacks, fundraisers, etc."
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <div>
+            Submissions are reviewed and posted as quickly as possible. Front Row Harford is a free community resource
+            created by a Harford County resident with a theatre production and marketing background, with the sole goal
+            of helping you fill your seats and celebrate your students.
+          </div>
+          <div class="submit-row">
+            <button type="submit">Submit show for listing</button>
+            <span>We’ll follow up by email if we have any questions.</span>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
