@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Front Row Harford – Calendar View</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Raleway, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    header {
+      padding: 30px;
+      text-align: center;
+      background: linear-gradient(to right, #0d0d0d, #1a1a1a, #0d0d0d);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #f3d48b;
+      letter-spacing: -0.5px;
+    }
+
+    .subheader {
+      margin-top: 8px;
+      font-size: 1.1rem;
+      color: #cfcfcf;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: #111;
+      color: #f3d48b;
+      border: 1px solid #f3d48b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      background: #f3d48b;
+      color: #000;
+    }
+
+    .calendar-wrap {
+      margin: 40px auto;
+      max-width: 1200px;
+      background: #111;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    }
+
+    iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      border-radius: 12px;
+      background: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Full Calendar View</h1>
+  <div class="subheader">See all performances across Harford County</div>
+
+  <a href="index.html#events" class="back-btn">← Back to List View</a>
+</header>
+
+<div class="calendar-wrap">
+  <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_embed_url_here&ctz=America/New_York"></iframe>
+</div>
+
+</body>
+</html>
