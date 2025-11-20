@@ -330,10 +330,14 @@
 
       <!-- Netlify form -->
       <form
-        name="front-row-show-submission"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
+        <form
+          name="front-row-show-submission"
+          method="POST"
+          action="/submit.html"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+      >
+
       >
         <!-- Netlify form name (must match `name` above) -->
         <input type="hidden" name="form-name" value="front-row-show-submission" />
@@ -540,3 +544,4 @@
   </main>
 </body>
 </html>
+
