@@ -762,6 +762,285 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 800; /* extra-bold for drama */
+  white-space: nowrap; /* <-- keeps Front Row on one line */
+}
+/* EVENTS HUB – main list layout */
+
+.events-hub {
+  margin-top: 20px;
+}
+
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.view-toggle {
+  display: inline-flex;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 3px;
+  background: rgba(7, 7, 12, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.view-toggle-btn {
+  border: none;
+  background: transparent;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.view-toggle-btn.is-active {
+  background: rgba(243, 201, 107, 0.2);
+  color: #fff7dd;
+}
+
+.events-filters {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  padding: 10px 11px;
+  background: rgba(6, 6, 12, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filters-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.filters-row-bottom {
+  grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.2fr);
+  align-items: flex-end;
+}
+
+.filter-group label {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+  width: 100%;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(9, 9, 16, 0.96);
+  padding: 6px 8px;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.filter-group input::placeholder {
+  color: rgba(201, 201, 212, 0.6);
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn-small {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 2.2fr) minmax(0, 1.4fr);
+  gap: 12px;
+  padding: 10px 11px;
+  border-radius: 16px;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 60%), rgba(6, 6, 12, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 10px;
+  background: rgba(3, 3, 6, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.event-date-day {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  margin-bottom: 2px;
+}
+
+.event-date-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-date-num {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.event-date-month {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+}
+
+.event-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.event-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.event-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.event-meta-line {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+.event-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 3px;
+}
+
+.event-tag {
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(10, 10, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-soft);
+}
+
+.event-tag-gold {
+  background: rgba(243, 201, 107, 0.18);
+  border-color: rgba(243, 201, 107, 0.7);
+  color: #ffeac6;
+}
+
+.event-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.event-price-note {
+  font-size: 0.76rem;
+  color: var(--text-soft);
+}
+
+.event-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.events-pagination {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.page-numbers {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.page-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(7, 7, 12, 0.96);
+  padding: 4px 9px;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.page-btn.is-active {
+  background: rgba(243, 201, 107, 0.22);
+  color: #fff9e6;
+  border-color: rgba(243, 201, 107, 0.9);
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.page-ellipsis {
+  opacity: 0.6;
+}
+
+/* Responsive tweaks */
+@media (max-width: 880px) {
+  .events-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .filters-row-bottom {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .filter-actions {
+    justify-content: flex-start;
+  }
+
+  .event-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .event-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+  }
 }
 
   </style>
@@ -784,7 +1063,8 @@
           </h1>
           <p class="hero-subtitle">
             A comprehensive and elegant home for every high school and community musical and stage show in Harford County, MD.
-            Discover performance dates, ticket links, cast spotlights, and more — all in one place.
+            Discover performance dates, ticket links, cast spotlights, and more — all in one place. Becasue every performance
+            deserves a packed house and standing ovation!
           </p>
           <div class="hero-meta">
             <div class="hero-meta-item">
@@ -805,7 +1085,7 @@
               <span class="btn-icon">🎟</span>
               View Upcoming Shows
             </a>
-            <a href="submit.html" class="btn btn-ghost">
+            <a href="#submit" class="btn btn-ghost">
               <span class="btn-icon">⭐</span>
               Submit a school or community show
             </a>
@@ -813,6 +1093,215 @@
         </div>
       </div>
     </header>
+        <!-- EVENTS HUB: main list view -->
+    <section id="events" class="card events-hub">
+      <div class="events-header">
+        <div class="section-title">
+          <h2>Upcoming Shows &amp; Performances</h2>
+          <p>
+            Browse Harford County’s live theatre, music, and performance calendar. Filter by season, school, genre,
+            or age, then jump into tickets or show details.
+          </p>
+        </div>
+
+        <div class="view-toggle">
+          <button class="view-toggle-btn is-active" type="button">List View</button>
+          <a href="calendar.html" class="view-toggle-btn" aria-label="Switch to calendar view">Calendar View</a>
+        </div>
+      </div>
+
+      <!-- FILTER BAR -->
+      <div class="events-filters">
+        <div class="filters-row">
+          <div class="filter-group">
+            <label for="filterSeason">Season</label>
+            <select id="filterSeason">
+              <option value="all">All seasons</option>
+              <option value="fall">Fall</option>
+              <option value="holiday">Holiday</option>
+              <option value="spring">Spring</option>
+              <option value="summer">Summer</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filterSchool">School / Company</label>
+            <select id="filterSchool">
+              <option value="all">All schools &amp; theatres</option>
+              <option value="bel-air-hs">Bel Air High School</option>
+              <option value="c-milton-wright">C. Milton Wright HS</option>
+              <option value="north-harford-hs">North Harford High School</option>
+              <!-- Later: populate dynamically -->
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filterGenre">Genre</label>
+            <select id="filterGenre">
+              <option value="all">All genres</option>
+              <option value="musical">Musical</option>
+              <option value="play">Play</option>
+              <option value="orchestra">Orchestra</option>
+              <option value="band">Band</option>
+              <option value="choir">Choir</option>
+              <option value="other">Other live performance</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filterAge">Audience</label>
+            <select id="filterAge">
+              <option value="all">All audiences</option>
+              <option value="family">Family friendly</option>
+              <option value="teen">Teen / PG-13</option>
+              <option value="adult">Mature audiences</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filters-row filters-row-bottom">
+          <div class="filter-group filter-search">
+            <label for="filterSearch">Search</label>
+            <input
+              id="filterSearch"
+              type="text"
+              placeholder="Search by show title, school, or keyword…" />
+          </div>
+
+          <div class="filter-actions">
+            <button type="button" class="btn btn-ghost btn-small">Clear filters</button>
+            <a href="submit.html" class="btn btn-primary btn-small">
+              + Submit a show
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENTS LIST -->
+      <div class="events-list">
+        <!-- Example event row -->
+        <article class="event-row" data-season="fall" data-genre="musical">
+          <div class="event-date">
+            <div class="event-date-day">Thu</div>
+            <div class="event-date-main">
+              <span class="event-date-num">6</span>
+              <span class="event-date-month">Nov</span>
+            </div>
+          </div>
+
+          <div class="event-main">
+            <div class="event-title-line">
+              <h3 class="event-title">The Addams Family</h3>
+              <span class="event-tag event-tag-gold">Fall Musical</span>
+            </div>
+            <div class="event-meta-line">
+              Bel Air High School • Bel Air, MD
+            </div>
+            <div class="event-meta-line">
+              Thu–Sat • Nov 6–8 • 7:00 PM • Sat matinee 2:00 PM
+            </div>
+            <div class="event-tags">
+              <span class="event-tag">Student theatre</span>
+              <span class="event-tag">Family friendly (10+)</span>
+            </div>
+          </div>
+
+          <div class="event-actions">
+            <div class="event-price-note">Adults $15 • Students $10</div>
+            <div class="event-buttons">
+              <a href="#" class="btn btn-primary btn-small">Get tickets</a>
+              <a href="show-example.html" class="btn btn-ghost btn-small">View details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Another example event -->
+        <article class="event-row" data-season="holiday" data-genre="concert">
+          <div class="event-date">
+            <div class="event-date-day">Fri</div>
+            <div class="event-date-main">
+              <span class="event-date-num">12</span>
+              <span class="event-date-month">Dec</span>
+            </div>
+          </div>
+
+          <div class="event-main">
+            <div class="event-title-line">
+              <h3 class="event-title">Holiday Spectacular</h3>
+              <span class="event-tag event-tag-gold">Holiday Concert</span>
+            </div>
+            <div class="event-meta-line">
+              North Harford High School • Pylesville, MD
+            </div>
+            <div class="event-meta-line">
+              Fri–Sat • Dec 12–13 • 7:00 PM
+            </div>
+            <div class="event-tags">
+              <span class="event-tag">Choir • Band • Theatre</span>
+              <span class="event-tag">Seasonal favorites</span>
+            </div>
+          </div>
+
+          <div class="event-actions">
+            <div class="event-price-note">General admission $10</div>
+            <div class="event-buttons">
+              <a href="#" class="btn btn-primary btn-small">Reserve seats</a>
+              <a href="show-example.html" class="btn btn-ghost btn-small">View details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Example for Spring -->
+        <article class="event-row" data-season="spring" data-genre="musical">
+          <div class="event-date">
+            <div class="event-date-day">Sun</div>
+            <div class="event-date-main">
+              <span class="event-date-num">22</span>
+              <span class="event-date-month">Mar</span>
+            </div>
+          </div>
+
+          <div class="event-main">
+            <div class="event-title-line">
+              <h3 class="event-title">Matilda the Musical</h3>
+              <span class="event-tag event-tag-gold">Spring Musical</span>
+            </div>
+            <div class="event-meta-line">
+              C. Milton Wright High School • Bel Air, MD
+            </div>
+            <div class="event-meta-line">
+              Thu–Sun • Mar 19–22 • Evenings &amp; Sunday matinee
+            </div>
+            <div class="event-tags">
+              <span class="event-tag">Based on Roald Dahl</span>
+              <span class="event-tag">Features young performers</span>
+            </div>
+          </div>
+
+          <div class="event-actions">
+            <div class="event-price-note">Ticket info coming soon</div>
+            <div class="event-buttons">
+              <a href="#" class="btn btn-primary btn-small">Notify me</a>
+              <a href="show-example.html" class="btn btn-ghost btn-small">View details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="events-pagination">
+        <button class="page-btn" disabled>‹ Previous</button>
+        <div class="page-numbers">
+          <button class="page-btn is-active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <span class="page-ellipsis">…</span>
+          <button class="page-btn">5</button>
+        </div>
+        <button class="page-btn">Next ›</button>
+      </div>
+    </section>
+
 
     <div class="layout-grid">
       <section id="calendar" class="card">
@@ -1096,11 +1585,11 @@
           <div>
             <h3>Programs We List:</h3>
             <ul>
-              <li>High school Musicals and Plays</li>
+              <li>High School Musicals and Plays</li>
               <li>Middle School Shows</li>
               <li>Youth Theater Companies</li>
               <li>Community Theater in Harford County</li>
-              <li>Harford Community College Rerformances</li>
+              <li>Harford Community College Productions</li>
               <li>High School Band, Orchestra and Choir Performances
             </ul>
           </div>
@@ -1278,3 +1767,7 @@
   </script>
 </body>
 </html>
+
+
+
+
