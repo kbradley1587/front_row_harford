@@ -330,20 +330,17 @@
 
       <!-- Netlify form -->
       <form 
-       name="front-row-show-submission"
-       method="POST"
-       data-netlify="true"
-       data-netlify-honeypot="bot-field"
-     >
-     <!-- Netlify required hidden input -->
-     <input type="hidden" name="form-name" value="front-row-show-submission" />
+        name="front-row-show-submission"
+        method="POST"
+        data-netlify="true"
+      >
+        <!-- (Optional) simple anti-spam field -->
+        <div style="display:none">
+           <label>Don’t fill this out if you’re human:
+             <input name="bot-field" />
+        </label>
+      </div>
 
-     <!-- Honeypot field (spam trap) -->
-     <div class="hidden-field">
-       <label>Don’t fill this out if you’re human:
-         <input name="bot-field" />
-       </label>
-     </div>
 
         <div class="form-grid">
           <!-- Contact info -->
@@ -540,5 +537,6 @@
   </main>
 </body>
 </html>
+
 
 
