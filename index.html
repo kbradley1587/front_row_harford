@@ -1642,61 +1642,88 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const seasonFilter   = document.getElementById('filter-season');
-    const schoolFilter   = document.getElementById('filter-school');
-    const genreFilter    = document.getElementById('filter-genre');
-    const audienceFilter = document.getElementById('filter-audience');
-    const searchInput    = document.getElementById('search-input');
-    const clearBtn       = document.getElementById('clear-filters');
+  document.addEventListener("DOMContentLoaded", () => {
+    const seasonFilter   = document.getElementById("seasonFilter");
+    const schoolFilter   = document.getElementById("schoolFilter");
+    const genreFilter    = document.getElementById("genreFilter");
+    const audienceFilter = document.getElementById("audienceFilter");
+    const searchFilter   = document.getElementById("searchFilter");
+    const clearFilters   = document.getElementById("clearFilters");
 
-    const rows = Array.from(document.querySelectorAll('.event-row'));
+    const eventRows = Array.from(document.querySelectorAll(".event-row"));
+
+    function normalize(str) {
+      return (str || "")
+        .toString()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
 
     function applyFilters() {
-      const season   = seasonFilter?.value || 'all';
-      const school   = schoolFilter?.value || 'all';
-      const genre    = genreFilter?.value || 'all';
-      const audience = audienceFilter?.value || 'all';
-      const term     = (searchInput?.value || '').trim().toLowerCase();
+      const season   = seasonFilter.value;
+      const school   = schoolFilter.value;
+      const genre    = genreFilter.value;
+      const audience = audienceFilter.value;
+      const search   = normalize(searchFilter.value);
 
-      rows.forEach(row => {
-        const matchesSeason   = season === 'all'   || row.dataset.season   === season;
-        const matchesSchool   = school === 'all'   || row.dataset.school   === school;
-        const matchesGenre    = genre === 'all'    || row.dataset.genre    === genre;
-        const matchesAudience = audience === 'all' || row.dataset.audience === audience;
-        const matchesSearch   = !term || row.textContent.toLowerCase().includes(term);
+      eventRows.forEach((row) => {
+        const rowSeason   = row.dataset.season || "all";
+        const rowSchool   = row.dataset.school || "all";
+        const rowGenre    = row.dataset.genre || "all";
+        const rowAudience = row.dataset.audience || "all";
 
-        row.style.display = (matchesSeason && matchesSchool && matchesGenre && matchesAudience && matchesSearch)
-          ? ''
-          : 'none';
+        const textBlob = normalize(row.textContent || "");
+
+        const seasonMatch =
+          season === "all" || rowSeason === season;
+
+        const schoolMatch =
+          school === "all" || rowSchool === school;
+
+        const genreMatch =
+          genre === "all" || rowGenre === genre;
+
+        const audienceMatch =
+          audience === "all" || rowAudience === audience;
+
+        const searchMatch =
+          !search || textBlob.includes(search);
+
+        const isVisible =
+          seasonMatch && schoolMatch && genreMatch && audienceMatch && searchMatch;
+
+        row.style.display = isVisible ? "" : "none";
       });
     }
 
-    [seasonFilter, schoolFilter, genreFilter, audienceFilter].forEach(select => {
-      if (select) select.addEventListener('change', applyFilters);
+    // Wire up events
+    [seasonFilter, schoolFilter, genreFilter, audienceFilter].forEach((el) => {
+      el.addEventListener("change", applyFilters);
     });
 
-    if (searchInput) {
-      searchInput.addEventListener('input', applyFilters);
-    }
+    searchFilter.addEventListener("input", () => {
+      applyFilters();
+    });
 
-    if (clearBtn) {
-      clearBtn.addEventListener('click', () => {
-        if (seasonFilter)   seasonFilter.value   = 'all';
-        if (schoolFilter)   schoolFilter.value   = 'all';
-        if (genreFilter)    genreFilter.value    = 'all';
-        if (audienceFilter) audienceFilter.value = 'all';
-        if (searchInput)    searchInput.value    = '';
-        applyFilters();
-      });
-    }
+    clearFilters.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      seasonFilter.value   = "all";
+      schoolFilter.value   = "all";
+      genreFilter.value    = "all";
+      audienceFilter.value = "all";
+      searchFilter.value   = "";
+      applyFilters();
+    });
 
-    // Run once on load
+    // Initial state
     applyFilters();
   });
 </script>
+
 </body>
 </html>
+
 
 
 
