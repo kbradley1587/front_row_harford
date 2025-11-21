@@ -713,8 +713,17 @@
         padding: 20px 16px 26px;
       }
 
+      /* Make the hero logo much larger + centered on mobile */
+      .logo-wrap {
+        width: 100%;
+        justify-content: center;
+      }
+
       .logo-wrap img {
-        width: 190px;
+        width: 90vw;         /* fills the width of the phone */
+        max-width: 360px;    /* prevents it from getting too huge */
+        display: block;
+        margin: 0 auto;
       }
 
       .section-header {
@@ -1747,6 +1756,7 @@
 
 </body>
 </html>
+
 
 
 
