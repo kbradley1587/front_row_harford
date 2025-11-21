@@ -1182,11 +1182,11 @@
 
       <!-- FILTER BAR -->
       <div class="events-filters">
-  <!-- Top row: four dropdowns -->
   <div class="filters-row">
+    <!-- Season -->
     <div class="filter-group">
-      <label for="filterSeason">Season</label>
-      <select id="filterSeason">
+      <label for="seasonFilter">Season</label>
+      <select id="seasonFilter">
         <option value="all">All seasons</option>
         <option value="fall">Fall</option>
         <option value="holiday">Holiday</option>
@@ -1194,42 +1194,55 @@
       </select>
     </div>
 
+    <!-- School / Company -->
     <div class="filter-group">
-      <label for="filterSchool">School / Company</label>
-      <select id="filterSchool">
-        <option value="all">All schools & theatres</option>
-        <!-- more options -->
+      <label for="schoolFilter">School / Company</label>
+      <select id="schoolFilter">
+        <option value="all">All schools &amp; theatres</option>
+        <option value="harford-community-college">Harford Community College</option>
+        <option value="north-harford-hs">North Harford High School</option>
+        <option value="cmw-hs">C. Milton Wright High School</option>
+        <!-- add more here as needed -->
       </select>
     </div>
 
+    <!-- Genre -->
     <div class="filter-group">
-      <label for="filterGenre">Genre</label>
-      <select id="filterGenre">
+      <label for="genreFilter">Genre</label>
+      <select id="genreFilter">
         <option value="all">All genres</option>
-        <!-- more options -->
+        <option value="musical">Musical</option>
+        <option value="play">Play</option>
+        <option value="ballet">Ballet</option>
+        <option value="concert">Concert</option>
+        <!-- add more as needed -->
       </select>
     </div>
 
+    <!-- Audience -->
     <div class="filter-group">
-      <label for="filterAudience">Audience</label>
-      <select id="filterAudience">
+      <label for="audienceFilter">Audience</label>
+      <select id="audienceFilter">
         <option value="all">All audiences</option>
-        <!-- more options -->
+        <option value="family">Family friendly</option>
+        <option value="teen">Teens &amp; up</option>
+        <option value="adult">Adult</option>
       </select>
     </div>
   </div>
 
-  <!-- Bottom row: search + clear button -->
   <div class="filters-row filters-row-bottom">
-    <div class="filter-group filter-search">
-      <label for="filterSearch">Search by title, school, etc.</label>
+    <!-- Search -->
+    <div class="filter-group">
+      <label for="searchFilter">Search</label>
       <input
         type="text"
-        id="filterSearch"
+        id="searchFilter"
         placeholder="Search by title, school, etc."
       />
     </div>
 
+    <!-- Clear button -->
     <div class="filter-actions">
       <button id="clearFilters" class="btn btn-ghost btn-small">
         Clear filters
@@ -1237,6 +1250,7 @@
     </div>
   </div>
 </div>
+
 
       <!-- EVENTS LIST -->
 <div class="events-list">
@@ -1683,6 +1697,7 @@
 </script>
 </body>
 </html>
+
 
 
 
