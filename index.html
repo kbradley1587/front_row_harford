@@ -819,8 +819,9 @@
   margin-bottom: 8px;
 }
 
+/* bottom row layout */
 .filters-row-bottom {
-  grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 2.3fr) auto;
   align-items: flex-end;
 }
 
@@ -842,20 +843,18 @@
   color: #fff;
 }
 
-.filter-group input::placeholder {
-  color: rgba(201, 201, 212, 0.6);
-}
-
 .filter-actions {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
 }
 
+/* reuse your existing button styles */
 .btn-small {
   padding: 6px 12px;
   font-size: 0.78rem;
 }
+
 
 .events-list {
   display: flex;
@@ -1033,7 +1032,6 @@
 
   .event-row {
     grid-template-columns: minmax(0, 1fr);
-  }
 
   .event-actions {
     flex-direction: row;
@@ -1183,51 +1181,61 @@
       </div>
 
       <!-- FILTER BAR -->
-      <div class="filters">
-  <!-- Season -->
-  <label for="filter-season">Season</label>
-  <select id="filter-season">
-    <option value="all">All seasons</option>
-    <option value="fall">Fall</option>
-    <option value="holiday">Holiday</option>
-    <option value="spring">Spring</option>
-    <option value="summer">Summer</option>
-  </select>
+      <div class="events-filters">
+  <!-- Top row: four dropdowns -->
+  <div class="filters-row">
+    <div class="filter-group">
+      <label for="filterSeason">Season</label>
+      <select id="filterSeason">
+        <option value="all">All seasons</option>
+        <option value="fall">Fall</option>
+        <option value="holiday">Holiday</option>
+        <option value="spring">Spring</option>
+      </select>
+    </div>
 
-  <!-- School / Company -->
-  <label for="filter-school">School / Company</label>
-  <select id="filter-school">
-    <option value="all">All schools & theatres</option>
-    <option value="harford-community-college">Harford Community College</option>
-    <!-- add more: bel-air-high, c-milton-wright, etc. -->
-  </select>
+    <div class="filter-group">
+      <label for="filterSchool">School / Company</label>
+      <select id="filterSchool">
+        <option value="all">All schools & theatres</option>
+        <!-- more options -->
+      </select>
+    </div>
 
-  <!-- Genre -->
-  <label for="filter-genre">Genre</label>
-  <select id="filter-genre">
-    <option value="all">All genres</option>
-    <option value="ballet">Ballet</option>
-    <option value="musical">Musical</option>
-    <option value="play">Play</option>
-    <option value="concert">Concert</option>
-    <option value="dance">Dance</option>
-  </select>
+    <div class="filter-group">
+      <label for="filterGenre">Genre</label>
+      <select id="filterGenre">
+        <option value="all">All genres</option>
+        <!-- more options -->
+      </select>
+    </div>
 
-  <!-- Audience -->
-  <label for="filter-audience">Audience</label>
-  <select id="filter-audience">
-    <option value="all">All audiences</option>
-    <option value="family">Family friendly (4+)</option>
-    <option value="teen">Teen / PG-13</option>
-    <option value="mature">Mature audiences</option>
-  </select>
+    <div class="filter-group">
+      <label for="filterAudience">Audience</label>
+      <select id="filterAudience">
+        <option value="all">All audiences</option>
+        <!-- more options -->
+      </select>
+    </div>
+  </div>
 
-  <!-- Search -->
-  <label for="search-input">Search</label>
-  <input id="search-input" type="text" placeholder="Search by title, school, etc." />
+  <!-- Bottom row: search + clear button -->
+  <div class="filters-row filters-row-bottom">
+    <div class="filter-group filter-search">
+      <label for="filterSearch">Search by title, school, etc.</label>
+      <input
+        type="text"
+        id="filterSearch"
+        placeholder="Search by title, school, etc."
+      />
+    </div>
 
-  <!-- Clear -->
-  <button id="clear-filters" type="button">Clear filters</button>
+    <div class="filter-actions">
+      <button id="clearFilters" class="btn btn-ghost btn-small">
+        Clear filters
+      </button>
+    </div>
+  </div>
 </div>
 
       <!-- EVENTS LIST -->
@@ -1677,6 +1685,7 @@
 </script>
 </body>
 </html>
+
 
 
 
