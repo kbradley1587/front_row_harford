@@ -1106,6 +1106,24 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+/* Make body text in all spotlight columns consistent */
+.spotlight-col p,
+.spotlight-col a,
+.spotlight-col li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-soft);
+}
+
+.spotlight-col a {
+  color: var(--gold-soft);
+  text-decoration: none;
+}
+
+.spotlight-col a:hover {
+  color: #ffe4a4;
+  text-decoration: underline;
+}
 
   </style>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -1713,6 +1731,7 @@
 
 </body>
 </html>
+
 
 
 
