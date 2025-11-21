@@ -1030,8 +1030,10 @@
     justify-content: flex-start;
   }
 
+  /* On small screens, stack the event content in one column */
   .event-row {
     grid-template-columns: minmax(0, 1fr);
+  }
 
   .event-actions {
     flex-direction: row;
@@ -1068,12 +1070,10 @@
 
 .spotlight-list li {
   margin-bottom: 0.35rem;
-  font-weight: 300; /* lighter look */
-  font-size: 0.82rem;  /* <<< perfect “a bit smaller” size */
+  font-weight: 300; 
+  font-size: 0.82rem;
   color: var(--text-soft);
 }
-
-
 
 /* Full-width “About Front Row Harford” block */
 .spotlight-about {
@@ -1086,30 +1086,6 @@
 @media (min-width: 900px) {
   .spotlight-columns {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-  .filters-row {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-
-  .filters-row-bottom {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .filter-actions {
-    justify-content: flex-start;
-  }
-
-  .event-row {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .event-actions {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-    align-items: center;
   }
 }
 
@@ -1723,6 +1699,7 @@
 
 </body>
 </html>
+
 
 
 
