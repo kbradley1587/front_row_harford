@@ -1043,6 +1043,73 @@
   }
 }
 
+/* ---------------------------------------------------------------- */
+/* 🌟 NEW: Spotlight & Support SECTION LAYOUT                       */
+/* ---------------------------------------------------------------- */
+
+.spotlight-columns {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile default */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.spotlight-col h3 {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f8e0a0;
+  margin-bottom: 0.75rem;
+}
+
+.spotlight-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.spotlight-list li {
+  margin-bottom: 0.35rem;
+}
+
+/* Full-width “About Front Row Harford” block */
+.spotlight-about {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.5rem;
+}
+
+/* 3 columns on desktop */
+@media (min-width: 900px) {
+  .spotlight-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+  .filters-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .filters-row-bottom {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .filter-actions {
+    justify-content: flex-start;
+  }
+
+  .event-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .event-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+  }
+}
+
   </style>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -1590,6 +1657,7 @@
 </script>
 </body>
 </html>
+
 
 
 
