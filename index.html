@@ -1074,7 +1074,25 @@
   font-size: 0.82rem;
   color: var(--text-soft);
 }
+ /* Make body text in all spotlight columns consistent */
+.spotlight-col p,
+.spotlight-col a,
+.spotlight-col li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-soft);
+}
 
+.spotlight-col a {
+  color: var(--gold-soft);
+  text-decoration: none;
+}
+
+.spotlight-col a:hover {
+  color: #ffe4a4;
+  text-decoration: underline;
+}
+   
 /* Full-width “About Front Row Harford” block */
 .spotlight-about {
   margin-top: 2.5rem;
@@ -1695,6 +1713,7 @@
 
 </body>
 </html>
+
 
 
 
