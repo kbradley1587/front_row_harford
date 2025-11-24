@@ -921,6 +921,37 @@
   flex-direction: column;
   gap: 3px;
 }
+    /* Small thumbnail image on event cards */
+.event-thumb {
+  width: 120px;              /* thumbnail size */
+  height: 72px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  background: rgba(10, 10, 18, 0.9);
+}
+
+.event-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* keeps the image nicely cropped */
+  display: block;
+}
+
+/* On smaller screens we can let it breathe a little */
+@media (max-width: 720px) {
+  .event-thumb {
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+  }
+
+  .event-thumb img {
+    height: auto;
+  }
+}
+
 
 .event-title-line {
   display: flex;
@@ -988,6 +1019,34 @@
   align-items: center;
   font-size: 0.8rem;
 }
+   /* ------------------------------------------------------ */
+/* 🌟 Event Thumbnail Support (automatic if data-thumb exists) */
+/* ------------------------------------------------------ */
+
+.event-row {
+  position: relative;
+  overflow: hidden;
+}
+
+.event-thumb {
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 1.25rem;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Mobile adjustment */
+@media (max-width: 720px) {
+  .event-thumb {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0.75rem;
+  }
+}
+ 
 
 .page-numbers {
   display: inline-flex;
@@ -1361,11 +1420,15 @@
   
   <!-- Rudpolph The Red Nose Reindeer! -->
   <article
-    class="event-row"
-    data-season="holiday"
-    data-genre="musical"
-    data-school="tidewater-players"
-    data-audience="family"
+    <article 
+  class="event-row"
+  data-season="holiday"
+  data-genre="youth-musical"
+  data-school="tidewater-players"
+  data-audience="family"
+  data-thumb="rudolph.jpg"
+>
+
   >
     <div class="event-date">
       <div class="event-date-day">Fri</div>
@@ -1376,6 +1439,29 @@
     </div>
 
     <div class="event-main">
+
+  <!-- Optional thumbnail image -->
+  <div class="event-thumb">
+    <img src="images/rudolph.jpg"
+         alt="Rudolph the Red-Nosed Reindeer poster">
+  </div>
+
+  <div class="event-title-line">
+    <h3 class="event-title">Rudolph the Red Nose Reindeer</h3>
+    <span class="event-tag event-tag-gold">Holiday Theater–youth</span>
+  </div>
+  <div class="event-meta-line">
+    Tidewater Players Youth – The Cultural Center at the Opera House • Havre De Grace, MD
+  </div>
+  <div class="event-meta-line">
+    Friday, Dec 5 @ 7:00PM
+  </div>
+  <div class="event-tags">
+    <span class="event-tag">Youth Musical</span>
+    <span class="event-tag">Family friendly (4+)</span>
+  </div>
+</div>
+
       <div class="event-title-line">
         <h3 class="event-title">Rudolph the Red Nose Reindeer</h3>
         <span class="event-tag event-tag-gold">Holiday Theater-youth</span>
@@ -1872,9 +1958,23 @@
     applyFilters();
   });
 </script>
+<script>
+document.querySelectorAll('.event-row').forEach(row => {
+  const thumb = row.dataset.thumb;
+  if (!thumb) return;
+
+  const img = document.createElement('img');
+  img.src = `images/${thumb}`;       // Images stored in /images folder
+  img.className = 'event-thumb';
+
+  const content = row.querySelector('.event-main');
+  content.prepend(img);
+});
+</script>
 
 </body>
 </html>
+
 
 
 
