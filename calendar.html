@@ -146,54 +146,56 @@
       text-align: center;
     }
 
-    /* ===== Month grid & day cells (desktop / tablet) ================== */
+    /* ==== Month grid & day cells ======================================= */
 
     .month-grid {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
-      grid-auto-rows: minmax(140px, auto); /* tall enough for multiple events */
+      grid-auto-rows: minmax(150px, auto); /* more room for 3 events */
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-left: 1px solid rgba(255, 255, 255, 0.08);
-      background: #050608;
     }
 
     .day-cell {
       padding: 8px 8px 10px;
       border-right: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #050608;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 4px; /* space between date and event chips */
+      gap: 4px;
     }
 
     .day-number {
       font-size: 0.75rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.78);
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .other-month .day-number {
-      color: rgba(255,255,255,0.35);
+      opacity: 0.4;
     }
 
     .event-chip {
       display: block;
       width: 100%;
       margin-top: 2px;
-      border-radius: 8px;
+      border-radius: 9px;
       background: rgba(243,201,107,0.16);
       border: 1px solid rgba(243,201,107,0.7);
       padding: 4px 6px;
       font-size: 0.7rem;
-      line-height: 1.3;
       color: #fff9e3;
+      cursor: pointer;
       text-decoration: none;
+      line-height: 1.25;
+      white-space: normal;
     }
 
     .event-chip span.time {
       display: block;
-      font-size: 0.65rem;
+      font-size: 0.66rem;
       color: #fbe8b9;
       margin-top: 1px;
     }
@@ -208,37 +210,39 @@
       color: var(--text-soft);
     }
 
-    /* ===== Mobile tweaks ============================================= */
+    /* ==== Mobile tweaks =============================================== */
 
     @media (max-width: 720px) {
       header {
-        padding: 24px 12px 16px;
+        padding-bottom: 16px;
+      }
+
+      main {
+        padding: 0 10px 32px;
       }
 
       .calendar-wrap {
-        padding: 14px 12px 18px;
-        margin-top: 8px;
+        padding: 14px 10px 18px;
       }
 
       .cal-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 6px;
       }
 
       .month-title {
         font-size: 0.95rem;
       }
 
-      /* Hide weekday header on phones (layout becomes 2 columns) */
       .weekday-row {
-        display: none;
+        font-size: 0.7rem;
       }
 
-      /* 2-column stacked month view on phones */
+      /* Switch to 2 columns so days are wider */
       .month-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: minmax(130px, auto);
+        grid-auto-rows: minmax(140px, auto);
       }
 
       .day-cell {
@@ -250,12 +254,8 @@
       }
 
       .event-chip {
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         padding: 3px 5px;
-      }
-
-      .event-chip span.time {
-        font-size: 0.64rem;
       }
     }
   </style>
@@ -302,7 +302,9 @@
   </main>
 
   <script>
+    // -----------------------------
     // Event data
+    // -----------------------------
     const eventData = {
       "2025-12": [
         {
@@ -348,10 +350,13 @@
           url: "https://hdgoperahouse.org/event/my-unauthorized-hallmark-movie-musical/"
         }
       ]
-      // Add future months like:
+      // Add 2026 like:
       // "2026-03": [{ day: X, title: "...", time: "...", url: "..." }, ...]
     };
 
+    // -----------------------------
+    // Calendar rendering
+    // -----------------------------
     const monthTitle = document.getElementById("monthTitle");
     const monthGrid  = document.getElementById("monthGrid");
     const prevBtn    = document.getElementById("prevMonthBtn");
@@ -360,24 +365,24 @@
     let current = new Date(2025, 11, 1); // December 2025 (0-based month index)
 
     const monthNames = [
-      "January","February","March","April","May","June",
-      "July","August","September","October","November","December"
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
     ];
 
     function renderCalendar(dateObj) {
       const year  = dateObj.getFullYear();
-      const month = dateObj.getMonth();
+      const month = dateObj.getMonth(); // 0-11
 
       monthTitle.textContent = `${monthNames[month]} ${year}`;
       monthGrid.innerHTML = "";
 
-      const firstOfMonth  = new Date(year, month, 1);
-      const startWeekday  = firstOfMonth.getDay();      // 0 = Sun
-      const daysInMonth   = new Date(year, month + 1, 0).getDate();
-      const daysInPrev    = new Date(year, month, 0).getDate();
-      const totalCells    = 42;                         // 6 weeks
+      const firstOfMonth = new Date(year, month, 1);
+      const startWeekday = firstOfMonth.getDay(); // 0 = Sun
+      const daysInMonth  = new Date(year, month + 1, 0).getDate();
+      const daysInPrev   = new Date(year, month, 0).getDate();
 
-      const key           = `${year}-${String(month + 1).padStart(2,"0")}`;
+      const totalCells = 42; // 6 weeks
+      const key = `${year}-${String(month + 1).padStart(2, "0")}`;
       const eventsForMonth = eventData[key] || [];
 
       for (let i = 0; i < totalCells; i++) {
@@ -388,16 +393,13 @@
         let isOtherMonth = false;
 
         if (i < startWeekday) {
-          // previous month
-          dayNumber = daysInPrev - (startWeekday - 1 - i);
+          dayNumber = daysInPrev - (startWeekday - 1 - i); // previous month
           isOtherMonth = true;
         } else if (i >= startWeekday + daysInMonth) {
-          // next month
-          dayNumber = i - (startWeekday + daysInMonth) + 1;
+          dayNumber = i - (startWeekday + daysInMonth) + 1; // next month
           isOtherMonth = true;
         } else {
-          // current month
-          dayNumber = i - startWeekday + 1;
+          dayNumber = i - startWeekday + 1; // current month
         }
 
         if (isOtherMonth) {
@@ -443,4 +445,5 @@
   </script>
 </body>
 </html>
+
 
