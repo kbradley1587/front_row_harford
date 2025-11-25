@@ -146,34 +146,65 @@
       text-align: center;
     }
 
-    .month-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      grid-auto-rows: 120px;      /* ensures enough height for all 5–6 weeks */
-      gap: 4px;
-    }
+    /* ==== Month grid & day cells ======================================= */
 
-    .day-cell {
-      position: relative;
-      border-radius: 12px;
-      background: radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 55%), #080910;
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 6px 6px 4px;
-      overflow: hidden;
-      font-size: 0.78rem;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  /* let rows grow when there are a lot of events in a day */
+  grid-auto-rows: minmax(130px, auto);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-    .day-cell.other-month {
-      opacity: 0.32;
-    }
+/* individual day cell */
+.day-cell {
+  padding: 8px 8px 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #050608;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;             /* space between date + events */
+}
 
-    .day-number {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.75);
-    }
+/* date number */
+.day-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* container for all events in a day */
+.day-events {
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+/* each event “chip” inside a cell */
+.event-chip {
+  display: block;
+  width: 100%;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: rgba(243, 201, 107, 0.12);
+  border: 1px solid rgba(243, 201, 107, 0.7);
+  color: #ffe9c0;
+  text-decoration: none;
+  white-space: normal;       /* allow text to wrap */
+}
+
+/* hover state */
+.event-chip:hover {
+  background: rgba(243, 201, 107, 0.22);
+}
+
 
     .event-chip {
       margin-top: 2px;
