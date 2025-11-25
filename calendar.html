@@ -16,7 +16,7 @@
       --text-main: #f7f7f7;
       --text-soft: #c9c9d4;
       --card-bg: #111218;
-      --border-subtle: rgba(255,255,255,0.09);
+      --border-subtle: rgba(255, 255, 255, 0.09);
       --radius-lg: 18px;
       --radius-pill: 999px;
     }
@@ -64,7 +64,7 @@
       padding: 9px 18px;
       border-radius: var(--radius-pill);
       border: 1px solid var(--gold);
-      background: rgba(6,6,12,0.9);
+      background: rgba(6, 6, 12, 0.9);
       color: var(--gold-soft);
       font-size: 0.85rem;
       text-decoration: none;
@@ -87,7 +87,7 @@
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       padding: 18px 18px 22px;
-      box-shadow: 0 26px 60px rgba(0,0,0,0.75);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.75);
     }
 
     .cal-header {
@@ -125,9 +125,9 @@
     }
 
     .nav-btn:hover {
-      background: rgba(243,201,107,0.16);
+      background: rgba(243, 201, 107, 0.16);
       color: #fff7dd;
-      border-color: rgba(243,201,107,0.8);
+      border-color: rgba(243, 201, 107, 0.8);
     }
 
     .weekday-row {
@@ -138,7 +138,7 @@
       letter-spacing: 0.08em;
       color: var(--text-soft);
       padding: 6px 2px 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       margin-bottom: 6px;
     }
 
@@ -146,12 +146,12 @@
       text-align: center;
     }
 
-    /* ==== Month grid & day cells ======================================= */
+    /* ===== DESKTOP / DEFAULT MONTH GRID ============================== */
 
     .month-grid {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
-      grid-auto-rows: minmax(150px, auto); /* more room for 3 events */
+      grid-auto-rows: minmax(120px, auto); /* grow if many events */
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-left: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -170,26 +170,36 @@
     .day-number {
       font-size: 0.75rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .other-month {
+      background: #040407;
     }
 
     .other-month .day-number {
-      opacity: 0.4;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .day-events {
+      margin-top: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 100%;
     }
 
     .event-chip {
       display: block;
       width: 100%;
-      margin-top: 2px;
-      border-radius: 9px;
-      background: rgba(243,201,107,0.16);
-      border: 1px solid rgba(243,201,107,0.7);
-      padding: 4px 6px;
-      font-size: 0.7rem;
-      color: #fff9e3;
-      cursor: pointer;
-      text-decoration: none;
+      font-size: 0.72rem;
       line-height: 1.25;
+      padding: 4px 6px;
+      border-radius: 8px;
+      background: rgba(243, 201, 107, 0.16);
+      border: 1px solid rgba(243, 201, 107, 0.7);
+      color: #fff9e3;
+      text-decoration: none;
       white-space: normal;
     }
 
@@ -201,7 +211,7 @@
     }
 
     .event-chip:hover {
-      background: rgba(243,201,107,0.26);
+      background: rgba(243, 201, 107, 0.26);
     }
 
     .footnote {
@@ -210,19 +220,15 @@
       color: var(--text-soft);
     }
 
-    /* ==== Mobile tweaks =============================================== */
+    /* ===== MOBILE AGENDA-STYLE LAYOUT ================================ */
 
     @media (max-width: 720px) {
-      header {
-        padding-bottom: 16px;
-      }
-
       main {
         padding: 0 10px 32px;
       }
 
       .calendar-wrap {
-        padding: 14px 10px 18px;
+        padding: 14px 10px 16px;
       }
 
       .cal-header {
@@ -231,31 +237,47 @@
         gap: 6px;
       }
 
-      .month-title {
-        font-size: 0.95rem;
-      }
-
+      /* Hide weekday header row on phones */
       .weekday-row {
-        font-size: 0.7rem;
+        display: none;
       }
 
-      /* Switch to 2 columns so days are wider */
+      /* Single-column stacked days */
       .month-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: minmax(140px, auto);
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
       }
 
       .day-cell {
-        padding: 6px 6px 8px;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
       }
 
       .day-number {
-        font-size: 0.7rem;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        margin-top: 4px;
+      }
+
+      .other-month .day-number {
+        opacity: 0.45;
+      }
+
+      .day-events {
+        margin-top: 0;
+        width: 100%;
       }
 
       .event-chip {
-        font-size: 0.68rem;
-        padding: 3px 5px;
+        font-size: 0.78rem;
+        padding: 4px 6px;
       }
     }
   </style>
@@ -350,8 +372,7 @@
           url: "https://hdgoperahouse.org/event/my-unauthorized-hallmark-movie-musical/"
         }
       ]
-      // Add 2026 like:
-      // "2026-03": [{ day: X, title: "...", time: "...", url: "..." }, ...]
+      // Add more months like: "2026-03": [ { day, title, time, url }, ... ]
     };
 
     // -----------------------------
@@ -362,26 +383,26 @@
     const prevBtn    = document.getElementById("prevMonthBtn");
     const nextBtn    = document.getElementById("nextMonthBtn");
 
-    let current = new Date(2025, 11, 1); // December 2025 (0-based month index)
+    let current = new Date(2025, 11, 1); // December 2025 (month is 0-based)
 
     const monthNames = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "January","February","March","April","May","June",
+      "July","August","September","October","November","December"
     ];
 
     function renderCalendar(dateObj) {
       const year  = dateObj.getFullYear();
-      const month = dateObj.getMonth(); // 0-11
+      const month = dateObj.getMonth();
 
       monthTitle.textContent = `${monthNames[month]} ${year}`;
       monthGrid.innerHTML = "";
 
       const firstOfMonth = new Date(year, month, 1);
-      const startWeekday = firstOfMonth.getDay(); // 0 = Sun
+      const startWeekday = firstOfMonth.getDay();           // 0 = Sun
       const daysInMonth  = new Date(year, month + 1, 0).getDate();
       const daysInPrev   = new Date(year, month, 0).getDate();
 
-      const totalCells = 42; // 6 weeks
+      const totalCells = 42;                                // 6 rows x 7 cols
       const key = `${year}-${String(month + 1).padStart(2, "0")}`;
       const eventsForMonth = eventData[key] || [];
 
@@ -393,13 +414,16 @@
         let isOtherMonth = false;
 
         if (i < startWeekday) {
-          dayNumber = daysInPrev - (startWeekday - 1 - i); // previous month
+          // previous month
+          dayNumber = daysInPrev - (startWeekday - 1 - i);
           isOtherMonth = true;
         } else if (i >= startWeekday + daysInMonth) {
-          dayNumber = i - (startWeekday + daysInMonth) + 1; // next month
+          // next month
+          dayNumber = i - (startWeekday + daysInMonth) + 1;
           isOtherMonth = true;
         } else {
-          dayNumber = i - startWeekday + 1; // current month
+          // current month
+          dayNumber = i - startWeekday + 1;
         }
 
         if (isOtherMonth) {
@@ -411,19 +435,28 @@
         daySpan.textContent = dayNumber;
         cell.appendChild(daySpan);
 
+        // Only attach events for the current month
         if (!isOtherMonth) {
           const todaysEvents = eventsForMonth.filter(ev => ev.day === dayNumber);
-          todaysEvents.forEach(ev => {
-            const link = document.createElement("a");
-            link.href = ev.url;
-            link.target = "_blank";
-            link.className = "event-chip";
-            link.innerHTML = `
-              ${ev.title}
-              <span class="time">${ev.time}</span>
-            `;
-            cell.appendChild(link);
-          });
+
+          if (todaysEvents.length) {
+            const eventsWrap = document.createElement("div");
+            eventsWrap.className = "day-events";
+
+            todaysEvents.forEach(ev => {
+              const link = document.createElement("a");
+              link.href = ev.url;
+              link.target = "_blank";
+              link.className = "event-chip";
+              link.innerHTML = `
+                ${ev.title}
+                <span class="time">${ev.time}</span>
+              `;
+              eventsWrap.appendChild(link);
+            });
+
+            cell.appendChild(eventsWrap);
+          }
         }
 
         monthGrid.appendChild(cell);
@@ -445,5 +478,6 @@
   </script>
 </body>
 </html>
+
 
 
