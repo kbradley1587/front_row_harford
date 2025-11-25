@@ -1426,7 +1426,7 @@
   data-genre="youth-musical"
   data-school="tidewater-players"
   data-audience="family"
-  data-thumb="rudolph.jpg"
+  data-thumb="images/rudolph.jpg"
 >
 
   >
@@ -1971,9 +1971,37 @@ document.querySelectorAll('.event-row').forEach(row => {
   content.prepend(img);
 });
 </script>
+ <script>
+  // Automatically inject thumbnails for any event-row that has data-image
+  document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll(".event-row[data-image]");
+    
+    rows.forEach(row => {
+      const imageFile = row.dataset.image;          // e.g., "Rudolph.jpg"
+      const dateEl = row.querySelector(".event-date");
+
+      if (!dateEl) return;
+
+      const thumb = document.createElement("div");
+      thumb.className = "event-thumb";
+      thumb.innerHTML = `
+        <img 
+          src="images/${imageFile}" 
+          alt=""
+          loading="lazy"
+        >
+      `;
+
+      // Insert thumbnail right after the date block
+      dateEl.insertAdjacentElement("afterend", thumb);
+    });
+  });
+</script>
+ 
 
 </body>
 </html>
+
 
 
 
