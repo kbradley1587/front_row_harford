@@ -1019,34 +1019,6 @@
   align-items: center;
   font-size: 0.8rem;
 }
-   /* ------------------------------------------------------ */
-/* 🌟 Event Thumbnail Support (automatic if data-thumb exists) */
-/* ------------------------------------------------------ */
-
-.event-row {
-  position: relative;
-  overflow: hidden;
-}
-
-.event-thumb {
-  flex-shrink: 0;
-  width: 90px;
-  height: 90px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-right: 1.25rem;
-  border: 1px solid rgba(255,255,255,0.12);
-}
-
-/* Mobile adjustment */
-@media (max-width: 720px) {
-  .event-thumb {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 0.75rem;
-  }
-}
- 
 
 .page-numbers {
   display: inline-flex;
@@ -1418,17 +1390,14 @@
     </div>
   </article>
   
-  <!-- Rudpolph The Red Nose Reindeer! -->
+    <!-- Rudolph The Red Nose Reindeer! – Fri -->
   <article
-    <article 
-  class="event-row"
-  data-season="holiday"
-  data-genre="youth-musical"
-  data-school="tidewater-players"
-  data-audience="family"
-  data-thumb="images/rudolph.jpg"
->
-
+    class="event-row"
+    data-season="holiday"
+    data-genre="musical"
+    data-school="tidewater-players"
+    data-audience="family"
+    data-image="Rudolph.jpg"
   >
     <div class="event-date">
       <div class="event-date-day">Fri</div>
@@ -1439,38 +1408,15 @@
     </div>
 
     <div class="event-main">
-
-  <!-- Optional thumbnail image -->
-  <div class="event-thumb">
-    <img src="images/rudolph.jpg"
-         alt="Rudolph the Red-Nosed Reindeer poster">
-  </div>
-
-  <div class="event-title-line">
-    <h3 class="event-title">Rudolph the Red Nose Reindeer</h3>
-    <span class="event-tag event-tag-gold">Holiday Theater–youth</span>
-  </div>
-  <div class="event-meta-line">
-    Tidewater Players Youth – The Cultural Center at the Opera House • Havre De Grace, MD
-  </div>
-  <div class="event-meta-line">
-    Friday, Dec 5 @ 7:00PM
-  </div>
-  <div class="event-tags">
-    <span class="event-tag">Youth Musical</span>
-    <span class="event-tag">Family friendly (4+)</span>
-  </div>
-</div>
-
       <div class="event-title-line">
         <h3 class="event-title">Rudolph the Red Nose Reindeer</h3>
-        <span class="event-tag event-tag-gold">Holiday Theater-youth</span>
+        <span class="event-tag event-tag-gold">Holiday Theater–youth</span>
       </div>
       <div class="event-meta-line">
-        Tidewater Players Youth - The Cultural Center at the Opera House • Havre De Grace, MD
+        Tidewater Players Youth – The Cultural Center at the Opera House • Havre De Grace, MD
       </div>
       <div class="event-meta-line">
-        Friday, Dec 5 @ 7:00PM 
+        Friday, Dec 5 @ 7:00PM
       </div>
       <div class="event-tags">
         <span class="event-tag">Youth Musical</span>
@@ -1481,19 +1427,20 @@
     <div class="event-actions">
       <div class="event-price-note">Tickets: 17.79</div>
       <div class="event-buttons">
-        <a href="https://hdgoperahouse.org/event/rudolph/" 
-           class="btn btn-primary btn-small" 
+        <a href="https://hdgoperahouse.org/event/rudolph/"
+           class="btn btn-primary btn-small"
            target="_blank">
           Get Tickets
         </a>
-        <a href="https://hdgoperahouse.org/event/rudolph/" 
-           class="btn btn-ghost btn-small" 
+        <a href="https://hdgoperahouse.org/event/rudolph/"
+           class="btn btn-ghost btn-small"
            target="_blank">
           View Details
         </a>
       </div>
     </div>
   </article>
+
   
   <!-- Rudpolph The Red Nose Reindeer! -->
   <article
@@ -1959,48 +1906,38 @@
   });
 </script>
 <script>
-document.querySelectorAll('.event-row').forEach(row => {
-  const thumb = row.dataset.thumb;
-  if (!thumb) return;
-
-  const img = document.createElement('img');
-  img.src = `images/${thumb}`;       // Images stored in /images folder
-  img.className = 'event-thumb';
-
-  const content = row.querySelector('.event-main');
-  content.prepend(img);
-});
-</script>
- <script>
-  // Automatically inject thumbnails for any event-row that has data-image
-  document.addEventListener("DOMContentLoaded", function () {
+  // Auto-inject thumbnails for any event-row that has data-image="Filename.jpg"
+  document.addEventListener("DOMContentLoaded", () => {
     const rows = document.querySelectorAll(".event-row[data-image]");
-    
-    rows.forEach(row => {
-      const imageFile = row.dataset.image;          // e.g., "Rudolph.jpg"
-      const dateEl = row.querySelector(".event-date");
 
-      if (!dateEl) return;
+    rows.forEach(row => {
+      const file = row.dataset.image;   // e.g., "Rudolph.jpg"
+      if (!file) return;
+
+      const main = row.querySelector(".event-main");
+      if (!main) return;
 
       const thumb = document.createElement("div");
       thumb.className = "event-thumb";
       thumb.innerHTML = `
         <img 
-          src="images/${imageFile}" 
+          src="images/${file}" 
           alt=""
           loading="lazy"
-        >
+        />
       `;
 
-      // Insert thumbnail right after the date block
-      dateEl.insertAdjacentElement("afterend", thumb);
+      // Thumbnail appears above the title, inside the text column
+      main.prepend(thumb);
     });
   });
 </script>
+
  
 
 </body>
 </html>
+
 
 
 
