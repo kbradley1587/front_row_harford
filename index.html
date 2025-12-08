@@ -930,6 +930,7 @@
   flex-direction: column;
   gap: 3px;
 }
+    
     /* Small thumbnail image on event cards */
 .event-thumb {
   width: 120px;              /* thumbnail size */
@@ -1097,6 +1098,25 @@
     align-items: center;
   }
 }
+    .social-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  display: inline-flex;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.6));
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
 
 
 /* ---------------------------------------------------------------- */
@@ -1204,6 +1224,9 @@
   <main>
     <header class="hero">
       <div class="logo-wrap">
+        <a href="https://facebook.com/FrontRowHarford" target="_blank" class="social-link">
+         <img src="facebook-icon.png" alt="Facebook" class="social-icon">
+      </a>
         <!-- Make sure the image file in the same folder is named EXACTLY "Front Row Logo v2.png" -->
         <img src="Front Row Logo v2.png" alt="Front Row Harford logo" />
         <div class="hero-text">
@@ -3594,6 +3617,7 @@
 
 </body>
 </html>
+
 
 
 
