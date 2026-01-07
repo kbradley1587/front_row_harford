@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edgewood High School | Front Row Harford</title>
+
+  <!-- If your site uses a shared stylesheet, link it here -->
+  <!-- <link rel="stylesheet" href="../styles.css"> -->
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+    .crumbs { font-size: 14px; margin-bottom: 16px; }
+    .crumbs a { text-decoration: none; }
+    .school-header { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 24px; }
+    .school-name { margin: 0; }
+    .school-meta { margin: 8px 0 0; color: #444; }
+
+    .show-detail { padding: 18px; border: 1px solid #e6e6e6; border-radius: 12px; margin-bottom: 18px; }
+    .show-detail h2 { margin: 0 0 10px; }
+    .show-line { margin: 6px 0; color: #333; }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; text-decoration: none; margin-right: 10px; }
+    .btn-primary { background: #111; color: #fff; }
+    .btn-ghost { border: 1px solid #111; color: #111; }
+
+    /* Optional: makes anchor jumps land nicely below a sticky header */
+    .show-detail { scroll-margin-top: 90px; }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <div class="crumbs">
+      <a href="../index.html">← Back to Front Row Harford</a>
+    </div>
+
+    <header class="school-header">
+      <h1 class="school-name">Edgewood High School</h1>
+      <p class="school-meta">Edgewood, MD • Student Theatre</p>
+      <!-- Optional: add school drama contact or link if you want -->
+    </header>
+
+    <!-- SHOW: Between the Lines -->
+    <section id="between-the-lines" class="show-detail">
+      <h2>Once Upon A Matress</h2>
+      <p class="show-line">
+          <strong>Director:</strong> Robert E. Tucker
+      </p>
+      <p class="show-line"><strong>Venue:</strong> The Edgewood High School Auditorium, 2415 Willoughby Beach Rd, Edgewood, MD</p>
+      <p class="show-line">
+        <strong>School Contact:</strong>
+        <a href="tel:+14106121500">(410)612-1500</a>
+      </p>
+
+      <p class="show-line"><strong>Dates & Times:</strong> Fri Mar 13 @ 7PM • Sat Mar 14 @ 7PM • Sun March 15 2:00PM</p>
+      <p class="show-line"><strong>Tickets:</strong> Adults $15 • Students and Children $10</p>
+      <p class="show-line"><strong>Recommended Audience:</strong> Family (Age 4 & up)</p>
+
+      <p class="show-line">
+        <strong>About the show:</strong><br>
+        You've heard the way that Hans told the story. Come and see what REALLY happened! This Golden Age retelling of the Princess and the Pea featuring music by Mary Rogers pits our heroine Winnifred against the worlds most legendary boy-mom, Queen Agravain. Heralds, Hijinks, and Hilarity are sure to keep you entertained as The Edgewood Theatre Group presents this classic family musical.
+      </p>
+
+      <a class="btn btn-primary" href=""_blank">
+        Get Tickets
+      </a>
+      <a class="btn btn-ghost" href="../index.html">
+        View All Shows
+      </a>
+    </section>
+
+    <!-- Add more shows for this school below as they submit -->
+    <!-- <section id="next-show-slug" class="show-detail">...</section> -->
+
+  </main>
+</body>
+</html>
