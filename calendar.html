@@ -51,7 +51,7 @@
     .site-title {
       font-size: clamp(2.2rem, 3vw, 2.7rem);
       font-weight: 800;
-      letter-spacing: -0.4px;
+      ter-spacing: -0.4px;
       color: #fff;
     }
 
@@ -109,7 +109,7 @@
 
     .month-title {
       font-size: 1.1rem;
-      letter-spacing: 0.08em;
+      ter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--gold);
       font-weight: 700;
@@ -144,7 +144,7 @@
       grid-template-columns: repeat(7, 1fr);
       font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      ter-spacing: 0.08em;
       color: var(--text-soft);
       padding: 6px 2px 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -435,7 +435,8 @@
     const prevBtn    = document.getElementById("prevMonthBtn");
     const nextBtn    = document.getElementById("nextMonthBtn");
 
-    let current = new Date(2025, 11, 1); // December 2025 (month is 0-based)
+    let current = new Date(2026, 0, 1); // January 2026
+
 
     const monthNames = [
       "January","February","March","April","May","June",
