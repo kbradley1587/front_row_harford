@@ -456,20 +456,27 @@
       gap: 8px;
     }
 
-    .show-card {
+   .show-card {
   display: grid;
   grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.2fr);
   gap: 10px;
-  padding: 18px 16px; /* slightly more breathing room */
+  padding: 18px 16px;
   border-radius: 16px;
 
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 60%),
     rgba(6, 6, 12, 0.98);
 
-  border: 2px solid rgba(255, 255, 255, 0.12); /* stronger */
+  /* Higher contrast border */
+  border: 1px solid rgba(255, 255, 255, 0.22);
 
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55); /* subtle depth */
+  /* Crisp “double edge” + separation */
+  box-shadow:
+    0 0 0 1px rgba(243, 201, 107, 0.18),  /* subtle gold outline */
+    0 16px 40px rgba(0, 0, 0, 0.70);      /* depth */
+
+  /* More visible separation between listings */
+  margin-bottom: 18px;
 
   transition:
     transform var(--transition-fast),
@@ -4827,6 +4834,7 @@
 
 </body>
 </html>
+
 
 
 
