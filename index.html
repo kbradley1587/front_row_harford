@@ -457,16 +457,28 @@
     }
 
     .show-card {
-      display: grid;
-      grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.2fr);
-      gap: 10px;
-      padding: 10px 11px;
-      border-radius: 16px;
-      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 60%), rgba(6, 6, 12, 0.98);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-      cursor: pointer;
-    }
+  display: grid;
+  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.2fr);
+  gap: 10px;
+  padding: 18px 16px; /* slightly more breathing room */
+  border-radius: 16px;
+
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 60%),
+    rgba(6, 6, 12, 0.98);
+
+  border: 1px solid rgba(255, 255, 255, 0.12); /* stronger */
+
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55); /* subtle depth */
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+
+  cursor: pointer;
+}
 
     .show-card:hover {
       transform: translateY(-2px);
@@ -4815,6 +4827,7 @@
 
 </body>
 </html>
+
 
 
 
