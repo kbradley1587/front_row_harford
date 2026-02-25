@@ -488,6 +488,29 @@
   cursor: pointer;
 }
 
+/* 1) Give a little more space between cards */
+.show-list {
+  gap: 16px; /* was 8px */
+}
+
+/* 2) Make the card border slightly stronger (optional) */
+.show-card {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* 3) This is the important part: a visible divider BETWEEN cards */
+.show-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: -10px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(243, 201, 107, 0.9); /* gold */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}    
+
 /* Add an obvious divider between cards */
 .show-card::after {
   content: "";
@@ -4847,6 +4870,7 @@
 
 </body>
 </html>
+
 
 
 
