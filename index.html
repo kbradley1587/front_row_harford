@@ -224,15 +224,6 @@
       align-items: flex-start;
     }
 
-    /* Kill any accidental gold divider under hero / cards */
-header.hero::after,
-section.card::after,
-section#events::after,
-.events-hub::after {
-  content: none !important;
-  display: none !important;
-}
-
     @media (max-width: 880px) {
       .layout-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -753,6 +744,15 @@ section#events::after,
       color: #ffe4a4;
       text-decoration: underline;
     }
+
+    /* Kill any accidental gold divider under hero / cards */
+header.hero::after,
+section.card::after,
+section#events::after,
+.events-hub::after {
+  content: none !important;
+  display: none !important;
+}
 
     @media (max-width: 720px) {
       header.hero {
@@ -4871,6 +4871,7 @@ section#events::after,
 
 </body>
 </html>
+
 
 
 
