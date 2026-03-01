@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C. Milton Wright High School | Front Row Harford</title>
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+    .crumbs { font-size: 14px; margin-bottom: 16px; }
+    .crumbs a { text-decoration: none; }
+    .school-header { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 24px; }
+    .school-name { margin: 0; }
+    .school-meta { margin: 8px 0 0; color: #444; }
+
+    .show-detail { padding: 18px; border: 1px solid #e6e6e6; border-radius: 12px; margin-bottom: 18px; }
+    .show-detail h2 { margin: 0 0 10px; }
+    .show-line { margin: 6px 0; color: #333; }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; text-decoration: none; margin-right: 10px; }
+    .btn-primary { background: #111; color: #fff; }
+    .btn-ghost { border: 1px solid #111; color: #111; }
+
+    .btn-disabled {
+      background: #ccc;
+      color: #666;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .show-detail { scroll-margin-top: 90px; }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <div class="crumbs">
+      <a href="../index.html">← Back to Front Row Harford</a>
+    </div>
+
+    <header class="school-header">
+      <h1 class="school-name">C. Milton Wright High School</h1>
+      <p class="school-meta">Bel Air, MD • Student Theatre</p>
+    </header>
+
+    <section id="once-upon-a-mattress" class="show-detail">
+      <h2>Frozen</h2>
+
+      <p class="show-line">
+        <strong>Director:</strong> Jinnie Bullis 
+      </p>
+
+      <p class="show-line">
+        <strong>Venue:</strong><br>
+        C.Milton Wright High School Auditorium<br>
+        1301 N. Fountain Green Road, Bel Air, MD 21015
+      </p>
+
+      <p class="show-line">
+        <strong>School Contact:</strong>
+        <a href="tel:+14106384110">(410) 638-4110</a>
+      </p>
+
+      <p class="show-line">
+        <strong>Dates & Times:</strong><br>
+        Thursday, March 19 @ 7:00 PM<br>
+        Friday, March 20 @ 7:00 PM<br>
+        Saturday, March 20 @ 7:00 PM<br>
+        Sunday, March 22 @ 3:00 PM
+      </p>
+
+      <p class="show-line">
+        <strong>Recommended Audience:</strong> Family (Ages 4 & up)
+      </p>
+
+      <p class="show-line">
+        <strong>About the show:</strong><br>
+        In the kingdom of Arendelle, young sisters Princess Elsa and Princess Anna share a joyful childhood filled with magical play, as Elsa possesses the innate ability to create ice and snow. During a game, Elsa accidentally injures Anna with her uncontrolled powers, prompting their parents, King Agnarr and Queen Iduna, to seek help from the wise trolls led by Grand Pabbie. Pabbie heals Anna but erases her memories of the magic to protect her, warning Elsa that fear will be her greatest enemy while love can counter her abilities. Tragedy strikes when the royal couple perishes at sea during a storm, leaving the sisters isolated—Elsa locked away in her room to conceal her powers, and Anna yearning for connection. Thirteen years later, Elsa's coronation as queen arrives, opening the castle gates and allowing Anna to mingle with suitors, including the charming Prince Hans of the Southern Isles, to whom she becomes instantly betrothed.
+
+        Elsa struggles to suppress her powers during the ceremony, but when Anna defends her impulsive engagement, Elsa's fear erupts, freezing Anna's heart and blanketing Arendelle in eternal winter. Elsa flees to the North Mountain, where she builds an ice palace and embraces her freedom in the iconic song "Let It Go," declaring herself liberated from societal constraints. Determined to end the freeze and mend their bond, Anna sets out with the rugged ice harvester Kristoff and his reindeer Sven, purchasing supplies from the cheerful Oaken at his trading post. Along the way, they encounter Olaf, a cheerful snowman unwittingly created by Elsa's magic, who dreams of experiencing summer and provides comic relief with his naive optimism. The group faces blizzards and reaches Elsa's palace, but a confrontation escalates when Elsa accidentally freezes Anna's heart further, forcing Kristoff to rush her back to the trolls for aid.
+
+        Grand Pabbie reveals that only an act of true love can thaw Anna's heart, leading her to believe it must be a kiss from Hans. Back in Arendelle, Hans reveals his villainous plot to seize the throne, abandoning Anna to die and capturing Elsa during a public trial. As marshals close in on the imprisoned Elsa, Anna races back on Sven, arriving just in time to sacrifice herself—blocking Hans's sword meant for Elsa—transforming into ice in an ultimate act of sisterly love. This selfless gesture thaws Anna's heart, teaching Elsa that love is the key to controlling her powers; she ends the winter with an embrace, restoring Arendelle to summer. Hans is exposed and banished, the Duke of Weselton's schemes thwarted, and the sisters reunite fully, with Elsa blessing Anna's budding romance with Kristoff while Olaf enjoys a brief summer under an ice cloud.
+
+        Based on the hit 2013 film of the same name, Frozen reveals how true love can come in many forms and that the bond between sisters is something truly special.
+      </p>
+
+      <a
+      class="btn btn-primary"
+      href="https://search.seatyourself.biz/webstore/accounts/edgewoodhighschool/buy-tix?landingMessageSeen=true"
+      target="_blank"
+      rel="noopener"
+    >
+      Get Tickets
+    </a>
+
+
+      <a class="btn btn-ghost" href="../index.html">
+        View All Shows
+      </a>
+    </section>
+
+  </main>
+</body>
+</html>
