@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patterson Mill High School | Front Row Harford</title>
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+    .crumbs { font-size: 14px; margin-bottom: 16px; }
+    .crumbs a { text-decoration: none; }
+    .school-header { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 24px; }
+    .school-name { margin: 0; }
+    .school-meta { margin: 8px 0 0; color: #444; }
+
+    .show-detail { padding: 18px; border: 1px solid #e6e6e6; border-radius: 12px; margin-bottom: 18px; }
+    .show-detail h2 { margin: 0 0 10px; }
+    .show-line { margin: 6px 0; color: #333; }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; text-decoration: none; margin-right: 10px; }
+    .btn-primary { background: #111; color: #fff; }
+    .btn-ghost { border: 1px solid #111; color: #111; }
+
+    .btn-disabled {
+      background: #ccc;
+      color: #666;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .show-detail { scroll-margin-top: 90px; }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <div class="crumbs">
+      <a href="../index.html">← Back to Front Row Harford</a>
+    </div>
+
+    <header class="school-header">
+      <h1 class="school-name">Patterson Mill High School</h1>
+      <p class="school-meta">Bel Air, MD • Student Theatre</p>
+    </header>
+
+    <section id="Curtains-School Edition" class="show-detail">
+      <h2>Curtains-School Edition</h2>
+
+      <p class="show-line">
+        <strong>Director:</strong> Caitlyn Shaftstall
+      </p>
+
+      <p class="show-line">
+        <strong>Venue:</strong><br>
+        Patterson Mill High School Auditorium<br>
+        85 Patterson Mill Road, Bel Air, MD 21014
+      </p>
+
+      <p class="show-line">
+        <strong>School Contact:</strong>
+        <a href="tel:+14106384640">(410) 638-4640</a>
+      </p>
+
+      <p class="show-line">
+        <strong>Dates & Times:</strong><br>
+        Thursday, March 19 @ 7:00 PM<br>
+        Friday, March 20 @ 7:00 PM<br>
+        Saturday, March 21 @ 2:00PM & 7:00 PM<br>
+      </p>
+
+      <p class="show-line">
+        <strong>Recommended Audience:</strong> Family
+      </p>
+
+      <p class="show-line">
+        <strong>About the show:</strong><br>
+       Get ready for a thrilling and entertaining night of mystery, music, and laughter with Curtains, a musical that keeps you on the edge of your seat from start to finish!
+      </p>
+
+      <a
+      class="btn btn-primary"
+      href="https://search.seatyourself.biz/webstore/accounts/pattersonmillhs/buy-tix?landingMessageSeen=true#evt=7B5D87D753E1FCF83B3776704F30DFF4&sc=2&sp=ANY&tab=select-event"
+      target="_blank"
+      rel="noopener"
+    >
+      Get Tickets
+    </a>
+
+
+      <a class="btn btn-ghost" href="../index.html">
+        View All Shows
+      </a>
+    </section>
+
+  </main>
+</body>
+</html>
