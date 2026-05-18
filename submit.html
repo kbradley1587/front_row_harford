@@ -303,7 +303,7 @@
             Submit a <span>Show or Performance</span>
           </h1>
           <p class="site-subtitle">
-            Share your production details below. We’ll review and post approved events so Harford County families can find and attend your show.
+            Share your production details below. We&rsquo;ll review and post approved events so Harford and Cecil County families can find and attend your show.
           </p>
         </div>
       </div>
@@ -449,6 +449,15 @@
 
           <!-- Venue -->
           <div class="field-group">
+            <label for="county">County<span class="required">*</span></label>
+            <select id="county" name="county" required>
+              <option value="">Select a county</option>
+              <option value="harford">Harford County</option>
+              <option value="cecil">Cecil County</option>
+            </select>
+          </div>
+
+          <div class="field-group">
             <label for="venueName">Venue name<span class="required">*</span></label>
             <input id="venueName" name="venueName" type="text" required placeholder="e.g., Bel Air HS Auditorium" />
           </div>
@@ -537,6 +546,3 @@
   </main>
 </body>
 </html>
-
-
-
