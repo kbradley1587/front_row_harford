@@ -897,6 +897,49 @@ section#events::after,
   font-size: 0.78rem;
 }
 
+/* County pill-button filter */
+.county-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.county-filter-label {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+.county-pill {
+  background: rgba(9, 9, 16, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.county-pill:hover {
+  border-color: var(--gold-soft);
+  color: var(--gold);
+}
+
+.county-pill[data-active="true"] {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0a0a12;
+  font-weight: 600;
+}
+
 
 .events-list {
   display: flex;
@@ -1256,17 +1299,17 @@ section#events::after,
     <main>
     <header class="hero">
       <div class="logo-wrap">
-        <!-- Make sure the image file in the same folder is named EXACTLY "Front Row Logo v2.jpg" -->
-        <img src="Front Row Logo v2.jpg" alt="Front Row Harford logo" />
+        <!-- Make sure the image file in the same folder is named EXACTLY "Front Row Logo v2.png" -->
+        <img src="Front Row Logo v2.png" alt="Front Row Harford logo" />
         <div class="hero-text">
           <div class="eyebrow">
-            FRONT ROW MARYLAND! • STUDENT MUSICALS & LIVE STAGE SHOWS
+            FRONT ROW HARFORD! • STUDENT MUSICALS & LIVE STAGE SHOWS
           </div>
           <h1 class="hero-title">
-            Experience the <span>Front Row</span> of Maryland Theater
+            Experience the <span>Front Row</span> of Harford County Theater
           </h1>
           <p class="hero-subtitle">
-            A comprehensive and elegant home for every high school and community musical and stage show in Maryland.
+            A comprehensive and elegant home for every high school and community musical and stage show in Harford County, MD.
             Discover performance dates, ticket links, cast spotlights, and more — all in one place. Because every performance
             deserves a packed house and standing ovation!
           </p>
@@ -1318,6 +1361,14 @@ section#events::after,
 
       <!-- FILTER BAR -->
       <div class="events-filters">
+  <!-- County pill filter -->
+  <div class="county-filter" role="group" aria-label="Filter by county">
+    <span class="county-filter-label">County:</span>
+    <button type="button" class="county-pill" data-county-filter="all" data-active="true">All Counties</button>
+    <button type="button" class="county-pill" data-county-filter="harford" data-active="false">Harford</button>
+    <button type="button" class="county-pill" data-county-filter="cecil" data-active="false">Cecil</button>
+  </div>
+
   <div class="filters-row">
     <!-- Season -->
     <div class="filter-group">
@@ -1422,6 +1473,7 @@ section#events::after,
     data-genre="musical"
     data-school="theatreworks-live"
     data-audience="family"
+    data-county="harford"
     data-image="something-rotten.jpg"
   >
     <div class="event-date">
@@ -1473,6 +1525,7 @@ section#events::after,
     data-genre="musical"
     data-school="theatreworks-live"
     data-audience="family"
+    data-county="harford"
     data-image="something-rotten.jpg"
   >
     <div class="event-date">
@@ -1524,6 +1577,7 @@ section#events::after,
     data-genre="musical"
     data-school="theatreworks-live"
     data-audience="family"
+    data-county="harford"
     data-image="something-rotten.jpg"
   >
     <div class="event-date">
@@ -1575,6 +1629,7 @@ section#events::after,
     data-genre="musical"
     data-school="harford-community-college"
     data-audience="family"
+    data-county="harford"
     data-image="rent.jpg"
   >
     <div class="event-date">
@@ -1626,6 +1681,7 @@ section#events::after,
     data-genre="musical"
     data-school="theatreworks-live"
     data-audience="family"
+    data-county="harford"
     data-image="something-rotten.jpg"
   >
     <div class="event-date">
@@ -1677,6 +1733,7 @@ section#events::after,
     data-genre="musical"
     data-school="theatreworks-live"
     data-audience="family"
+    data-county="harford"
     data-image="something-rotten.jpg"
   >
     <div class="event-date">
@@ -1728,6 +1785,7 @@ section#events::after,
     data-genre="musical"
     data-school="harford-community-college"
     data-audience="family"
+    data-county="harford"
     data-image="rent.jpg"
   >
     <div class="event-date">
@@ -1779,6 +1837,7 @@ section#events::after,
     data-genre="musical"
     data-school="theatreworks-live"
     data-audience="family"
+    data-county="harford"
     data-image="something-rotten.jpg"
   >
     <div class="event-date">
@@ -1830,6 +1889,7 @@ section#events::after,
     data-genre="musical"
     data-school="harford-community-college"
     data-audience="family"
+    data-county="harford"
     data-image="rent.jpg"
   >
     <div class="event-date">
@@ -1881,6 +1941,7 @@ section#events::after,
     data-genre="musical"
     data-school="harford-community-college"
     data-audience="family"
+    data-county="harford"
     data-image="rent.jpg"
   >
     <div class="event-date">
@@ -1932,6 +1993,7 @@ section#events::after,
     data-genre="musical"
     data-school="harford-community-college"
     data-audience="family"
+    data-county="harford"
     data-image="rent.jpg"
   >
     <div class="event-date">
@@ -1983,6 +2045,7 @@ section#events::after,
     data-genre="musical"
     data-school="harford-community-college"
     data-audience="family"
+    data-county="harford"
     data-image="rent.jpg"
   >
     <div class="event-date">
@@ -2034,6 +2097,7 @@ section#events::after,
     data-genre="musical"
     data-school="harford-community-college"
     data-audience="adult"
+    data-county="harford"
     data-image="rent.jpg"
   >
     <div class="event-date">
@@ -2085,6 +2149,7 @@ section#events::after,
     data-genre="musical"
     data-school="river-stone-theatre-company"
     data-audience="PG-13"
+    data-county="harford"
     data-image="bonnie-clyde.jpg"
   >
     <div class="event-date">
@@ -2136,6 +2201,7 @@ section#events::after,
     data-genre="musical"
     data-school="river-stone-theatre-company"
     data-audience="teen"
+    data-county="harford"
     data-image="bonnie-clyde.jpg"
   >
     <div class="event-date">
@@ -2187,6 +2253,7 @@ section#events::after,
     data-genre="musical"
     data-school="river-stone-theatre-company"
     data-audience="teen"
+    data-county="harford"
     data-image="bonnie-clyde.jpg"
   >
     <div class="event-date">
@@ -2238,6 +2305,7 @@ section#events::after,
     data-genre="musical"
     data-school="river-stone-theatre-company"
     data-audience="teen"
+    data-county="harford"
     data-image="bonnie-clyde.jpg"
   >
     <div class="event-date">
@@ -2440,6 +2508,10 @@ section#events::after,
     const audienceFilter = document.getElementById("audienceFilter");
     const searchFilter   = document.getElementById("searchFilter");
     const clearFilters   = document.getElementById("clearFilters");
+    const countyPills    = document.querySelectorAll("[data-county-filter]");
+
+    // Track active county; defaults to "all"
+    let activeCounty = "all";
 
     const eventRows = Array.from(document.querySelectorAll(".event-row"));
 
@@ -2463,6 +2535,7 @@ section#events::after,
         const rowSchool   = row.dataset.school || "all";
         const rowGenre    = row.dataset.genre || "all";
         const rowAudience = row.dataset.audience || "all";
+        const rowCounty   = row.dataset.county || "all";
 
         const textBlob = normalize(row.textContent || "");
 
@@ -2478,11 +2551,14 @@ section#events::after,
         const audienceMatch =
           audience === "all" || rowAudience === audience;
 
+        const countyMatch =
+          activeCounty === "all" || rowCounty === activeCounty;
+
         const searchMatch =
           !search || textBlob.includes(search);
 
         const isVisible =
-          seasonMatch && schoolMatch && genreMatch && audienceMatch && searchMatch;
+          seasonMatch && schoolMatch && genreMatch && audienceMatch && countyMatch && searchMatch;
 
         row.style.display = isVisible ? "" : "none";
       });
@@ -2497,6 +2573,16 @@ section#events::after,
       applyFilters();
     });
 
+    // County pill clicks
+    countyPills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        activeCounty = pill.getAttribute("data-county-filter");
+        countyPills.forEach((p) => p.setAttribute("data-active", "false"));
+        pill.setAttribute("data-active", "true");
+        applyFilters();
+      });
+    });
+
     clearFilters.addEventListener("click", (evt) => {
       evt.preventDefault();
       seasonFilter.value   = "all";
@@ -2504,6 +2590,11 @@ section#events::after,
       genreFilter.value    = "all";
       audienceFilter.value = "all";
       searchFilter.value   = "";
+      // Reset county to "All Counties"
+      activeCounty = "all";
+      countyPills.forEach((p) => {
+        p.setAttribute("data-active", p.getAttribute("data-county-filter") === "all" ? "true" : "false");
+      });
       applyFilters();
     });
 
@@ -2543,262 +2634,3 @@ section#events::after,
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
