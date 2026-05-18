@@ -3180,7 +3180,100 @@ section#events::after,
   });
 </script>
 
- 
+ <!-- Auto-hide past shows: hides any event-row whose start time + 5 minutes is in the past -->
+  <script>
+  (function () {
+    'use strict';
+
+    // Map abbreviations + full names to month index (0-11)
+    var MONTHS = {
+      'jan': 0, 'january': 0,
+      'feb': 1, 'february': 1,
+      'mar': 2, 'march': 2,
+      'apr': 3, 'april': 3,
+      'may': 4,
+      'jun': 5, 'june': 5,
+      'jul': 6, 'july': 6,
+      'aug': 7, 'august': 7,
+      'sep': 8, 'sept': 8, 'september': 8,
+      'oct': 9, 'october': 9,
+      'nov': 10, 'november': 10,
+      'dec': 11, 'december': 11
+    };
+
+    function parseShowDateTime(row) {
+      // Pull the month and day-number from .event-date children
+      var monthEl = row.querySelector('.event-date-month');
+      var numEl   = row.querySelector('.event-date-num');
+      if (!monthEl || !numEl) return null;
+
+      var monthKey = (monthEl.textContent || '').trim().toLowerCase().replace(/\.$/, '');
+      var month = MONTHS[monthKey];
+      if (month === undefined) return null;
+
+      var day = parseInt((numEl.textContent || '').trim(), 10);
+      if (isNaN(day)) return null;
+
+      // Find the time string. It's in one of the event-meta-line divs, e.g. "Sat, Sept 12 @ 7:30PM"
+      var metaLines = row.querySelectorAll('.event-meta-line');
+      var timeStr = null;
+      for (var i = 0; i < metaLines.length; i++) {
+        var txt = metaLines[i].textContent || '';
+        // Look for "@" followed by a time
+        var m = txt.match(/@\s*(\d{1,2})(?::(\d{2}))?\s*([AaPp][Mm])/);
+        if (m) { timeStr = m; break; }
+      }
+      if (!timeStr) return null;
+
+      var hour = parseInt(timeStr[1], 10);
+      var minute = timeStr[2] ? parseInt(timeStr[2], 10) : 0;
+      var ampm = timeStr[3].toLowerCase();
+
+      // Convert 12-hour to 24-hour
+      if (ampm === 'pm' && hour !== 12) hour += 12;
+      if (ampm === 'am' && hour === 12) hour = 0;
+
+      // Determine year: if month/day is already in the past relative to today, assume next year
+      var now = new Date();
+      var year = now.getFullYear();
+      var candidate = new Date(year, month, day, hour, minute, 0);
+      // If candidate is more than 60 days in the past, roll forward a year.
+      // 60 days buffer prevents flipping a show on the same week it ends.
+      var sixtyDaysAgo = new Date(now.getTime() - (60 * 24 * 60 * 60 * 1000));
+      if (candidate < sixtyDaysAgo) {
+        candidate = new Date(year + 1, month, day, hour, minute, 0);
+      }
+      return candidate;
+    }
+
+    function hidePastShows() {
+      var now = new Date();
+      var fiveMinAgo = new Date(now.getTime() - (5 * 60 * 1000));
+      var rows = document.querySelectorAll('.event-row');
+      var hiddenCount = 0;
+
+      rows.forEach(function (row) {
+        var dt = parseShowDateTime(row);
+        if (!dt) return; // can't parse -> leave it visible
+        // Hide if start time + 5 minutes is in the past (i.e. dt < fiveMinAgo)
+        if (dt < fiveMinAgo) {
+          row.setAttribute('data-past', 'true');
+          row.style.display = 'none';
+          hiddenCount++;
+        }
+      });
+
+      // Expose count for testing in the browser console
+      window.__frontRowHiddenCount = hiddenCount;
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', hidePastShows);
+    } else {
+      hidePastShows();
+    }
+  })();
+  </script>
 
 </body>
 </html>
