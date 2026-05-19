@@ -1364,15 +1364,39 @@ section#events::after,
 
       <!-- FILTER BAR -->
       <div class="events-filters">
-  <!-- County pill filter -->
+ <!-- County pill filter -->
   <div class="county-filter" role="group" aria-label="Filter by county">
     <span class="county-filter-label">County:</span>
-    <button type="button" class="county-pill" data-county-filter="all" data-active="true">All Counties</button>
-    <button type="button" class="county-pill" data-county-filter="harford" data-active="false">Harford</button>
-    <button type="button" class="county-pill" data-county-filter="cecil" data-active="false">Cecil</button>
-    <button type="button" class="county-pill" data-county-filter="baltimore-county" data-active="false">Baltimore County</button>
-    <button type="button" class="county-pill" data-county-filter="baltimore-city" data-active="false">Baltimore City</button>
-  </div>
+    <div class="county-pill-wrap" data-county-filter="all" data-active="true">
+      <button type="button" class="county-pill" data-county-filter="all">All Counties</button>
+      <button type="button" class="county-star" data-county-star="all" aria-label="Set All Counties as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="harford">
+      <button type="button" class="county-pill" data-county-filter="harford">Harford</button>
+      <button type="button" class="county-star" data-county-star="harford" aria-label="Set Harford as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="cecil">
+      <button type="button" class="county-pill" data-county-filter="cecil">Cecil</button>
+      <button type="button" class="county-star" data-county-star="cecil" aria-label="Set Cecil as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="baltimore-county">
+      <button type="button" class="county-pill" data-county-filter="baltimore-county">Baltimore County</button>
+      <button type="button" class="county-star" data-county-star="baltimore-county" aria-label="Set Baltimore County as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="baltimore-city">
+      <button type="button" class="county-pill" data-county-filter="baltimore-city">Baltimore City</button>
+      <button type="button" class="county-star" data-county-star="baltimore-city" aria-label="Set Baltimore City as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
   </div>
 
   <div class="filters-row">
