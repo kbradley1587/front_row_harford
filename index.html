@@ -3341,10 +3341,46 @@ section#events::after,
     const audienceFilter = document.getElementById("audienceFilter");
     const searchFilter   = document.getElementById("searchFilter");
     const clearFilters   = document.getElementById("clearFilters");
-    const countyPills    = document.querySelectorAll("[data-county-filter]");
+    const countyWraps    = document.querySelectorAll(".county-pill-wrap");
+    const countyPills    = document.querySelectorAll(".county-pill[data-county-filter]");
+    const countyStars    = document.querySelectorAll(".county-star[data-county-star]");
 
-    // Track active county; defaults to "all"
-    let activeCounty = "all";
+    const STORAGE_KEY = "frontrow.defaultCounty";
+
+    // Read saved default safely (localStorage may be disabled in some browsers)
+    function getSavedDefault() {
+      try {
+        return localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function setSavedDefault(value) {
+      try {
+        if (value) {
+          localStorage.setItem(STORAGE_KEY, value);
+        } else {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      } catch (e) {
+        // localStorage disabled; gracefully no-op
+      }
+    }
+
+    // Determine starting county: saved default OR "all"
+    const savedDefault = getSavedDefault();
+    let activeCounty = savedDefault || "all";
+
+    // Apply visual state for default + active on load
+    function refreshCountyVisuals() {
+      countyWraps.forEach((wrap) => {
+        const c = wrap.getAttribute("data-county-filter");
+        wrap.setAttribute("data-active", c === activeCounty ? "true" : "false");
+        const isDefault = getSavedDefault() === c;
+        wrap.setAttribute("data-default", isDefault ? "true" : "false");
+      });
+    }
 
     const eventRows = Array.from(document.querySelectorAll(".event-row"));
 
@@ -3397,7 +3433,7 @@ section#events::after,
       });
     }
 
-    // Wire up events
+    // Wire up dropdown filters
     [seasonFilter, schoolFilter, genreFilter, audienceFilter].forEach((el) => {
       el.addEventListener("change", applyFilters);
     });
@@ -3406,16 +3442,37 @@ section#events::after,
       applyFilters();
     });
 
-    // County pill clicks
+    // Pill click: change the active filter (session-level only, doesn't save)
     countyPills.forEach((pill) => {
       pill.addEventListener("click", () => {
         activeCounty = pill.getAttribute("data-county-filter");
-        countyPills.forEach((p) => p.setAttribute("data-active", "false"));
-        pill.setAttribute("data-active", "true");
+        refreshCountyVisuals();
         applyFilters();
       });
     });
 
+    // Star click: toggle saved default (this is the "official selection")
+    countyStars.forEach((star) => {
+      star.addEventListener("click", (evt) => {
+        evt.stopPropagation(); // don't also trigger the pill click
+        const c = star.getAttribute("data-county-star");
+        const current = getSavedDefault();
+
+        if (current === c) {
+          // Same county clicked twice -> unset default
+          setSavedDefault(null);
+        } else {
+          // Set new default AND make it the active filter immediately
+          setSavedDefault(c);
+          activeCounty = c;
+        }
+        refreshCountyVisuals();
+        applyFilters();
+      });
+    });
+
+    // Clear filters: resets dropdowns + active county to "all", but DOES NOT
+    // touch the saved default (that's identity, not a filter)
     clearFilters.addEventListener("click", (evt) => {
       evt.preventDefault();
       seasonFilter.value   = "all";
@@ -3423,15 +3480,14 @@ section#events::after,
       genreFilter.value    = "all";
       audienceFilter.value = "all";
       searchFilter.value   = "";
-      // Reset county to "All Counties"
-      activeCounty = "all";
-      countyPills.forEach((p) => {
-        p.setAttribute("data-active", p.getAttribute("data-county-filter") === "all" ? "true" : "false");
-      });
+      // Reset session filter to saved default (or "all" if no default)
+      activeCounty = getSavedDefault() || "all";
+      refreshCountyVisuals();
       applyFilters();
     });
 
-    // Initial state
+    // Initial render
+    refreshCountyVisuals();
     applyFilters();
   });
 </script>
