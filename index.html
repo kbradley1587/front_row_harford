@@ -897,49 +897,88 @@ section#events::after,
   font-size: 0.78rem;
 }
 
-/* County pill-button filter */
-.county-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+/* Wrap a pill + its star into one visual unit */
+.county-pill-wrap {
+  display: inline-flex;
   align-items: center;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.county-filter-label {
-  font-size: 0.72rem;
-  color: var(--text-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-right: 4px;
-}
-
-.county-pill {
   background: rgba(9, 9, 16, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
   border-radius: 999px;
-  padding: 6px 14px;
-  font-size: 0.8rem;
-  cursor: pointer;
+  overflow: hidden;
   transition: all 0.15s ease;
-  font-family: inherit;
 }
 
-.county-pill:hover {
+.county-pill-wrap:hover {
   border-color: var(--gold-soft);
-  color: var(--gold);
 }
 
-.county-pill[data-active="true"] {
+.county-pill-wrap[data-active="true"] {
   background: var(--gold);
   border-color: var(--gold);
+}
+
+.county-pill-wrap[data-active="true"] .county-pill {
   color: #0a0a12;
   font-weight: 600;
 }
 
+.county-pill {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 6px 4px 6px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s ease;
+}
+
+.county-pill:hover {
+  color: var(--gold);
+}
+
+.county-pill-wrap[data-active="true"] .county-pill:hover {
+  color: #0a0a12;
+}
+
+.county-star {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px 6px 4px;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.15s ease, transform 0.15s ease;
+  font-family: inherit;
+}
+
+.county-star:hover {
+  color: var(--gold);
+  transform: scale(1.15);
+}
+
+.county-pill-wrap[data-active="true"] .county-star {
+  color: rgba(10, 10, 18, 0.55);
+}
+
+.county-pill-wrap[data-active="true"] .county-star:hover {
+  color: #0a0a12;
+}
+
+.county-star .star-filled { display: none; }
+.county-star .star-empty  { display: inline; }
+
+.county-pill-wrap[data-default="true"] .county-star {
+  color: var(--gold);
+}
+
+.county-pill-wrap[data-default="true"] .county-star .star-filled { display: inline; }
+.county-pill-wrap[data-default="true"] .county-star .star-empty  { display: none; }
+
+.county-pill-wrap[data-active="true"][data-default="true"] .county-star {
+  color: #0a0a12;
+}
 
 .events-list {
   display: flex;
