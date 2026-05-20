@@ -13,67 +13,115 @@ const path = require('path');
 const SHOWS_DIR = path.join(__dirname, '..', '_data', 'shows');
 const OUTPUT = path.join(__dirname, '..', 'shows.json');
 
-// --- Minimal YAML front matter parser (no external dependencies) ---
-// Handles the specific structure our CMS produces: simple key: value pairs
-// plus a "performances" list of inline objects.
+function stripQuotes(v) {
+  return v.replace(/^["']|["']$/g, '');
+}
+
+/**
+ * Parse the YAML front matter. Handles:
+ *  - simple "key: value" pairs
+ *  - a "performances:" list in EITHER:
+ *      inline style:   - { weekday: "Fri", month: "Sept", day: 11, time: "7:30PM" }
+ *      block style:    - weekday: Fri
+ *                        month: Sept
+ *                        day: 11
+ *                        time: 7:30PM
+ */
 function parseFrontMatter(text) {
-  // Grab everything between the first pair of --- fences
   const match = text.match(/^---\s*\n([\s\S]*?)\n---/);
   if (!match) return null;
-  const body = match[1];
-  const lines = body.split('\n');
+  const lines = match[1].split('\n');
 
   const obj = {};
-  let currentListKey = null;
+  let inListKey = null;     // name of the list we're currently filling (e.g. "performances")
+  let currentItem = null;   // the object being built for a block-style list item
 
-  for (let raw of lines) {
-    const line = raw.replace(/\s+$/, ''); // rstrip
-    if (!line.trim()) continue;
+  function indentOf(line) {
+    const m = line.match(/^(\s*)/);
+    return m ? m[1].length : 0;
+  }
 
-    // Detect a list item for performances:  "  - { weekday: ..., ... }"
-    const listItem = line.match(/^\s*-\s*\{(.*)\}\s*$/);
-    if (listItem && currentListKey) {
-      const inner = listItem[1];
-      const entry = {};
-      // split on commas not inside quotes (our data has no commas inside values except price, which isn't in performances)
-      inner.split(',').forEach(pair => {
-        const kv = pair.split(':');
-        if (kv.length >= 2) {
-          const k = kv[0].trim();
-          let v = kv.slice(1).join(':').trim();
-          v = v.replace(/^["']|["']$/g, ''); // strip quotes
-          entry[k] = v;
+  for (let i = 0; i < lines.length; i++) {
+    const raw = lines[i].replace(/\s+$/, '');
+    if (!raw.trim()) continue;
+
+    const indent = indentOf(raw);
+    const trimmed = raw.trim();
+
+    // Are we inside a list block?
+    if (inListKey) {
+      // A new top-level key (no indent) ends the list
+      const topKey = raw.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
+      if (indent === 0 && topKey) {
+        if (currentItem) { obj[inListKey].push(currentItem); currentItem = null; }
+        inListKey = null;
+        // fall through to handle this line as a normal key below
+      } else {
+        // List item start: "- ..." 
+        if (trimmed.startsWith('-')) {
+          // push previous item if any
+          if (currentItem) { obj[inListKey].push(currentItem); currentItem = null; }
+
+          const afterDash = trimmed.replace(/^-\s*/, '');
+
+          // Inline object style: - { k: v, k: v }
+          const inline = afterDash.match(/^\{(.*)\}$/);
+          if (inline) {
+            const entry = {};
+            inline[1].split(',').forEach(pair => {
+              const idx = pair.indexOf(':');
+              if (idx !== -1) {
+                const k = pair.slice(0, idx).trim();
+                const v = stripQuotes(pair.slice(idx + 1).trim());
+                entry[k] = v;
+              }
+            });
+            obj[inListKey].push(entry);
+            currentItem = null;
+          } else {
+            // Block style first line: "- weekday: Fri"
+            currentItem = {};
+            const kv = afterDash.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
+            if (kv) currentItem[kv[1]] = stripQuotes(kv[2].trim());
+          }
+          continue;
         }
-      });
-      obj[currentListKey] = obj[currentListKey] || [];
-      obj[currentListKey].push(entry);
-      continue;
+
+        // Continuation of a block-style item: "    month: Sept"
+        const kv = trimmed.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
+        if (kv && currentItem) {
+          currentItem[kv[1]] = stripQuotes(kv[2].trim());
+          continue;
+        }
+        // anything else: ignore
+        continue;
+      }
     }
 
-    // Detect "key:" with nothing after -> start of a list block
-    const keyOnly = line.match(/^([A-Za-z0-9_]+):\s*$/);
+    // Not in a list (or just exited one): handle top-level lines
+    const keyOnly = raw.match(/^([A-Za-z0-9_]+):\s*$/);
     if (keyOnly) {
-      currentListKey = keyOnly[1];
-      obj[currentListKey] = [];
+      // start of a list/block
+      inListKey = keyOnly[1];
+      obj[inListKey] = [];
+      currentItem = null;
       continue;
     }
-
-    // Detect "key: value"
-    const kv = line.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
+    const kv = raw.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
     if (kv) {
-      currentListKey = null;
-      let v = kv[2].trim();
-      v = v.replace(/^["']|["']$/g, ''); // strip surrounding quotes
-      obj[kv[1]] = v;
+      obj[kv[1]] = stripQuotes(kv[2].trim());
     }
   }
+  // flush trailing block item
+  if (inListKey && currentItem) obj[inListKey].push(currentItem);
+
   return obj;
 }
 
 function build() {
   if (!fs.existsSync(SHOWS_DIR)) {
-    console.log('No _data/shows directory found; writing empty shows.json');
-    fs.writeFileSync(OUTPUT, JSON.stringify([], null, 2));
+    fs.writeFileSync(OUTPUT, JSON.stringify({ shows: [], schools: [] }, null, 2));
+    console.log('No _data/shows directory; wrote empty shows.json');
     return;
   }
 
@@ -86,13 +134,12 @@ function build() {
 
     let data;
     if (file.endsWith('.json')) {
-      try { data = JSON.parse(text); } catch (e) { console.warn('Skipping bad JSON:', file); return; }
+      try { data = JSON.parse(text); } catch (e) { console.warn('Bad JSON skipped:', file); return; }
     } else {
       data = parseFrontMatter(text);
     }
-    if (!data || !data.title) { console.warn('Skipping (no title):', file); return; }
+    if (!data || !data.title) { console.warn('No title, skipped:', file); return; }
 
-    // Normalize day to a number
     if (Array.isArray(data.performances)) {
       data.performances = data.performances.map(p => ({
         weekday: p.weekday || '',
@@ -104,35 +151,23 @@ function build() {
       data.performances = [];
     }
 
-    // Auto-generate a school/company slug from the Organization text.
-    // "Cecil Community College" -> "cecil-community-college"
-    // This powers the School/Company filter with zero manual upkeep.
     data.school_slug = (data.organization || '')
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9]+/g, '-')   // non-alphanumerics -> hyphens
-      .replace(/^-+|-+$/g, '');      // trim leading/trailing hyphens
+      .toLowerCase().trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
 
     shows.push(data);
   });
 
-  // Build a sorted, de-duplicated list of {slug,label} for the filter dropdown
-  var orgMap = {};
-  shows.forEach(function (s) {
-    if (s.school_slug && !orgMap[s.school_slug]) {
-      orgMap[s.school_slug] = s.organization;
-    }
-  });
-  var schools = Object.keys(orgMap)
-    .map(function (slug) { return { slug: slug, label: orgMap[slug] }; })
-    .sort(function (a, b) { return a.label.localeCompare(b.label); });
+  const orgMap = {};
+  shows.forEach(s => { if (s.school_slug && !orgMap[s.school_slug]) orgMap[s.school_slug] = s.organization; });
+  const schools = Object.keys(orgMap)
+    .map(slug => ({ slug, label: orgMap[slug] }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
-  // Output an object with both the shows and the derived school list
-  var payload = { shows: shows, schools: schools };
-  fs.writeFileSync(OUTPUT, JSON.stringify(payload, null, 2));
-  console.log(`Built shows.json with ${shows.length} production(s), ` +
-    `${shows.reduce((n,s)=>n+s.performances.length,0)} total performance(s), ` +
-    `${schools.length} unique organization(s).`);
+  fs.writeFileSync(OUTPUT, JSON.stringify({ shows, schools }, null, 2));
+  console.log(`Built shows.json: ${shows.length} production(s), ` +
+    `${shows.reduce((n,s)=>n+s.performances.length,0)} performance(s), ${schools.length} org(s).`);
 }
 
 build();
