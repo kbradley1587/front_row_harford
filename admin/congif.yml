@@ -1,0 +1,123 @@
+backend:
+  name: git-gateway
+  branch: maryland-expansion   # we build/test on the branch, switch to main at launch
+
+# Editorial workflow = your approval queue.
+# Entries move through: Draft -> In Review -> Ready, and only a publish makes them live.
+publish_mode: editorial_workflow
+
+# Where Decap stores uploaded images in the repo, and how they're referenced on the site
+media_folder: "images"        # files saved here in the repo
+public_folder: "/images"      # URL path the site uses to load them
+
+collections:
+  - name: "shows"
+    label: "Shows"
+    label_singular: "Show"
+    folder: "_data/shows"      # each production becomes one file here
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{venue}} ({{county}})"
+    description: >
+      Each entry is ONE production. Add every performance date under
+      "Performances" — the website turns each date into its own row,
+      sorted chronologically, exactly like the current site.
+    fields:
+      - label: "Production Title"
+        name: "title"
+        widget: "string"
+        hint: "The name of the show, e.g. 'A Christmas Carol'"
+
+      - label: "Show Image"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "You add this. ~1100x660 landscape works best. Optional while drafting."
+
+      - label: "Venue"
+        name: "venue"
+        widget: "string"
+        hint: "e.g. 'Milburn Stone Theatre'"
+
+      - label: "Organization / School"
+        name: "organization"
+        widget: "string"
+        hint: "Who is producing it, e.g. 'Cecil Community College'"
+
+      - label: "City"
+        name: "city"
+        widget: "string"
+        hint: "e.g. 'North East, MD'"
+
+      - label: "County"
+        name: "county"
+        widget: "select"
+        options:
+          - { label: "Harford", value: "harford" }
+          - { label: "Cecil", value: "cecil" }
+          - { label: "Baltimore County", value: "baltimore-county" }
+          - { label: "Baltimore City", value: "baltimore-city" }
+
+      - label: "Season"
+        name: "season"
+        widget: "select"
+        options:
+          - { label: "Fall", value: "fall" }
+          - { label: "Holiday", value: "holiday" }
+          - { label: "Winter", value: "winter" }
+          - { label: "Spring", value: "spring" }
+          - { label: "Summer", value: "summer" }
+
+      - label: "Genre"
+        name: "genre"
+        widget: "select"
+        options:
+          - { label: "Musical", value: "musical" }
+          - { label: "Play", value: "play" }
+          - { label: "Ballet", value: "ballet" }
+          - { label: "Concert", value: "concert" }
+          - { label: "Murder Mystery", value: "murder-mystery" }
+
+      - label: "Audience"
+        name: "audience"
+        widget: "select"
+        options:
+          - { label: "Family Friendly", value: "family" }
+          - { label: "PG-13", value: "teen" }
+          - { label: "Adult", value: "adult" }
+
+      - label: "Price Note"
+        name: "price"
+        widget: "string"
+        required: false
+        hint: "Free text, e.g. 'Tickets $24 Adults, $20 Students' or 'On Sale June 1'"
+
+      - label: "Ticket / Details URL"
+        name: "ticket_url"
+        widget: "string"
+        hint: "One link used for both Get Tickets and View Details buttons"
+
+      - label: "Performances"
+        name: "performances"
+        widget: "list"
+        summary: "{{fields.month}} {{fields.day}} — {{fields.time}}"
+        hint: "Add one row per performance. The site sorts these chronologically."
+        fields:
+          - label: "Weekday"
+            name: "weekday"
+            widget: "select"
+            options: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+          - label: "Month"
+            name: "month"
+            widget: "select"
+            options: ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sept","Oct","Nov","Dec"]
+          - label: "Day"
+            name: "day"
+            widget: "number"
+            value_type: "int"
+            min: 1
+            max: 31
+          - label: "Time"
+            name: "time"
+            widget: "string"
+            hint: "e.g. '7:30PM' or '2:00PM' — include AM/PM, no space"
