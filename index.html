@@ -1743,7 +1743,14 @@ section#events::after,
       });
     }
 
-    const eventRows = Array.from(document.querySelectorAll(".event-row"));
+    conlet eventRows = Array.from(document.querySelectorAll(".event-row"));
+
+    // Re-grab rows whenever the CMS injects new ones, then re-apply filters
+    document.addEventListener("cms-shows-rendered", () => {
+      eventRows = Array.from(document.querySelectorAll(".event-row"));
+      refreshCountyVisuals();
+      applyFilters();
+    });st eventRows = Array.from(document.querySelectorAll(".event-row"));
 
     function normalize(str) {
       return (str || "")
