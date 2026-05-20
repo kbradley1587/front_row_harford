@@ -1020,7 +1020,7 @@ section#events::after,
   padding: 6px 8px;
   border-radius: 10px;
   background:
-    linear-gradient(rgba(3, 3, 6, 0.20), rgba(3, 3, 6, 0.40)),
+    linear-gradient(rgba(3, 3, 6, 0.20), rgba(3, 3, 6, 0.20)),
     url('images/md-flag.jpg') center/cover no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
@@ -3701,7 +3701,183 @@ section#events::after,
     });
   }
 </script>
-  renderer-snippet.html
-  post-render-snippet.html
+  <!-- ===== CMS SHOW RENDERER ===== -->
+<!-- Fetches shows.json (built by Netlify), injects one event-row per performance
+     into #cms-shows (sorted chronologically), and populates the School/Company
+     filter dropdown from the organizations present in the data.
+     Mirrors the hand-coded markup exactly so the county filter, thumbnail
+     injector, and auto-hide script treat these rows identically. -->
+<script>
+(function () {
+  'use strict';
+
+  var GENRE_LABEL = { musical:"Musical", play:"Play", ballet:"Ballet", concert:"Concert", "murder-mystery":"Murder Mystery" };
+  var AUD_LABEL   = { family:"Family Friendly", teen:"PG-13", adult:"Adult" };
+  var MONTH_INDEX = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,June:5,July:6,Aug:7,Sept:8,Oct:9,Nov:10,Dec:11 };
+
+  function esc(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function rowHTML(show, perf) {
+    var imageAttr = show.image ? esc(show.image.replace(/^\/?images\//, "")) : "";
+    var genreLabel = GENRE_LABEL[show.genre] || show.genre;
+    var audLabel   = AUD_LABEL[show.audience] || show.audience;
+    var school     = esc(show.school_slug || "");
+    return ''
+      + '<article class="event-row"'
+      + ' data-season="' + esc(show.season) + '"'
+      + ' data-genre="' + esc(show.genre) + '"'
+      + ' data-county="' + esc(show.county) + '"'
+      + ' data-audience="' + esc(show.audience) + '"'
+      + (school ? ' data-school="' + school + '"' : '')
+      + (imageAttr ? ' data-image="' + imageAttr + '"' : '')
+      + '>'
+      +   '<div class="event-date">'
+      +     '<div class="event-date-day">' + esc(perf.weekday) + '</div>'
+      +     '<div class="event-date-main">'
+      +       '<span class="event-date-num">' + esc(perf.day) + '</span>'
+      +       '<span class="event-date-month">' + esc(perf.month) + '</span>'
+      +     '</div>'
+      +   '</div>'
+      +   '<div class="event-main">'
+      +     '<div class="event-title-line">'
+      +       '<h3 class="event-title">' + esc(show.title) + '</h3>'
+      +       '<span class="event-tag event-tag-gold">' + esc(genreLabel) + '</span>'
+      +     '</div>'
+      +     '<div class="event-meta-line">' + esc(show.venue) + ' • ' + esc(show.organization) + ' • ' + esc(show.city) + '</div>'
+      +     '<div class="event-meta-line">' + esc(perf.weekday) + ', ' + esc(perf.month) + ' ' + esc(perf.day) + ' @ ' + esc(perf.time) + '</div>'
+      +     '<div class="event-tags">'
+      +       '<span class="event-tag">' + esc(genreLabel) + '</span>'
+      +       '<span class="event-tag">' + esc(audLabel) + '</span>'
+      +     '</div>'
+      +   '</div>'
+      +   '<div class="event-actions">'
+      +     '<div class="event-price-note">' + esc(show.price) + '</div>'
+      +     '<div class="event-buttons">'
+      +       '<a href="' + esc(show.ticket_url) + '" class="btn btn-primary btn-small" target="_blank">Get Tickets</a>'
+      +       '<a href="' + esc(show.ticket_url) + '" class="btn btn-ghost btn-small" target="_blank">View Details</a>'
+      +     '</div>'
+      +   '</div>'
+      + '</article>';
+  }
+
+  function populateSchoolFilter(schools) {
+    var sel = document.getElementById('schoolFilter');
+    if (!sel || !Array.isArray(schools)) return;
+    schools.forEach(function (s) {
+      if (sel.querySelector('option[value="' + s.slug + '"]')) return;
+      var opt = document.createElement('option');
+      opt.value = s.slug;
+      opt.textContent = s.label;
+      sel.appendChild(opt);
+    });
+  }
+
+  function renderShows(shows) {
+    var mount = document.getElementById('cms-shows');
+    if (!mount) return;
+
+    var rows = [];
+    shows.forEach(function (show) {
+      (show.performances || []).forEach(function (perf) {
+        var mi = MONTH_INDEX[perf.month];
+        if (mi === undefined) return;
+        var now = new Date();
+        var year = now.getFullYear();
+        var d = new Date(year, mi, perf.day);
+        var sixtyAgo = new Date(now.getTime() - 60*24*60*60*1000);
+        if (d < sixtyAgo) d = new Date(year+1, mi, perf.day);
+        rows.push({ key: d.getTime(), html: rowHTML(show, perf) });
+      });
+    });
+    rows.sort(function(a,b){ return a.key - b.key; });
+
+    mount.innerHTML = rows.map(function(r){ return r.html; }).join('\n');
+    document.dispatchEvent(new CustomEvent('cms-shows-rendered'));
+  }
+
+  function init() {
+    fetch('shows.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : { shows: [], schools: [] }; })
+      .then(function (payload) {
+        var shows   = Array.isArray(payload) ? payload : (payload.shows || []);
+        var schools = Array.isArray(payload) ? []      : (payload.schools || []);
+        populateSchoolFilter(schools);
+        renderShows(shows);
+      })
+      .catch(function (e) { console.warn('Could not load shows.json:', e); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+  <!-- ===== CMS POST-RENDER HOOK ===== -->
+<!-- Runs AFTER the CMS injects its rows. Adds thumbnails and applies the
+     same auto-hide rule to the newly-added CMS rows only. Guarded so it
+     never double-processes. Place this immediately AFTER the renderer. -->
+<script>
+(function () {
+  'use strict';
+
+  var MONTHS = {jan:0,january:0,feb:1,february:1,mar:2,march:2,apr:3,april:3,may:4,
+    jun:5,june:5,jul:6,july:6,aug:7,august:7,sep:8,sept:8,september:8,
+    oct:9,october:9,nov:10,november:10,dec:11,december:11};
+
+  function addThumb(row){
+    if (row.__thumbDone) return;
+    var file = row.dataset ? row.dataset.image : null;
+    if (!file) { row.__thumbDone = true; return; }
+    if (row.querySelector('.event-thumb')) { row.__thumbDone = true; return; }
+    var main = row.querySelector('.event-main');
+    if (!main) return;
+    var thumb = document.createElement('div');
+    thumb.className = 'event-thumb';
+    thumb.innerHTML = '<img src="images/' + file + '" alt="" loading="lazy" />';
+    main.prepend(thumb);
+    row.__thumbDone = true;
+  }
+
+  function parseDT(row){
+    var monthEl = row.querySelector('.event-date-month');
+    var numEl   = row.querySelector('.event-date-num');
+    if (!monthEl || !numEl) return null;
+    var mk = (monthEl.textContent||'').trim().toLowerCase().replace(/\.$/,'');
+    var m = MONTHS[mk]; if (m === undefined) return null;
+    var day = parseInt((numEl.textContent||'').trim(),10); if (isNaN(day)) return null;
+    var metas = row.querySelectorAll('.event-meta-line'); var ts=null;
+    for (var i=0;i<metas.length;i++){
+      var mm=(metas[i].textContent||'').match(/@\s*(\d{1,2})(?::(\d{2}))?\s*([AaPp][Mm])/);
+      if(mm){ts=mm;break;}
+    }
+    if(!ts) return null;
+    var h=parseInt(ts[1],10), min=ts[2]?parseInt(ts[2],10):0, ap=ts[3].toLowerCase();
+    if(ap==='pm'&&h!==12)h+=12; if(ap==='am'&&h===12)h=0;
+    var now=new Date(), y=now.getFullYear();
+    var c=new Date(y,m,day,h,min,0);
+    var sixty=new Date(now.getTime()-60*24*60*60*1000);
+    if(c<sixty) c=new Date(y+1,m,day,h,min,0);
+    return c;
+  }
+
+  function hideIfPast(row){
+    var dt=parseDT(row); if(!dt) return;
+    var fiveAgo=new Date(Date.now()-5*60*1000);
+    if(dt<fiveAgo){ row.setAttribute('data-past','true'); row.style.display='none'; }
+  }
+
+  document.addEventListener('cms-shows-rendered', function(){
+    var mount=document.getElementById('cms-shows');
+    if(!mount) return;
+    var rows=mount.querySelectorAll('.event-row');
+    rows.forEach(function(r){ addThumb(r); hideIfPast(r); });
+  });
+})();
+</script>
 </body>
 </html>
