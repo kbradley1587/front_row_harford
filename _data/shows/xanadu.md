@@ -1,6 +1,6 @@
 ---
 title: Xanadu
-image: https://cdn-university.azureedge.net/ccbctickets/uploads/Redactor/1/image/2MH0YcSSyHYGKpfXkGHRUgmqSaIUA_SE09AExxJhMKQ=.jpeg
+image: /images/xanadu_ccbc.jpg
 venue: Essex F. Scott Black Theatre
 organization: Community College Baltimore County
 city: Baltimore, MD
