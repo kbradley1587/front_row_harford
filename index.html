@@ -1341,40 +1341,41 @@ section#events::after,
   color: var(--text-soft); /* grey tone */
   margin-bottom: 0.6rem;
 }
-    /* ===== Maryland flag divider banner (Option D) ===== */
+  /* ===== Maryland flag divider (Option C — chip + line) ===== */
 .flag-divider {
-  margin: 24px 0;
-  border-radius: 6px;
-  overflow: hidden;
-}
-.flag-divider-stripe {
-  height: 6px;
+  margin: 14px 0;
   display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.flag-divider-stripe > div { flex: 1; }
-.flag-divider-stripe .fd-gold1 {
-  background: repeating-linear-gradient(45deg, #1a1a1a 0 7px, var(--gold) 7px 14px);
+.flag-divider-chip {
+  width: 54px;
+  height: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 0;
 }
-.flag-divider-stripe .fd-red1 {
-  background: repeating-linear-gradient(-45deg, #c0392b 0 7px, #f5f0e6 7px 14px);
+.flag-divider-chip > div { flex: 1; }
+.flag-divider-chip .fd-gold {
+  background: repeating-linear-gradient(45deg, #1a1a1a 0 5px, var(--gold) 5px 10px);
 }
-.flag-divider-stripe .fd-gold2 {
-  background: repeating-linear-gradient(-45deg, #1a1a1a 0 7px, var(--gold) 7px 14px);
-}
-.flag-divider-stripe .fd-red2 {
-  background: repeating-linear-gradient(45deg, #c0392b 0 7px, #f5f0e6 7px 14px);
+.flag-divider-chip .fd-red {
+  background: repeating-linear-gradient(-45deg, #c0392b 0 5px, #f5f0e6 5px 10px);
 }
 .flag-divider-label {
-  background: rgba(8, 8, 14, 0.96);
-  padding: 10px 16px;
-  text-align: center;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 700;
+  flex-shrink: 0;
 }
-
+.flag-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), rgba(243, 201, 107, 0.05));
+}
   </style>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -1583,13 +1584,12 @@ section#events::after,
  <!-- EVENTS LIST -->
 
       <div class="flag-divider">
-        <div class="flag-divider-stripe">
-          <div class="fd-gold1"></div>
-          <div class="fd-red1"></div>
-          <div class="fd-gold2"></div>
-          <div class="fd-red2"></div>
+        <div class="flag-divider-chip">
+          <div class="fd-gold"></div>
+          <div class="fd-red"></div>
         </div>
         <div class="flag-divider-label">Upcoming Shows</div>
+        <div class="flag-divider-line"></div>
       </div>
 
 <div id="cms-shows"></div>
