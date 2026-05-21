@@ -25,7 +25,7 @@ performances:
     month: Dec
     day: 6
     time: 2:00PM
-    year: 2025
+    year: 2026
   - weekday: Fri
     month: Dec
     day: 11
