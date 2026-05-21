@@ -25,7 +25,7 @@ performances:
     month: July
     day: 18
     time: 7:00PM
-    year: 2025
+    year: 2026
   - weekday: Sun
     month: July
     day: 19
