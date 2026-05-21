@@ -20,17 +20,17 @@ performances:
     month: June
     day: 6
     time: 7:30PM
-    year: 2025
+    year: 2026
   - weekday: Sun
     month: June
     day: 7
     time: 2:00PM
-    year: 2025
+    year: 2026
   - weekday: Fri
     month: June
     day: 12
     time: 7:30PM
-    year: 2025
+    year: 2026
   - weekday: Sat
     month: June
     day: 13
@@ -38,9 +38,9 @@ performances:
     year: 2026
   - weekday: Sat
     month: June
-    day: 13
+    day: 14
     time: 7:30PM
-    year: 2025
+    year: 2026
   - weekday: Sun
     month: June
     day: 14
