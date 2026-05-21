@@ -820,30 +820,29 @@ section#events::after,
   margin-bottom: 12px;
 }
 
-.view-toggle {
-  display: inline-flex;
-  gap: 6px;
-  border-radius: 999px;
-  padding: 3px;
-  background: rgba(7, 7, 12, 0.96);
-  border: 2px solid rgba(255, 255, 255, 0.08);
-}
-
 .view-toggle-btn {
-  border: 1px solid transparent;
+  border: 1px solid rgba(243, 201, 107, 0.35);
   background: transparent;
   font-size: 0.8rem;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 999px;
   color: var(--text-soft);
   cursor: pointer;
   text-decoration: none;
+  text-align: center;
   transition: all 0.15s ease;
 }
 
 .view-toggle-btn:hover {
   color: #fff7dd;
-  border-color: rgba(243, 201, 107, 0.5);
+  border-color: rgba(243, 201, 107, 0.7);
+  background: rgba(243, 201, 107, 0.1);
+}
+
+.view-toggle-btn.is-active {
+  background: rgba(243, 201, 107, 0.2);
+  color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.7);
 }
 
 .view-toggle-btn.is-active {
