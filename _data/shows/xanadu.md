@@ -1,7 +1,7 @@
 ---
 title: Xanadu
 image: /images/xanadu_ccbc.jpg
-venue: Essex F. Scott Black Theatre
+venue: F. Scott Black Theatre
 organization: Community College Baltimore County
 city: Baltimore, MD
 county: baltimore-county
