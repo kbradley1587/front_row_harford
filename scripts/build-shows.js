@@ -17,24 +17,14 @@ function stripQuotes(v) {
   return v.replace(/^["']|["']$/g, '');
 }
 
-/**
- * Parse the YAML front matter. Handles:
- *  - simple "key: value" pairs
- *  - a "performances:" list in EITHER:
- *      inline style:   - { weekday: "Fri", month: "Sept", day: 11, time: "7:30PM" }
- *      block style:    - weekday: Fri
- *                        month: Sept
- *                        day: 11
- *                        time: 7:30PM
- */
 function parseFrontMatter(text) {
   const match = text.match(/^---\s*\n([\s\S]*?)\n---/);
   if (!match) return null;
   const lines = match[1].split('\n');
 
   const obj = {};
-  let inListKey = null;     // name of the list we're currently filling (e.g. "performances")
-  let currentItem = null;   // the object being built for a block-style list item
+  let inListKey = null;
+  let currentItem = null;
 
   function indentOf(line) {
     const m = line.match(/^(\s*)/);
@@ -48,23 +38,15 @@ function parseFrontMatter(text) {
     const indent = indentOf(raw);
     const trimmed = raw.trim();
 
-    // Are we inside a list block?
     if (inListKey) {
-      // A new top-level key (no indent) ends the list
       const topKey = raw.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
       if (indent === 0 && topKey) {
         if (currentItem) { obj[inListKey].push(currentItem); currentItem = null; }
         inListKey = null;
-        // fall through to handle this line as a normal key below
       } else {
-        // List item start: "- ..." 
         if (trimmed.startsWith('-')) {
-          // push previous item if any
           if (currentItem) { obj[inListKey].push(currentItem); currentItem = null; }
-
           const afterDash = trimmed.replace(/^-\s*/, '');
-
-          // Inline object style: - { k: v, k: v }
           const inline = afterDash.match(/^\{(.*)\}$/);
           if (inline) {
             const entry = {};
@@ -79,29 +61,23 @@ function parseFrontMatter(text) {
             obj[inListKey].push(entry);
             currentItem = null;
           } else {
-            // Block style first line: "- weekday: Fri"
             currentItem = {};
             const kv = afterDash.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
             if (kv) currentItem[kv[1]] = stripQuotes(kv[2].trim());
           }
           continue;
         }
-
-        // Continuation of a block-style item: "    month: Sept"
         const kv = trimmed.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
         if (kv && currentItem) {
           currentItem[kv[1]] = stripQuotes(kv[2].trim());
           continue;
         }
-        // anything else: ignore
         continue;
       }
     }
 
-    // Not in a list (or just exited one): handle top-level lines
     const keyOnly = raw.match(/^([A-Za-z0-9_]+):\s*$/);
     if (keyOnly) {
-      // start of a list/block
       inListKey = keyOnly[1];
       obj[inListKey] = [];
       currentItem = null;
@@ -112,7 +88,6 @@ function parseFrontMatter(text) {
       obj[kv[1]] = stripQuotes(kv[2].trim());
     }
   }
-  // flush trailing block item
   if (inListKey && currentItem) obj[inListKey].push(currentItem);
 
   return obj;
@@ -145,6 +120,7 @@ function build() {
         weekday: p.weekday || '',
         month: p.month || '',
         day: parseInt(p.day, 10),
+        year: p.year ? parseInt(p.year, 10) : null,
         time: p.time || ''
       }));
     } else {
