@@ -23,4 +23,8 @@ performances:
     month: July
     day: 26
     time: 3:00PM
+  - weekday: Fri
+    month: July
+    day: 31
+    time: 8:00PM
 ---
