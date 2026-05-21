@@ -1,6 +1,6 @@
 ---
 title: Urinetown
-image: ""
+image: /images/urinetown_street lamp.jpg
 venue: Street Lamp Community Theatre
 organization: Street Lamp Community Theatre
 city: Rising Sun, MD
