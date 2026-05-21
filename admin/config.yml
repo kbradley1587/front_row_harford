@@ -100,7 +100,8 @@ collections:
       - label: "Performances"
         name: "performances"
         widget: "list"
-        summary: "{{fields.month}} {{fields.day}} — {{fields.time}}"
+        collapsed: true
+        summary: "{{fields.weekday}} {{fields.month}} {{fields.day}} — {{fields.time}}"
         hint: "Add one row per performance. The site sorts these chronologically."
         fields:
           - label: "Weekday"
