@@ -15,8 +15,10 @@ performances:
     month: July
     day: 31
     time: 7:00PM
+    year: 2026
   - weekday: Sat
     month: Aug
     day: 1
     time: 7:00PM
+    year: 2026
 ---
