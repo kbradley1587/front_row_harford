@@ -8,7 +8,7 @@ county: baltimore-county
 season: summer
 genre: musical
 audience: family
-price: "Tickets:  General Public $22.00, Senior Citizen $20.00, Child $14.00"
+price: "Tickets:  General Public $22.00, Seniors $20.00, Child $14.00"
 ticket_url: https://ccbctickets.universitytickets.com/w/event.aspx?SeriesID=124
 performances:
   - weekday: Fri
