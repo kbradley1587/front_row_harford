@@ -469,10 +469,14 @@
           const mi = CAL_MONTH_INDEX[perf.month];
           if (mi === undefined) return;
 
-          // Infer the year: if the date is well in the past, assume next year
-          let year = now.getFullYear();
-          const probe = new Date(year, mi, perf.day);
-          if (probe < sixtyAgo) year = year + 1;
+          let year;
+          if (perf.year) {
+            year = parseInt(perf.year, 10);          // use the real year when present
+          } else {
+            year = now.getFullYear();                // fallback for older entries
+            const probe = new Date(year, mi, perf.day);
+            if (probe < sixtyAgo) year = year + 1;
+          }
 
           const k = year + "-" + String(mi + 1).padStart(2, "0");
           if (!data[k]) data[k] = [];
