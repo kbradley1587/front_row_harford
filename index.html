@@ -1341,6 +1341,41 @@ section#events::after,
   color: var(--text-soft); /* grey tone */
   margin-bottom: 0.6rem;
 }
+    /* ===== Maryland flag divider banner (Option D) ===== */
+.flag-divider {
+  margin: 18px 0 22px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(243, 201, 107, 0.30);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+.flag-divider-stripe {
+  height: 6px;
+  display: flex;
+}
+.flag-divider-stripe > div { flex: 1; }
+.flag-divider-stripe .fd-gold1 {
+  background: repeating-linear-gradient(45deg, #1a1a1a 0 7px, var(--gold) 7px 14px);
+}
+.flag-divider-stripe .fd-red1 {
+  background: repeating-linear-gradient(-45deg, #c0392b 0 7px, #f5f0e6 7px 14px);
+}
+.flag-divider-stripe .fd-gold2 {
+  background: repeating-linear-gradient(-45deg, #1a1a1a 0 7px, var(--gold) 7px 14px);
+}
+.flag-divider-stripe .fd-red2 {
+  background: repeating-linear-gradient(45deg, #c0392b 0 7px, #f5f0e6 7px 14px);
+}
+.flag-divider-label {
+  background: rgba(8, 8, 14, 0.96);
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
 
   </style>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -1547,6 +1582,18 @@ section#events::after,
 
       <!-- EVENTS LIST -->  
       
+ <!-- EVENTS LIST -->
+
+      <div class="flag-divider">
+        <div class="flag-divider-stripe">
+          <div class="fd-gold1"></div>
+          <div class="fd-red1"></div>
+          <div class="fd-gold2"></div>
+          <div class="fd-red2"></div>
+        </div>
+        <div class="flag-divider-label">Upcoming Shows</div>
+      </div>
+
 <div id="cms-shows"></div>
         
       <!-- PAGINATION -->
