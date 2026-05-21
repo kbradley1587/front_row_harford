@@ -830,19 +830,26 @@ section#events::after,
 }
 
 .view-toggle-btn {
-  border: none;
+  border: 1px solid transparent;
   background: transparent;
   font-size: 0.8rem;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 999px;
   color: var(--text-soft);
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.view-toggle-btn:hover {
+  color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.5);
 }
 
 .view-toggle-btn.is-active {
   background: rgba(243, 201, 107, 0.2);
   color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.7);
 }
 
 .events-filters {
@@ -1438,8 +1445,9 @@ section#events::after,
         </div>
 
         <div class="view-toggle">
-          <button class="view-toggle-btn is-active" type="button">List View</button>
-          <a href="calendar.html" class="view-toggle-btn" aria-label="Switch to calendar view">Calendar View</a>
+          <a href="index.html#events" class="view-toggle-btn is-active">List View</a>
+          <a href="calendar.html" class="view-toggle-btn">Calendar View</a>
+          <a href="past-seasons.html" class="view-toggle-btn">Past Seasons</a>
         </div>
       </div>
 
