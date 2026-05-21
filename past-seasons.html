@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N49NR82SMQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N49NR82SMQ');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An archive of past high school and community theater productions listed on Front Row Maryland." />
+  <title>Front Row Maryland! – Past Seasons Archive</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050608;
+      --gold: #f3c96b;
+      --gold-soft: #e0b45a;
+      --text-main: #f7f7f7;
+      --text-soft: #c9c9d4;
+      --card-bg: #111218;
+      --border-subtle: rgba(255, 255, 255, 0.09);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Raleway", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #2b1b08 0, #050608 40%, #010104 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 36px 16px 18px;
+      text-align: center;
+    }
+
+    .site-title {
+      font-size: clamp(2.2rem, 3vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: #fff;
+    }
+    .site-title span { color: var(--gold); }
+
+    .subheader {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    .back-btn {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--gold);
+      background: rgba(6, 6, 12, 0.9);
+      color: var(--gold-soft);
+      font-size: 0.85rem;
+      text-decoration: none;
+      gap: 6px;
+    }
+    .back-btn:hover { background: var(--gold); color: #1a1307; }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto 60px;
+      padding: 8px 16px 40px;
+    }
+
+    /* Search box */
+    .archive-tools {
+      margin: 18px 0 10px;
+    }
+    .archive-search {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(9, 9, 16, 0.96);
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: #fff;
+      font-family: inherit;
+    }
+    .archive-search::placeholder { color: rgba(201,201,212,0.55); }
+    .archive-search:focus {
+      outline: none;
+      border-color: rgba(243, 201, 107, 0.8);
+      box-shadow: 0 0 0 1px rgba(243, 201, 107, 0.35);
+    }
+
+    .month-group { margin-top: 26px; }
+
+    .month-label {
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(243, 201, 107, 0.25);
+    }
+
+    .show-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 60%),
+        rgba(6, 6, 12, 0.96);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 10px;
+    }
+
+    .show-info { min-width: 0; }
+
+    .show-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .show-venue {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+    .show-venue.empty { font-style: italic; opacity: 0.5; }
+
+    .show-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      white-space: nowrap;
+    }
+
+    .show-dates {
+      font-size: 0.85rem;
+      color: var(--gold-soft);
+      font-weight: 600;
+    }
+
+    .show-link {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      text-decoration: none;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 5px 12px;
+      transition: all 0.15s ease;
+    }
+    .show-link:hover {
+      border-color: rgba(243, 201, 107, 0.8);
+      color: #fff7dd;
+      background: rgba(243, 201, 107, 0.12);
+    }
+
+    .footnote {
+      margin-top: 30px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .no-results {
+      padding: 24px;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .show-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .show-meta {
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="site-title">Front Row <span>Maryland!</span></div>
+    <div class="subheader">
+      Past Seasons — an archive of productions previously listed on Front Row Maryland.
+      A record of what played, when, and where across our community.
+    </div>
+    <a href="index.html#events" class="back-btn">&lsaquo; Back to Current Shows</a>
+  </header>
+
+  <main>
+    <div class="archive-tools">
+      <input type="text" class="archive-search" id="archiveSearch" placeholder="Search past shows by title…" />
+    </div>
+
+    <div id="archiveList"></div>
+    <div class="no-results" id="noResults">No past shows match your search.</div>
+
+    <div class="footnote">
+      This archive preserves productions from earlier seasons. Current and upcoming shows
+      are on the <a href="index.html#events" style="color:var(--gold-soft);">main listings</a> page.
+    </div>
+  </main>
+
+  <script>
+    // Past productions archive. To add a venue, fill in the venue:"" field for any show.
+    const pastShows = [
+    { title: "Between The Lines", venue: "", range: "Jan 9–10", month: "Jan 2026", url: "https://search.seatyourself.biz/webstore/accounts/hths/buy-tix" },
+    { title: "101 Dalmatians", venue: "", range: "Jan 30–31", month: "Jan 2026", url: "https://cur8.com/24402/project/136310" },
+    { title: "Into The Woods", venue: "", range: "Feb 6–14", month: "Feb 2026", url: "https://cur8.com/24402/project/136311" },
+    { title: "Mary Poppins", venue: "", range: "Feb 20–22", month: "Feb 2026", url: "https://www.harfordmusicandarts.com/" },
+    { title: "The Mysterious Death of Madame Reynard - Murder Mystery", venue: "", range: "Feb 27", month: "Feb 2026", url: "https://www.zeffy.com/en-US/ticketing/the-mysterious-death-of-madame-reynard-a-1920s-murder-mystery" },
+    { title: "Spring Awakening", venue: "", range: "Feb 28 – Mar 8", month: "Feb 2026", url: "https://hdgoperahouse.org/event/tidewater-players-presents-spring-awakening/" },
+    { title: "Wizard of Oz", venue: "", range: "Mar 6–15", month: "Mar 2026", url: "https://harford.universitytickets.com/w/event.aspx?id=2334" },
+    { title: "Once Upon A Mattress-Edgewood HS", venue: "", range: "Mar 13–15", month: "Mar 2026", url: "/schools/edgewood-high-school.html" },
+    { title: "The Lightning Thief", venue: "", range: "Mar 13–15", month: "Mar 2026", url: "/schools/john-carroll-hs.html" },
+    { title: "Once Upon A Mattress-Theatreworks Live", venue: "", range: "Mar 13–21", month: "Mar 2026", url: "/schools/theatreworks_live.html" },
+    { title: "Frozen", venue: "", range: "Mar 19–22", month: "Mar 2026", url: "/schools/cm-wright-hs.html" },
+    { title: "Freaky Friday", venue: "", range: "Mar 19–21", month: "Mar 2026", url: "/schools/joppatowne-hs.html" },
+    { title: "Curtains", venue: "", range: "Mar 19–21", month: "Mar 2026", url: "/schools/patterson-mill-hs.html" },
+    { title: "Disney's Descendants The Musical", venue: "", range: "Mar 20–28", month: "Mar 2026", url: "https://cur8.com/24402/project/137747" },
+    { title: "The Play That Goes Wrong", venue: "", range: "Apr 3–4", month: "Apr 2026", url: "https://www.harfordmusicandarts.com/hmaaevents" },
+    { title: "Mamma Mia!", venue: "", range: "Apr 16–18", month: "Apr 2026", url: "https://hths.seatyourself.biz" },
+    { title: "Between The Lines", venue: "", range: "Apr 17–18", month: "Apr 2026", url: "https://search.seatyourself.biz/webstore/accounts/northharford/buy-tix" },
+    { title: "Jagged Little Pill", venue: "", range: "Apr 17–26", month: "Apr 2026", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
+    { title: "Into the Woods Jr", venue: "", range: "Apr 18–19", month: "Apr 2026", url: "https://www.harfordmusicandarts.com/event-details-registration/into-the-woods-jr-saturday-matinee" },
+    { title: "Legally Blonde", venue: "", range: "Apr 23–25", month: "Apr 2026", url: "/schools/bel-air-hs.html" },
+    { title: "Mean Girls", venue: "", range: "Apr 24–25", month: "Apr 2026", url: "/schools/fallston-hs.html" },
+    { title: "Romeo and Juliet", venue: "", range: "Apr 24 – May 3", month: "Apr 2026", url: "https://harford.universitytickets.com/w/event.aspx?id=2365" },
+    { title: "Little Mermaid, Jr. Elementary Cast", venue: "", range: "May 2–3", month: "May 2026", url: "https://search.seatyourself.biz/webstore/accounts/actheater/buy-tix" },
+    { title: "Xanadu Jr - Cast Magic", venue: "", range: "May 2–3", month: "May 2026", url: "/schools/fallston-middle.html" },
+    { title: "Little Mermaid, Jr. Middle School Cast", venue: "", range: "May 2–3", month: "May 2026", url: "https://search.seatyourself.biz/webstore/accounts/actheater/buy-tix" },
+    { title: "Xanadu Jr - Cast Mortal", venue: "", range: "May 2–3", month: "May 2026", url: "/schools/fallston-middle.html" },
+    { title: "Peter Pan JC Ballet", venue: "", range: "May 8–9", month: "May 2026", url: "https://www.ticketleap.events/tickets/the-john-carroll-school-dance-program/peter-pan" },
+    { title: "Disney's The Little Mermaid", venue: "", range: "May 8–16", month: "May 2026", url: "https://www.starlighttheatricals.com/" },
+    { title: "High School Musical", venue: "", range: "May 9–17", month: "May 2026", url: "https://hdgoperahouse.org/event/tidewater-players-present-high-school-musical-elite/" }
+  ];
+
+    const listEl = document.getElementById("archiveList");
+    const searchEl = document.getElementById("archiveSearch");
+    const noResultsEl = document.getElementById("noResults");
+
+    function render(filter) {
+      const f = (filter || "").trim().toLowerCase();
+      listEl.innerHTML = "";
+
+      // Filter, then group by month (preserving original order)
+      const filtered = pastShows.filter(s => !f || s.title.toLowerCase().includes(f));
+
+      if (!filtered.length) {
+        noResultsEl.style.display = "block";
+        return;
+      }
+      noResultsEl.style.display = "none";
+
+      const groups = {};
+      const order = [];
+      filtered.forEach(s => {
+        if (!groups[s.month]) { groups[s.month] = []; order.push(s.month); }
+        groups[s.month].push(s);
+      });
+
+      order.forEach(month => {
+        const groupWrap = document.createElement("div");
+        groupWrap.className = "month-group";
+
+        const label = document.createElement("div");
+        label.className = "month-label";
+        label.textContent = month;
+        groupWrap.appendChild(label);
+
+        groups[month].forEach(s => {
+          const row = document.createElement("div");
+          row.className = "show-row";
+
+          const venueText = s.venue
+            ? '<div class="show-venue">' + s.venue + '</div>'
+            : '<div class="show-venue empty">Venue not recorded</div>';
+
+          const linkHtml = s.url
+            ? '<a class="show-link" href="' + s.url + '" target="_blank">Info</a>'
+            : '';
+
+          row.innerHTML =
+            '<div class="show-info">' +
+              '<div class="show-title">' + s.title + '</div>' +
+              venueText +
+            '</div>' +
+            '<div class="show-meta">' +
+              '<span class="show-dates">' + s.range + '</span>' +
+              linkHtml +
+            '</div>';
+
+          groupWrap.appendChild(row);
+        });
+
+        listEl.appendChild(groupWrap);
+      });
+    }
+
+    searchEl.addEventListener("input", () => render(searchEl.value));
+    render("");
+  </script>
+</body>
+</html>
