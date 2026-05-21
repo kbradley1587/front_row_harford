@@ -6,7 +6,7 @@ organization: Harford Community College
 city: Bel Air, MD
 county: harford
 season: summer
-genre: ballet
+genre: dance
 audience: family
 price: "Tickets:  Reserved  $22.00 and $20.00 "
 ticket_url: https://harford.universitytickets.com/w/event.aspx?id=2351
