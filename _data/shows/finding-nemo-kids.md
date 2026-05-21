@@ -1,6 +1,6 @@
 ---
 title: Finding Nemo - Kids
-image: /images/finding-nemo-harford-music-arts.jpg
+image: ""
 venue: The Warehouse Theatre @ E Street
 organization: Harford Music & Arts
 city: Edgewood, MD
