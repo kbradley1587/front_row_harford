@@ -74,6 +74,7 @@ collections:
         options:
           - { label: "Musical", value: "musical" }
           - { label: "Play", value: "play" }
+          - { label: "Dance", value: "dance" }
           - { label: "Ballet", value: "ballet" }
           - { label: "Concert", value: "concert" }
           - { label: "Murder Mystery", value: "murder-mystery" }
