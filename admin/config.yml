@@ -119,6 +119,14 @@ collections:
             value_type: "int"
             min: 1
             max: 31
+          - label: "Year"
+            name: "year"
+            widget: "number"
+            value_type: "int"
+            default: 2026
+            min: 2025
+            max: 2030
+            hint: "The 4-digit year, e.g. 2026"
           - label: "Time"
             name: "time"
             widget: "string"
