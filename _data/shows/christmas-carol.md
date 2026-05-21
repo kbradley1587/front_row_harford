@@ -35,7 +35,7 @@ performances:
     month: Dec
     day: 12
     time: 2:00PM
-    year: 2025
+    year: 2026
   - weekday: Sun
     month: Dec
     day: 13
