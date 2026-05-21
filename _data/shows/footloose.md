@@ -27,4 +27,12 @@ performances:
     month: July
     day: 31
     time: 8:00PM
+  - weekday: Sat
+    month: Aug
+    day: 1
+    time: 8:00PM
+  - weekday: Sun
+    month: Aug
+    day: 2
+    time: 3:00PM
 ---
