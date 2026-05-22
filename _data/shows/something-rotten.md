@@ -1,6 +1,6 @@
 ---
 title: Something Rotten!
-image: ""
+image: /images/Something Rotten v2.jpg
 venue: The Warehouse Theatre
 organization: Theatreworks Live
 city: Edgewood, MD
