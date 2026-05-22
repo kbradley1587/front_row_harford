@@ -1,6 +1,6 @@
 ---
 title: Rent
-image: /images/rent.jpg
+image: /images/Rent_v2.jpg
 venue: Chesapeake Theater
 organization: Harford Community College
 city: Bel Air, MD
