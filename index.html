@@ -1258,12 +1258,19 @@ section#events::after,
 
   /* Make sure the buttons live under the text, in the right column */
   .event-actions {
-    grid-column: 2;
+    grid-column: 1 / -1;
     margin-top: 8px;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    text-align: right;
+    text-align: left;
     align-items: center;
+    gap: 8px;
+  }
+
+  .event-price-note {
+    width: 100%;
+    text-align: left;
   }
 }
     .social-link {
