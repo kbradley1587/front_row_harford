@@ -2,7 +2,7 @@
 title: Footloose
 image: /images/footloose_ccbc.jpg
 venue: F. Scott Black Theatre
-organization: Community College of Baltimore
+organization: Community College of Baltimore County
 city: Baltimore, MD
 county: baltimore-county
 season: summer
