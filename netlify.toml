@@ -1,0 +1,10 @@
+# Netlify build configuration for Front Row Maryland
+# On every deploy, Netlify runs the build command below, which compiles
+# all show files in _data/shows/ into a single shows.json the site fetches.
+
+[build]
+  command = "node scripts/build-shows.js"
+  publish = "."
+
+# Note: publish = "." means "serve the site from the repo root" (where index.html lives).
+# The build command runs first, generating shows.json, then the whole folder is published.

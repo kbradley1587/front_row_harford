@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Front Row Harford • Submit a Show</title>
+  <title>Front Row Maryland! • Submit a Show</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
@@ -293,17 +293,17 @@
     <header class="site-header">
       <div class="site-header-left">
         <div class="logo-wrap">
-          <img src="Front Row Logo v2.png" alt="Front Row Harford logo" />
+         <img src="Front Row Logo v5.jpg" alt="Front Row Maryland logo" />
         </div>
         <div class="site-title-block">
           <div class="site-eyebrow">
-            FRONT ROW HARFORD • FREE PROMOTION FOR LIVE STUDENT & COMMUNITY ARTS
+            FRONT ROW MARYLAND! • FREE PROMOTION FOR LIVE STUDENT & COMMUNITY ARTS
           </div>
           <h1>
             Submit a <span>Show or Performance</span>
           </h1>
           <p class="site-subtitle">
-            Share your production details below. We’ll review and post approved events so Harford County families can find and attend your show.
+            Share your production details below. We&rsquo;ll review and post approved events so families across Maryland can find and attend your show.
           </p>
         </div>
       </div>
@@ -323,7 +323,7 @@
     <!-- FORM CARD -->
     <section class="form-card card">
       <p class="form-intro">
-        There is <strong>no cost</strong> to list your production on Front Row Harford. This project is simply here to help
+        There is <strong>no cost</strong> to list your production on Front Row Maryland!. This project is simply here to help
         fill your seats and celebrate the incredible work happening in our schools and community theatres.
         Please provide as much detail as you can so families can make plans and purchase tickets.
       </p>
@@ -333,6 +333,8 @@
         name="front-row-show-submission"
         method="POST"
         data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/thank-you.html"
       >
         <!-- (Optional) simple anti-spam field -->
         <div style="display:none">
@@ -449,6 +451,17 @@
 
           <!-- Venue -->
           <div class="field-group">
+            <label for="county">County<span class="required">*</span></label>
+            <select id="county" name="county" required>
+              <option value="">Select a county</option>
+              <option value="baltimore-city">Baltimore City</option>
+              <option value="baltimore-county">Baltimore County</option>
+              <option value="cecil">Cecil County</option>
+              <option value="harford">Harford County</option>
+            </select>
+          </div>
+
+          <div class="field-group">
             <label for="venueName">Venue name<span class="required">*</span></label>
             <input id="venueName" name="venueName" type="text" required placeholder="e.g., Bel Air HS Auditorium" />
           </div>
@@ -523,7 +536,7 @@
 
         <div class="form-footer">
           <div>
-            Submissions are reviewed and posted as quickly as possible. Front Row Harford is a free community resource
+            Submissions are reviewed and posted as quickly as possible. Front Row Maryland! is a free community resource
             created by a Harford County resident with a theatre production and marketing background, with the sole goal
             of helping you fill your seats and celebrate your students.
           </div>
@@ -537,6 +550,3 @@
   </main>
 </body>
 </html>
-
-
-

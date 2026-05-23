@@ -12,7 +12,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Front Row Harford – Calendar View</title>
+  <title>Front Row Maryland! – Calendar View</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
@@ -51,7 +51,7 @@
     .site-title {
       font-size: clamp(2.2rem, 3vw, 2.7rem);
       font-weight: 800;
-      ter-spacing: -0.4px;
+      letter-spacing: -0.4px;
       color: #fff;
     }
 
@@ -109,7 +109,7 @@
 
     .month-title {
       font-size: 1.1rem;
-      ter-spacing: 0.08em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--gold);
       font-weight: 700;
@@ -144,7 +144,7 @@
       grid-template-columns: repeat(7, 1fr);
       font-size: 0.78rem;
       text-transform: uppercase;
-      ter-spacing: 0.08em;
+      letter-spacing: 0.08em;
       color: var(--text-soft);
       padding: 6px 2px 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -288,29 +288,34 @@
         font-size: 0.78rem;
         padding: 4px 6px;
       }
+
+      /* On mobile, hide empty days so it reads like an agenda of real shows */
+      .day-cell.is-empty {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="site-title">
-      Front Row <span>Harford!</span>
+      Front Row <span>Maryland!</span>
     </div>
     <div class="subheader">
-      Full calendar of Harford County performances
+      Full calendar of Maryland performances
     </div>
     <a href="index.html#events" class="back-btn">
-      ‹ Back to List View
+      &lsaquo; Back to List View
     </a>
   </header>
 
   <main>
     <section class="calendar-wrap">
       <div class="cal-header">
-        <div class="month-title" id="monthTitle">Janaury 2026</div>
+        <div class="month-title" id="monthTitle">Loading…</div>
         <div class="nav-buttons">
-          <button class="nav-btn" id="prevMonthBtn">‹ Prev</button>
-          <button class="nav-btn" id="nextMonthBtn">Next ›</button>
+          <button class="nav-btn" id="prevMonthBtn">&lsaquo; Prev</button>
+          <button class="nav-btn" id="nextMonthBtn">Next &rsaquo;</button>
         </div>
       </div>
 
@@ -334,235 +339,9 @@
 
   <script>
     // -----------------------------
-    // Event data
+    // Event data is loaded from shows.json (built by the CMS) in init() below.
     // -----------------------------
-    const eventData = {
-  "2026-01": [
-    {
-      day: 9,
-      title: "Between The Lines",
-      time: "7PM",
-      url: "https://search.seatyourself.biz/webstore/accounts/hths/buy-tix"
-    },
-    {
-      day: 10,
-      title: "Between The Lines",
-      time: "2PM & 7PM",
-      url: "https://search.seatyourself.biz/webstore/accounts/hths/buy-tix"
-    },
-    {
-      day: 30,
-      title: "101 Dalmatians",
-      time: "7PM",
-      url: "https://cur8.com/24402/project/136310"
-    },
-    {
-      day: 31,
-      title: "101 Dalmatians",
-      time: "2PM & 7PM",
-      url: "https://cur8.com/24402/project/136310"
-    }
-  ],
-
-  "2026-02": [
-    {
-      day: 6,
-      title: "Into The Woods",
-      time: "7PM",
-      url: "https://cur8.com/24402/project/136311"
-    },
-    {
-      day: 7,
-      title: "Into The Woods",
-      time: "2PM & 7PM",
-      url: "https://cur8.com/24402/project/136311"
-    },
-    {
-      day: 13,
-      title: "Into The Woods",
-      time: "7PM",
-      url: "https://cur8.com/24402/project/136311"
-    },
-    {
-      day: 14,
-      title: "Into The Woods",
-      time: "2PM & 7PM",
-      url: "https://cur8.com/24402/project/136311"
-    },
-    {
-      day: 20,
-      title: "Mary Poppins",
-      time: "7PM",
-      url: "https://www.harfordmusicandarts.com/event-details-registration/mary-poppins-friday-night?fbclid=IwY2xjawP2ODVleHRuA2FlbQIxMABicmlkETFRQk1WOXZkRVR5d3NZVjhQc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHtrIH9R-J7Cpwdps3h1KTohjltle5MJGB4PwiRJG7aYedDleAptypxSypt39_aem_u6JnT6h8W-FyixlpBTB_-A"
-    },
-    {
-      day: 21,
-      title: "Mary Poppins",
-      time: "2:30PM",
-      url: "https://www.harfordmusicandarts.com/event-details-registration/mary-poppins-saturday-matinee?fbclid=IwY2xjawP2ODVleHRuA2FlbQIxMABicmlkETFRQk1WOXZkRVR5d3NZVjhQc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHtrIH9R-J7Cpwdps3h1KTohjltle5MJGB4PwiRJG7aYedDleAptypxSypt39_aem_u6JnT6h8W-FyixlpBTB_-A"
-    },
-    {
-      day: 21,
-      title: "Mary Poppins",
-      time: "7PM",
-      url: "https://www.harfordmusicandarts.com/event-details-registration/mary-poppins-saturday-night?fbclid=IwY2xjawP2ODVleHRuA2FlbQIxMABicmlkETFRQk1WOXZkRVR5d3NZVjhQc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHtrIH9R-J7Cpwdps3h1KTohjltle5MJGB4PwiRJG7aYedDleAptypxSypt39_aem_u6JnT6h8W-FyixlpBTB_-A"
-    },
-    {
-      day: 22,
-      title: "Mary Poppins",
-      time: "2:30PM",
-      url: "https://www.harfordmusicandarts.com/event-details-registration/mary-poppins-sunday-matinee?fbclid=IwY2xjawP2ODVleHRuA2FlbQIxMABicmlkETFRQk1WOXZkRVR5d3NZVjhQc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHtrIH9R-J7Cpwdps3h1KTohjltle5MJGB4PwiRJG7aYedDleAptypxSypt39_aem_u6JnT6h8W-FyixlpBTB_-A"
-    },
-    {
-      day: 27,
-      title: "The Mysterious Death of Madame Reynard - Murder Mystery",
-      time: "6:00PM-9:30PM",
-      url: "https://www.zeffy.com/en-US/ticketing/the-mysterious-death-of-madame-reynard-a-1920s-murder-mystery"
-    },
-    {
-      day: 28,
-      title: "Spring Awakening",
-      time: "2PM",
-      url: "https://hdgoperahouse.org/event/tidewater-players-presents-spring-awakening/"
-    },
-    {
-      day: 28,
-      title: "Spring Awakening",
-      time: "7PM",
-      url: "https://hdgoperahouse.org/event/tidewater-players-presents-spring-awakening/"
-    }
-  ],
-
-  "2026-03": [
-  { day: 1,  title: "Spring Awakening", time: "2PM", url: "https://hdgoperahouse.org/event/tidewater-players-presents-spring-awakening/" },
-  { day: 6,  title: "Wizard of Oz",      time: "7PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2334" },
-  { day: 7,  title: "Spring Awakening",  time: "2PM", url: "https://hdgoperahouse.org/event/tidewater-players-presents-spring-awakening/" },
-  { day: 7,  title: "Spring Awakening",  time: "7PM", url: "https://hdgoperahouse.org/event/tidewater-players-presents-spring-awakening/" },
-  { day: 7,  title: "Wizard of Oz",      time: "2PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2335" },
-  { day: 7,  title: "Wizard of Oz",      time: "7PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2336" },
-  { day: 8,  title: "Spring Awakening",  time: "2PM", url: "https://hdgoperahouse.org/event/tidewater-players-presents-spring-awakening/" },
-  { day: 8,  title: "Wizard of Oz",      time: "2PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2337" },
-
-  { day: 13, title: "Wizard of Oz",           time: "7PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2338" },
-  { day: 13, title: "Once Upon A Mattress-Edgewood HS",   time: "7PM", url: "/schools/edgewood-high-school.html" },
-  { day: 13, title: "The Lightning Thief",   time: "7PM", url: "/schools/john-carroll-hs.html" }, 
-  { day: 13, title: "Once Upon A Mattress-Theatreworks Live",   time: "7PM", url: "/schools/theatreworks_live.html" },
-  { day: 14, title: "Wizard of Oz",           time: "2PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2339" },
-  { day: 14, title: "Once Upon A Mattress-Theatreworks Live",   time: "2PM", url: "/schools/theatreworks_live.html" }, 
-  { day: 14, title: "The Lightning Thief",   time: "2PM", url: "/schools/john-carroll-hs.html" },  
-  { day: 14, title: "Wizard of Oz",           time: "7PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2340" }, 
-  { day: 14, title: "Once Upon A Mattress-Edgewood HS",   time: "7PM", url: "/schools/edgewood-high-school.html" },
-  { day: 14, title: "The Lightning Thief",   time: "7PM", url: "/schools/john-carroll-hs.html" },  
-  { day: 14, title: "Once Upon A Mattress-Theatreworks Live",   time: "7PM", url: "/schools/theatreworks_live.html" },
-  { day: 15, title: "Wizard of Oz",           time: "2PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2341" },
-  { day: 15, title: "Once Upon A Mattress-Edgewood HS",   time: "2PM", url: "/schools/edgewood-high-school.html" },
-  { day: 15, title: "The Lightning Thief",   time: "2PM", url: "/schools/john-carroll-hs.html" },   
-  { day: 19, title: "Frozen",   time: "7PM", url: "/schools/cm-wright-hs.html" },
-  { day: 19, title: "Freaky Friday",   time: "7PM", url: "/schools/joppatowne-hs.html" }, 
-  { day: 19, title: "Curtains",   time: "7PM", url: "/schools/patterson-mill-hs.html" },   
-  { day: 20, title: "Once Upon A Mattress-Theatreworks Live",   time: "7PM", url: "/schools/theatreworks_live.html" },
-  { day: 20, title: "Frozen",   time: "7PM", url: "/schools/cm-wright-hs.html" }, 
-  { day: 20, title: "Freaky Friday",   time: "7PM", url: "/schools/joppatowne-hs.html" },  
-  { day: 20, title: "Curtains",   time: "7PM", url: "/schools/patterson-mill-hs.html" },   
-  { day: 20, title: "Disney's Descendants The Musical",   time: "7PM", url: "https://cur8.com/24402/project/137747" }, 
-  { day: 21, title: "Freaky Friday",   time: "2PM", url: "/schools/joppatowne-hs.html" },
-  { day: 21, title: "Curtains",   time: "2PM", url: "/schools/patterson-mill-hs.html" },    
-  { day: 21, title: "Once Upon A Mattress-Theatreworks Live",   time: "2PM", url: "/schools/theatreworks_live.html" },  
-  { day: 21, title: "Disney's Descendants The Musical",   time: "2PM", url: "https://cur8.com/24402/project/137747" },
-  { day: 21, title: "Frozen",   time: "7PM", url: "/schools/cm-wright-hs.html" },
-  { day: 21, title: "Curtains",   time: "7PM", url: "/schools/patterson-mill-hs.html" },   
-  { day: 21, title: "Disney's Descendants The Musical",   time: "7PM", url: "https://cur8.com/24402/project/137747" },
-  { day: 21, title: "Once Upon A Mattress-Theatreworks Live",   time: "7PM", url: "/schools/theatreworks_live.html" },
-  { day: 22, title: "Frozen",   time: "3PM", url: "/schools/cm-wright-hs.html" },     
-  { day: 27, title: "Disney's Descendants The Musical",   time: "7PM", url: "https://cur8.com/24402/project/137747" }, 
-  { day: 28, title: "Disney's Descendants The Musical",   time: "2PM", url: "https://cur8.com/24402/project/137747" }, 
-  { day: 28, title: "Disney's Descendants The Musical",   time: "7PM", url: "https://cur8.com/24402/project/137747" }, 
-],
-      
-  "2026-04": [
-  { day: 3,  title: "The Play That Goes Wrong", time: "7PM", url: "https://www.harfordmusicandarts.com/hmaaevents" },  
-  { day: 4,  title: "The Play That Goes Wrong", time: "2:30PM", url: "https://www.harfordmusicandarts.com/hmaaevents" },
-  { day: 4,  title: "The Play That Goes Wrong", time: "6:30PM", url: "https://www.harfordmusicandarts.com/hmaaevents" },  
-  { day: 16,  title: "Mamma Mia!", time: "7PM", url: "https://hths.seatyourself.biz" },  
-  { day: 17,  title: "Jagged Little Pill", time: "7PM", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
-  { day: 17,  title: "Mamma Mia!", time: "7PM", url: "https://hths.seatyourself.biz" }, 
-  { day: 17,  title: "Between The Lines", time: "7PM", url: "https://search.seatyourself.biz/webstore/accounts/northharford/buy-tix?landingMessageSeen=true#evt=6C5256A253E1FC31160CFD3E3940C1C7&sc=2&sp=ANY&tab=select-event" },   
-  { day: 18,  title: "Jagged Little Pill", time: "2PM", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
-  { day: 18,  title: "Mamma Mia!", time: "2PM", url: "https://hths.seatyourself.biz" },  
-  { day: 18,  title: "Between The Lines", time: "2PM", url: "https://search.seatyourself.biz/webstore/accounts/northharford/buy-tix?landingMessageSeen=true#evt=6C5256A253E1FC31160CFD3E3940C1C7&sc=2&sp=ANY&tab=select-event" },
-  {day: 18,  title: "Into the Woods Jr", time: "2:30PM", url: "https://www.harfordmusicandarts.com/event-details-registration/into-the-woods-jr-saturday-matinee" },  
-  {day: 18,  title: "Into the Woods Jr", time: "6:00PM", url: "https://www.harfordmusicandarts.com/event-details-registration/into-the-woods-jr-saturday-night" }, 
-  { day: 18,  title: "Jagged Little Pill", time: "7PM", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
-  { day: 18,  title: "Mamma Mia!", time: "7PM", url: "https://hths.seatyourself.biz" },
-  { day: 18,  title: "Between The Lines", time: "7PM", url: "https://search.seatyourself.biz/webstore/accounts/northharford/buy-tix?landingMessageSeen=true#evt=6C5256A253E1FC31160CFD3E3940C1C7&sc=2&sp=ANY&tab=select-event" },    
-  { day: 19,  title: "Jagged Little Pill", time: "2PM", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
-  {day: 19,  title: "Into the Woods Jr", time: "2:30PM", url: "https://www.harfordmusicandarts.com/event-details-registration/into-the-woods-jr-sunday-matinee" },  
-  { day: 23,  title: "Legally Blonde", time: "7PM", url: "/schools/bel-air-hs.html" },
-  { day: 24,  title: "Jagged Little Pill", time: "7PM", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
-  { day: 24,  title: "Legally Blonde", time: "7PM", url: "/schools/bel-air-hs.html" },
-  { day: 24,  title: "Mean Girls", time: "7PM", url: "/schools/fallston-hs.html" },
-  { day: 24,  title: "Romeo and Juliet", time: "8PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2365" }, 
-  { day: 25,  title: "Jagged Little Pill", time: "2PM", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
-  { day: 25,  title: "Legally Blonde", time: "2PM", url: "/schools/bel-air-hs.html" }, 
-  { day: 25,  title: "Jagged Little Pill", time: "7PM", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
-  { day: 25,  title: "Legally Blonde", time: "7PM", url: "/schools/bel-air-hs.html" },
-  { day: 25,  title: "Mean Girls", time: "7PM", url: "/schools/fallston-hs.html" },
-  { day: 25,  title: "Romeo and Juliet", time: "8PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2365" },  
-  { day: 26,  title: "Jagged Little Pill", time: "2PM", url: "https://hdgoperahouse.org/event/scottfield-theatre-company-presents-jagged-little-pill/" },
-  { day: 26,  title: "Romeo and Juliet", time: "3PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2365" }, 
-  
-],
-"2026-05": [
-  { day: 1,  title: "Romeo and Juliet", time: "8PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2365" }, 
-  { day: 2,  title: "Little Mermaid, Jr. Elementary Cast", time: "12:30PM", url: "https://search.seatyourself.biz/webstore/accounts/actheater/buy-tix?landingMessageSeen=true" },
-  { day: 2,  title: "Xanadu Jr - Cast Magic", time: "1:00PM", url: "/schools/fallston-middle.html" },
-  { day: 2,  title: "Little Mermaid, Jr. Middle School Cast", time: "4:30PM", url: "https://search.seatyourself.biz/webstore/accounts/actheater/buy-tix?landingMessageSeen=true" },
-  { day: 2,  title: "Xanadu Jr - Cast Mortal", time: "5:00PM", url: "/schools/fallston-middle.html" },
-  { day: 2,  title: "Romeo and Juliet", time: "8PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2365" }, 
-  { day: 3,  title: "Little Mermaid, Jr. Elementary Cast", time: "12:30PM", url: "https://search.seatyourself.biz/webstore/accounts/actheater/buy-tix?landingMessageSeen=true" },
-  { day: 3,  title: "Xanadu Jr - Cast Mortal", time: "1:00PM", url: "/schools/fallston-middle.html" },
-  { day: 3,  title: "Romeo and Juliet", time: "3PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2365" },
-  { day: 3,  title: "Little Mermaid, Jr. Middle School Cast", time: "4:30PM", url: "https://search.seatyourself.biz/webstore/accounts/actheater/buy-tix?landingMessageSeen=true" },
-  { day: 3,  title: "Xanadu Jr - Cast Magic", time: "5:00PM", url: "/schools/fallston-middle.html" },
-  { day: 8,  title: "Peter Pan JC Ballet", time: "7PM", url: "https://www.ticketleap.events/tickets/the-john-carroll-school-dance-program/peter-pan#/" },
-  { day: 8,  title: "Disney's The Little Mermaid", time: "7PM", url: "https://www.starlighttheatricals.com/" },
-  { day: 9,  title: "Peter Pan JC Ballet", time: "2PM", url: "https://www.ticketleap.events/tickets/the-john-carroll-school-dance-program/peter-pan#/" },
-  { day: 9,  title: "High School Musical", time: "2PM", url: "https://hdgoperahouse.org/event/tidewater-players-present-high-school-musical-elite/?fbclid=IwY2xjawQ3WbRleHRuA2FlbQIxMABicmlkETE1dkFJRWlLT2gzS2FDRmEwc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmHTV6TQMl6bLoSIuFenp4FGBeVpujyL20ReTtIK16liAalwrg4l0ZAJhSBN_aem_KPG72aIbKX94BIs4TNw2jw" },
-  { day: 9,  title: "Disney's The Little Mermaid", time: "2PM", url: "https://www.starlighttheatricals.com/" },
-  { day: 9,  title: "Peter Pan JC Ballet", time: "7PM", url: "https://www.ticketleap.events/tickets/the-john-carroll-school-dance-program/peter-pan#/" },
-  { day: 9,  title: "High School Musical", time: "7PM", url: "https://hdgoperahouse.org/event/tidewater-players-present-high-school-musical-elite/?fbclid=IwY2xjawQ3WbRleHRuA2FlbQIxMABicmlkETE1dkFJRWlLT2gzS2FDRmEwc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmHTV6TQMl6bLoSIuFenp4FGBeVpujyL20ReTtIK16liAalwrg4l0ZAJhSBN_aem_KPG72aIbKX94BIs4TNw2jw" },
-  { day: 9,  title: "Disney's The Little Mermaid", time: "7PM", url: "https://www.starlighttheatricals.com/" },
-  { day: 10,  title: "High School Musical", time: "2PM", url: "https://hdgoperahouse.org/event/tidewater-players-present-high-school-musical-elite/?fbclid=IwY2xjawQ3WbRleHRuA2FlbQIxMABicmlkETE1dkFJRWlLT2gzS2FDRmEwc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmHTV6TQMl6bLoSIuFenp4FGBeVpujyL20ReTtIK16liAalwrg4l0ZAJhSBN_aem_KPG72aIbKX94BIs4TNw2jw" },
-  { day: 15,  title: "Disney's The Little Mermaid", time: "7PM", url: "https://www.starlighttheatricals.com/" },
-  { day: 16,  title: "Disney's The Little Mermaid", time: "2PM", url: "https://www.starlighttheatricals.com/" },
-  { day: 16,  title: "High School Musical", time: "2PM", url: "https://hdgoperahouse.org/event/tidewater-players-present-high-school-musical-elite/?fbclid=IwY2xjawQ3WbRleHRuA2FlbQIxMABicmlkETE1dkFJRWlLT2gzS2FDRmEwc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmHTV6TQMl6bLoSIuFenp4FGBeVpujyL20ReTtIK16liAalwrg4l0ZAJhSBN_aem_KPG72aIbKX94BIs4TNw2jw" },
-  { day: 16,  title: "Disney's The Little Mermaid", time: "7PM", url: "https://www.starlighttheatricals.com/" },
-  { day: 16,  title: "High School Musical", time: "7PM", url: "https://hdgoperahouse.org/event/tidewater-players-present-high-school-musical-elite/?fbclid=IwY2xjawQ3WbRleHRuA2FlbQIxMABicmlkETE1dkFJRWlLT2gzS2FDRmEwc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmHTV6TQMl6bLoSIuFenp4FGBeVpujyL20ReTtIK16liAalwrg4l0ZAJhSBN_aem_KPG72aIbKX94BIs4TNw2jw" },
-  { day: 17,  title: "High School Musical", time: "2PM", url: "https://hdgoperahouse.org/event/tidewater-players-present-high-school-musical-elite/?fbclid=IwY2xjawQ3WbRleHRuA2FlbQIxMABicmlkETE1dkFJRWlLT2gzS2FDRmEwc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmHTV6TQMl6bLoSIuFenp4FGBeVpujyL20ReTtIK16liAalwrg4l0ZAJhSBN_aem_KPG72aIbKX94BIs4TNw2jw" },
-  { day: 29,  title: "Something Rotten!", time: "7PM", url: "https://theatreworkslive.org/product/something-rotten/" },
-  { day: 30,  title: "Something Rotten!", time: "2PM", url: "https://theatreworkslive.org/product/something-rotten/" },
-  { day: 30,  title: "Something Rotten!", time: "7PM", url: "https://theatreworkslive.org/product/something-rotten/" },
-],
-"2026-06": [
-   { day: 5,  title: "Something Rotten!", time: "7PM", url: "https://theatreworkslive.org/product/something-rotten/" },
-   { day: 5,  title: "Rent", time: "7:30PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2358" },
-   { day: 6,  title: "Something Rotten!", time: "2PM", url: "https://theatreworkslive.org/product/something-rotten/" },
-   { day: 6,  title: "Something Rotten!", time: "7PM", url: "https://theatreworkslive.org/product/something-rotten/" },
-   { day: 6,  title: "Rent", time: "7:30PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2358" },
-   { day: 7,  title: "Rent", time: "2PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2358" },
-   { day: 12,  title: "Rent", time: "7:30PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2358" }, 
-   { day: 13,  title: "Rent", time: "2PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2358" }, 
-   { day: 13,  title: "Rent", time: "7:30PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2358" },
-   { day: 14,  title: "Rent", time: "2PM", url: "https://harford.universitytickets.com/w/event.aspx?id=2358" },
-],
-"2026-07": [ 
-  { day: 17,  title: "Bonnie & Clyde", time: "7PM", url: "https://hdgoperahouse.org/event/river-stone-theatre-company-presents-bonnie-clyde/" },
-  { day: 18,  title: "Bonnie & Clyde", time: "2PM", url: "https://hdgoperahouse.org/event/river-stone-theatre-company-presents-bonnie-clyde/" },
-  { day: 18,  title: "Bonnie & Clyde", time: "7PM", url: "https://hdgoperahouse.org/event/river-stone-theatre-company-presents-bonnie-clyde/" },
-  { day: 19,  title: "Bonnie & Clyde", time: "2PM", url: "https://hdgoperahouse.org/event/river-stone-theatre-company-presents-bonnie-clyde/" },
- ], 
-};   
-
+    let eventData = {};
 
     // -----------------------------
     // Calendar rendering
@@ -572,8 +351,9 @@
     const prevBtn    = document.getElementById("prevMonthBtn");
     const nextBtn    = document.getElementById("nextMonthBtn");
 
-    let current = new Date(2026, 0, 1); // January 2026
-
+    // Open on the current month so the calendar is always relevant
+    let current = new Date();
+    current.setDate(1);
 
     const monthNames = [
       "January","February","March","April","May","June",
@@ -626,10 +406,12 @@
         cell.appendChild(daySpan);
 
         // Only attach events for the current month
+        let hasEvents = false;
         if (!isOtherMonth) {
           const todaysEvents = eventsForMonth.filter(ev => ev.day === dayNumber);
 
           if (todaysEvents.length) {
+            hasEvents = true;
             const eventsWrap = document.createElement("div");
             eventsWrap.className = "day-events";
 
@@ -649,6 +431,11 @@
           }
         }
 
+        // Mark empty cells (used to hide them on mobile agenda view)
+        if (!hasEvents) {
+          cell.classList.add("is-empty");
+        }
+
         monthGrid.appendChild(cell);
       }
     }
@@ -663,11 +450,61 @@
       renderCalendar(current);
     });
 
-    // Initial render
-    renderCalendar(current);
+    // -----------------------------
+    // Load CMS data (shows.json) and build the calendar event map
+    // -----------------------------
+    const CAL_MONTH_INDEX = {
+      Jan:0, Feb:1, Mar:2, Apr:3, May:4, June:5,
+      July:6, Aug:7, Sept:8, Oct:9, Nov:10, Dec:11
+    };
+
+    function buildEventData(payload) {
+      const shows = Array.isArray(payload) ? payload : (payload.shows || []);
+      const data = {};
+      const now = new Date();
+      const sixtyAgo = new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000);
+
+      shows.forEach(function (show) {
+        (show.performances || []).forEach(function (perf) {
+          const mi = CAL_MONTH_INDEX[perf.month];
+          if (mi === undefined) return;
+
+          let year;
+          if (perf.year) {
+            year = parseInt(perf.year, 10);          // use the real year when present
+          } else {
+            year = now.getFullYear();                // fallback for older entries
+            const probe = new Date(year, mi, perf.day);
+            if (probe < sixtyAgo) year = year + 1;
+          }
+
+          const k = year + "-" + String(mi + 1).padStart(2, "0");
+          if (!data[k]) data[k] = [];
+          data[k].push({
+            day: perf.day,
+            title: show.title,
+            time: perf.time,
+            url: show.ticket_url || "#"
+          });
+        });
+      });
+      return data;
+    }
+
+    function init() {
+      fetch("shows.json", { cache: "no-cache" })
+        .then(function (r) { return r.ok ? r.json() : { shows: [] }; })
+        .then(function (payload) {
+          eventData = buildEventData(payload);
+          renderCalendar(current);
+        })
+        .catch(function (e) {
+          console.warn("Calendar could not load shows.json:", e);
+          renderCalendar(current); // show empty grid rather than nothing
+        });
+    }
+
+    init();
   </script>
 </body>
 </html>
-
-
-

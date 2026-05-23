@@ -10,8 +10,8 @@
     gtag('config', 'G-N49NR82SMQ');
   </script>
   <meta charset="UTF-8" />
-  <meta name="description" content="Front Row Harford is your guide to Harford County theater, high school musicals, community theater, and Harford County, MD shows. Discover local performances, schedules, and the best of Harford County arts.">
-  <title>Harford County Theater & Musicals | Front Row Harford</title>
+  <meta name="description" content="Front Row Maryland is your guide to high school musicals, community theater, and student performances across Maryland. Discover local shows, schedules, ticket links, and the best of Maryland's vibrant student and community arts scene.">
+  <title>Maryland High School & Community Theater | Front Row Maryland!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -819,30 +819,43 @@ section#events::after,
   align-items: flex-start;
   margin-bottom: 12px;
 }
-
 .view-toggle {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 6px;
-  border-radius: 999px;
-  padding: 3px;
-  background: rgba(7, 7, 12, 0.96);
-  border: 2px solid rgba(255, 255, 255, 0.08);
+  max-width: 230px;
+  margin-left: auto;
 }
-
 .view-toggle-btn {
-  border: none;
+  border: 1px solid rgba(243, 201, 107, 0.35);
   background: transparent;
   font-size: 0.8rem;
-  padding: 6px 10px;
+  padding: 6px 14px;
   border-radius: 999px;
   color: var(--text-soft);
   cursor: pointer;
   text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.view-toggle-btn:hover {
+  color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.7);
+  background: rgba(243, 201, 107, 0.1);
 }
 
 .view-toggle-btn.is-active {
   background: rgba(243, 201, 107, 0.2);
   color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.7);
+}
+
+.view-toggle-btn.is-active {
+  background: rgba(243, 201, 107, 0.2);
+  color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.7);
 }
 
 .events-filters {
@@ -897,7 +910,97 @@ section#events::after,
   font-size: 0.78rem;
 }
 
+/* Wrap a pill + its star into one visual unit */
+.county-pill-wrap {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(9, 9, 16, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+  transition: all 0.15s ease;
+}
 
+.county-pill-wrap:hover {
+  border-color: var(--gold-soft);
+}
+
+.county-pill-wrap[data-active="true"] {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.county-pill-wrap[data-active="true"] .county-pill {
+  color: #0a0a12;
+  font-weight: 600;
+}
+
+.county-pill {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 6px 4px 6px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s ease;
+}
+
+.county-pill:hover {
+  color: var(--gold);
+}
+
+.county-pill-wrap[data-active="true"] .county-pill:hover {
+  color: #0a0a12;
+}
+
+.county-star {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px 6px 4px;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.15s ease, transform 0.15s ease;
+  font-family: inherit;
+}
+
+.county-star:hover {
+  color: var(--gold);
+  transform: scale(1.15);
+}
+
+.county-pill-wrap[data-active="true"] .county-star {
+  color: rgba(10, 10, 18, 0.55);
+}
+
+.county-pill-wrap[data-active="true"] .county-star:hover {
+  color: #0a0a12;
+}
+
+.county-star .star-filled { display: none; }
+.county-star .star-empty  { display: inline; }
+
+.county-pill-wrap[data-default="true"] .county-star {
+  color: var(--gold);
+}
+
+.county-pill-wrap[data-default="true"] .county-star .star-filled { display: inline; }
+.county-pill-wrap[data-default="true"] .county-star .star-empty  { display: none; }
+
+.county-pill-wrap[data-active="true"][data-default="true"] .county-star {
+  color: #0a0a12;
+}
+.county-filter-hint {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  opacity: 0.75;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-style: italic;
+  line-height: 1.4;
+}
 .events-list {
   display: flex;
   flex-direction: column;
@@ -927,10 +1030,13 @@ section#events::after,
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4px 6px;
+  padding: 6px 8px;
   border-radius: 10px;
-  background: rgba(3, 3, 6, 0.96);
+  background:
+    linear-gradient(rgba(3, 3, 6, 0.20), rgba(3, 3, 6, 0.20)),
+    url('images/md-flag.jpg') center/cover no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
 }
 
 .event-date-day {
@@ -1093,6 +1199,36 @@ section#events::after,
   opacity: 0.6;
 }
 
+    @media (max-width: 880px) {
+  /* View toggle: full width, left-aligned, even pills on mobile */
+  .view-toggle {
+    max-width: none;
+    width: 100%;
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-top: 10px;
+    gap: 8px;
+  }
+  .view-toggle-btn {
+    flex: 0 0 auto;
+  }
+
+  /* County filter: let pills wrap evenly with consistent spacing */
+  .county-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .county-filter-label {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+  .county-pill-wrap {
+    flex: 0 0 auto;
+  }
+}
+
 /* Responsive tweaks */
 @media (max-width: 880px) {
   .events-header {
@@ -1122,12 +1258,19 @@ section#events::after,
 
   /* Make sure the buttons live under the text, in the right column */
   .event-actions {
-    grid-column: 2;
+    grid-column: 1 / -1;
     margin-top: 8px;
     flex-direction: row;
-    justify-content: flex-start;
-    text-align: right;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
     align-items: center;
+    gap: 8px;
+  }
+
+  .event-price-note {
+    width: 100%;
+    text-align: center;
   }
 }
     .social-link {
@@ -1248,7 +1391,41 @@ section#events::after,
   color: var(--text-soft); /* grey tone */
   margin-bottom: 0.6rem;
 }
-
+  /* ===== Maryland flag divider (Option C — chip + line) ===== */
+.flag-divider {
+  margin: 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.flag-divider-chip {
+  width: 54px;
+  height: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 0;
+}
+.flag-divider-chip > div { flex: 1; }
+.flag-divider-chip .fd-gold {
+  background: repeating-linear-gradient(45deg, #1a1a1a 0 5px, var(--gold) 5px 10px);
+}
+.flag-divider-chip .fd-red {
+  background: repeating-linear-gradient(-45deg, #c0392b 0 5px, #f5f0e6 5px 10px);
+}
+.flag-divider-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.flag-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), rgba(243, 201, 107, 0.05));
+}
   </style>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -1256,17 +1433,17 @@ section#events::after,
     <main>
     <header class="hero">
       <div class="logo-wrap">
-        <!-- Make sure the image file in the same folder is named EXACTLY "Front Row Logo v2.png" -->
-        <img src="Front Row Logo v2.png" alt="Front Row Harford logo" />
+        <!-- Maryland flag logo -->
+        <img src="Front Row Logo v5.jpg" alt="Front Row Maryland logo" />
         <div class="hero-text">
           <div class="eyebrow">
-            FRONT ROW HARFORD! • STUDENT MUSICALS & LIVE STAGE SHOWS
+            FRONT ROW MARYLAND! • STUDENT MUSICALS & LIVE STAGE SHOWS
           </div>
           <h1 class="hero-title">
-            Experience the <span>Front Row</span> of Harford County Theater
+            Experience the <span>Front Row</span> of Maryland Theater
           </h1>
           <p class="hero-subtitle">
-            A comprehensive and elegant home for every high school and community musical and stage show in Harford County, MD.
+            A comprehensive and elegant home for high school and community theater musicals and stage shows across Maryland.
             Discover performance dates, ticket links, cast spotlights, and more — all in one place. Because every performance
             deserves a packed house and standing ovation!
           </p>
@@ -1305,19 +1482,58 @@ section#events::after,
         <div class="section-title">
           <h2>Upcoming Shows &amp; Performances</h2>
           <p>
-            Browse Harford County’s live theatre, music, and performance calendar. Filter by season, school, genre,
+            Browse Maryland’s live theatre, music, and performance calendar. Filter by season, school, genre,
             or age, then jump into tickets or show details.
           </p>
         </div>
 
         <div class="view-toggle">
-          <button class="view-toggle-btn is-active" type="button">List View</button>
-          <a href="calendar.html" class="view-toggle-btn" aria-label="Switch to calendar view">Calendar View</a>
+          <a href="index.html#events" class="view-toggle-btn is-active">List View</a>
+          <a href="calendar.html" class="view-toggle-btn">Calendar View</a>
+          <a href="past-seasons.html" class="view-toggle-btn">Show Archive</a>
         </div>
       </div>
 
       <!-- FILTER BAR -->
       <div class="events-filters">
+ <!-- County pill filter -->
+  <div class="county-filter" role="group" aria-label="Filter by county">
+    <span class="county-filter-label">County:</span>
+    <div class="county-pill-wrap" data-county-filter="all" data-active="true">
+      <button type="button" class="county-pill" data-county-filter="all">All Counties</button>
+      <button type="button" class="county-star" data-county-star="all" aria-label="Set All Counties as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="harford">
+      <button type="button" class="county-pill" data-county-filter="harford">Harford</button>
+      <button type="button" class="county-star" data-county-star="harford" aria-label="Set Harford as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="cecil">
+      <button type="button" class="county-pill" data-county-filter="cecil">Cecil</button>
+      <button type="button" class="county-star" data-county-star="cecil" aria-label="Set Cecil as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="baltimore-county">
+      <button type="button" class="county-pill" data-county-filter="baltimore-county">Baltimore County</button>
+      <button type="button" class="county-star" data-county-star="baltimore-county" aria-label="Set Baltimore County as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="baltimore-city">
+      <button type="button" class="county-pill" data-county-filter="baltimore-city">Baltimore City</button>
+      <button type="button" class="county-star" data-county-star="baltimore-city" aria-label="Set Baltimore City as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+  </div>
+  <p class="county-filter-hint">
+    Tap a county to filter shows. Tap a ☆ to save it as your default — we'll remember it next time.
+  </p>
+        
   <div class="filters-row">
     <!-- Season -->
     <div class="filter-group">
@@ -1328,7 +1544,7 @@ section#events::after,
         <option value="holiday">Holiday</option>
         <option value="winter">Winter</option>
         <option value="spring">Spring</option>
-        <option value="summer">Spring</option>
+        <option value="summer">Summer</option>
       </select>
     </div>
 
@@ -1338,6 +1554,7 @@ section#events::after,
       <select id="schoolFilter">
         <option value="all">All schools &amp; theatres</option>
         <option value="harford-community-college">Harford Community College</option>
+         <option value="cecil-community-college">Cecil Community College</option>
         <option value="actors-guild-harford-community-college">Actors Guild at Harford Community College</option>
         <option value="harford-tech-hs">Harford Technical High School</option>
         <option value="edgewood-hs">Edgewood High School</option>
@@ -1414,878 +1631,19 @@ section#events::after,
 
 
       <!-- EVENTS LIST -->  
-
-      <!-- Something Rotten!-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="theatreworks-live"
-    data-audience="family"
-    data-image="something-rotten.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Fri</div>
-      <div class="event-date-main">
-        <span class="event-date-num">29</span>
-        <span class="event-date-month">May</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Something Rotten!</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Theatreworks Live • The Warehouse Theatre • Edgewood, MD
-      </div>
-      <div class="event-meta-line">
-        Fri, May 29 @ 7:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $20</div>
-      <div class="event-buttons">
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-       <!-- Something Rotten!-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="theatreworks-live"
-    data-audience="family"
-    data-image="something-rotten.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">30</span>
-        <span class="event-date-month">May</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Something Rotten!</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Theatreworks Live • The Warehouse Theatre • Edgewood, MD
-      </div>
-      <div class="event-meta-line">
-        Sat, May 30 @ 2:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $20</div>
-      <div class="event-buttons">
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-       <!-- Something Rotten!-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="theatreworks-live"
-    data-audience="family"
-    data-image="something-rotten.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">30</span>
-        <span class="event-date-month">May</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Something Rotten!</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Theatreworks Live • The Warehouse Theatre • Edgewood, MD
-      </div>
-      <div class="event-meta-line">
-        Sat, May 30 @ 7:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $20</div>
-      <div class="event-buttons">
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Rent-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="harford-community-college"
-    data-audience="family"
-    data-image="rent.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Fri</div>
-      <div class="event-date-main">
-        <span class="event-date-num">5</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Rent</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Chesapeake Theater • Harford Community College • Bel Air, MD
-      </div>
-      <div class="event-meta-line">
-        Fri, June 5 @ 7:30PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $24 and $22</div>
-      <div class="event-buttons">
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2354"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2354"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Something Rotten!-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="theatreworks-live"
-    data-audience="family"
-    data-image="something-rotten.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Fri</div>
-      <div class="event-date-main">
-        <span class="event-date-num">5</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Something Rotten!</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Theatreworks Live • The Warehouse Theatre • Edgewood, MD
-      </div>
-      <div class="event-meta-line">
-        Fri, June 5 @ 7:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $20</div>
-      <div class="event-buttons">
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-       <!-- Something Rotten!-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="theatreworks-live"
-    data-audience="family"
-    data-image="something-rotten.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">6</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Something Rotten!</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Theatreworks Live • The Warehouse Theatre • Edgewood, MD
-      </div>
-      <div class="event-meta-line">
-        Sat, June 6 @ 2:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $20</div>
-      <div class="event-buttons">
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Rent-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="harford-community-college"
-    data-audience="family"
-    data-image="rent.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">6</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Rent</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Chesapeake Theater • Harford Community College • Bel Air, MD
-      </div>
-      <div class="event-meta-line">
-        Sat June 6 @ 7:30PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $24 and $22</div>
-      <div class="event-buttons">
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2355"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2355"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Something Rotten!-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="theatreworks-live"
-    data-audience="family"
-    data-image="something-rotten.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">6</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Something Rotten!</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Theatreworks Live • The Warehouse Theatre • Edgewood, MD
-      </div>
-      <div class="event-meta-line">
-        Sat, June 6 @ 7:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $20</div>
-      <div class="event-buttons">
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://theatreworkslive.org/product/something-rotten/"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Rent-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="harford-community-college"
-    data-audience="family"
-    data-image="rent.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sun</div>
-      <div class="event-date-main">
-        <span class="event-date-num">7</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Rent</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Chesapeake Theater • Harford Community College • Bel Air, MD
-      </div>
-      <div class="event-meta-line">
-        Sun June 14 @ 2:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $24 and $22</div>
-      <div class="event-buttons">
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2356"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2356"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Rent-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="harford-community-college"
-    data-audience="family"
-    data-image="rent.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Fri</div>
-      <div class="event-date-main">
-        <span class="event-date-num">12</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Rent</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Chesapeake Theater • Harford Community College • Bel Air, MD
-      </div>
-      <div class="event-meta-line">
-        Fri June 12 @ 7:30PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $24 and $22</div>
-      <div class="event-buttons">
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2357"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2357"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Rent-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="harford-community-college"
-    data-audience="family"
-    data-image="rent.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">13</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Rent</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Chesapeake Theater • Harford Community College • Bel Air, MD
-      </div>
-      <div class="event-meta-line">
-        Sat June 13 @ 2:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $24 and $22</div>
-      <div class="event-buttons">
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2358"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2358"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Rent-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="harford-community-college"
-    data-audience="family"
-    data-image="rent.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">13</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Rent</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Chesapeake Theater • Harford Community College • Bel Air, MD
-      </div>
-      <div class="event-meta-line">
-        Sat June 13 @ 7:30PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $24 and $22</div>
-      <div class="event-buttons">
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2359"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2359"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-       <!-- Rent-->
-  <article
-    class="event-row"
-    data-season="spring"
-    data-genre="musical"
-    data-school="harford-community-college"
-    data-audience="adult"
-    data-image="rent.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">14</span>
-        <span class="event-date-month">June</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Rent</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        Chesapeake Theater • Harford Community College • Bel Air, MD
-      </div>
-      <div class="event-meta-line">
-        Sun June 14 @ 2:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">Family Friendly</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Tickets $24 and $22</div>
-      <div class="event-buttons">
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2359"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://harford.universitytickets.com/w/event.aspx?id=2359"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-       <!-- Bonnie & Clyde-->
-  <article
-    class="event-row"
-    data-season="summer"
-    data-genre="musical"
-    data-school="river-stone-theatre-company"
-    data-audience="PG-13"
-    data-image="bonnie-clyde.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Fri</div>
-      <div class="event-date-main">
-        <span class="event-date-num">17</span>
-        <span class="event-date-month">July</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Bonnie & Clyde</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        River Stone theatre Company • Havre De Grace Opera House • Havre De Grace, MD
-      </div>
-      <div class="event-meta-line">
-        Fri July 17 @ 7:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">PG-13</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Reserved Tickets $23.11</div>
-      <div class="event-buttons">
-        <a href="https://hdgoperahouse.org/event/river-stone-theatre-company-presents-bonnie-clyde/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://www.riverstonetheatrecompany.com/shows-productions/bonnie-clyde-july-2026"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Bonnie & Clyde-->
-  <article
-    class="event-row"
-    data-season="summer"
-    data-genre="musical"
-    data-school="river-stone-theatre-company"
-    data-audience="teen"
-    data-image="bonnie-clyde.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">18</span>
-        <span class="event-date-month">July</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Bonnie & Clyde</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        River Stone theatre Company • Havre De Grace Opera House • Havre De Grace, MD
-      </div>
-      <div class="event-meta-line">
-        Sat July 18 @ 2:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">PG-13</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Reserved Tickets $23.11</div>
-      <div class="event-buttons">
-        <a href="https://hdgoperahouse.org/event/river-stone-theatre-company-presents-bonnie-clyde/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://www.riverstonetheatrecompany.com/shows-productions/bonnie-clyde-july-2026"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Bonnie & Clyde-->
-  <article
-    class="event-row"
-    data-season="summer"
-    data-genre="musical"
-    data-school="river-stone-theatre-company"
-    data-audience="teen"
-    data-image="bonnie-clyde.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sat</div>
-      <div class="event-date-main">
-        <span class="event-date-num">18</span>
-        <span class="event-date-month">July</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Bonnie & Clyde</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        River Stone theatre Company • Havre De Grace Opera House • Havre De Grace, MD
-      </div>
-      <div class="event-meta-line">
-        Sat July 18 @ 7:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">PG-13</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Reserved Tickets $23.11</div>
-      <div class="event-buttons">
-        <a href="https://hdgoperahouse.org/event/river-stone-theatre-company-presents-bonnie-clyde/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://www.riverstonetheatrecompany.com/shows-productions/bonnie-clyde-july-2026"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-      <!-- Bonnie & Clyde-->
-  <article
-    class="event-row"
-    data-season="summer"
-    data-genre="musical"
-    data-school="river-stone-theatre-company"
-    data-audience="teen"
-    data-image="bonnie-clyde.jpg"
-  >
-    <div class="event-date">
-      <div class="event-date-day">Sun</div>
-      <div class="event-date-main">
-        <span class="event-date-num">19</span>
-        <span class="event-date-month">July</span>
-      </div>
-    </div>
-
-    <div class="event-main">
-      <div class="event-title-line">
-        <h3 class="event-title">Bonnie & Clyde</h3>
-        <span class="event-tag event-tag-gold">Musical</span>
-      </div>
-      <div class="event-meta-line">
-        River Stone theatre Company • Havre De Grace Opera House • Havre De Grace, MD
-      </div>
-      <div class="event-meta-line">
-        Sun July 19 @ 2:00PM
-      </div>
-      <div class="event-tags">
-        <span class="event-tag">Musical</span>
-        <span class="event-tag">PG-13</span>
-      </div>
-    </div>
-
-    <div class="event-actions">
-      <div class="event-price-note">Reserved Tickets $23.11</div>
-      <div class="event-buttons">
-        <a href="https://hdgoperahouse.org/event/river-stone-theatre-company-presents-bonnie-clyde/"
-           class="btn btn-primary btn-small"
-           target="_blank">
-          Get Tickets
-        </a>
-        <a href="https://www.riverstonetheatrecompany.com/shows-productions/bonnie-clyde-july-2026"
-           class="btn btn-ghost btn-small"
-           target="_blank">
-          View Details
-        </a>
-      </div>
-    </div>
-  </article>
-
-
-
       
-      
+ <!-- EVENTS LIST -->
+
+      <div class="flag-divider">
+        <div class="flag-divider-chip">
+          <div class="fd-gold"></div>
+          <div class="fd-red"></div>
+        </div>
+        <div class="flag-divider-label">Upcoming Shows</div>
+        <div class="flag-divider-line"></div>
+      </div>
+
+<div id="cms-shows"></div>
         
       <!-- PAGINATION -->
       <div class="events-pagination">
@@ -2332,8 +1690,8 @@ section#events::after,
         <li>High School Musicals and Plays</li>
         <li>Middle School Shows</li>
         <li>Youth Theater Companies</li>
-        <li>Community Theater in Harford County</li>
-        <li>Harford Community College Productions</li>
+        <li>Community Theater across Maryland</li>
+        <li>Local Community College Productions</li>
         <li>High School Band, Orchestra, and Choir Performances</li>
       </ul>
     </div>
@@ -2343,7 +1701,7 @@ section#events::after,
       <h3>Key Contacts</h3>
       <p>
         Have a question, correction, or idea?<br>
-        <strong>Front Row Harford team</strong><br>
+       <strong>Front Row Maryland! team</strong>
         <a href="mailto:kbradley1587@gmail.com">kbradley1587@gmail.com</a><br>
         or 443-655-5818
       </p>
@@ -2360,10 +1718,10 @@ section#events::after,
   <!-- Full-width About block underneath -->
  <div class="spotlight-about">
 
-  <h3>About Front Row Harford!</h3>
+  <h3>About Front Row Maryland!</h3>
 
   <p>
-    <strong>Front Row Harford!</strong> was created by Kevin Bradley, who believes every performance deserves a packed house and a standing ovation. A Harford County resident for more than 40 years, Kevin loves this community - especially its vibrant student and local theater scene.
+    <strong>Front Row Maryland!</strong> was created by Kevin Bradley, who believes every performance deserves a packed house and a standing ovation. A Harford County resident for more than 40 years, Kevin loves this community - especially its vibrant student and local theater scene.
   </p>
 
   <p>
@@ -2375,7 +1733,7 @@ section#events::after,
   </p>
 
   <p>
-    <strong>Front Row Harford!</strong> is Kevin’s gift to the community. Listings are free for schools and local theater companies, and the mission is simple: remove the barriers that make it hard for residents to discover and attend live performances. Through a clear, easy-to-use online calendar and an active social media campaign, Front Row Harford! helps neighbors find shows, buy tickets, and fill the seats for the students and performers who have worked so hard to be on stage.
+    <strong>Front Row Maryland!</strong> is Kevin’s gift to the community. Listings are free for schools and local theater companies, and the mission is simple: remove the barriers that make it hard for residents to discover and attend live performances. Through a clear, easy-to-use online calendar and an active social media campaign, Front Row Maryland! helps neighbors find shows, buy tickets, and fill the seats for the students and performers who have worked so hard to be on stage.
   </p>
 
 </div>
@@ -2385,7 +1743,7 @@ section#events::after,
 
   <footer>
   <div>
-    © <span id="year"></span> Front Row Harford. All rights reserved.
+    © <span id="year"></span> Front Row Maryland!. All rights reserved.
   </div>
   <div>
     <a href="https://www.facebook.com/profile.php?id=61583971815225" target="_blank" class="social-link">
@@ -2401,38 +1759,6 @@ section#events::after,
 
 
   <script>
-    // Simple season filter for prototype
-    const seasonFilters = document.querySelectorAll("[data-season-filter]");
-    const showCards = document.querySelectorAll(".show-card");
-    const emptyState = document.getElementById("emptyState");
-
-    function updateFilter(activeSeason) {
-      let visibleCount = 0;
-      showCards.forEach(card => {
-        const season = card.getAttribute("data-season");
-        if (activeSeason === "all" || activeSeason === season) {
-          card.style.display = "";
-          visibleCount++;
-        } else {
-          card.style.display = "none";
-        }
-      });
-      emptyState.style.display = visibleCount === 0 ? "block" : "none";
-    }
-
-    seasonFilters.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const season = btn.getAttribute("data-season-filter");
-        seasonFilters.forEach(b => b.setAttribute("data-active", "false"));
-        btn.setAttribute("data-active", "true");
-        updateFilter(season);
-      });
-    });
-
-    // Set copyright year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  <script>
   document.addEventListener("DOMContentLoaded", () => {
     const seasonFilter   = document.getElementById("seasonFilter");
     const schoolFilter   = document.getElementById("schoolFilter");
@@ -2440,8 +1766,43 @@ section#events::after,
     const audienceFilter = document.getElementById("audienceFilter");
     const searchFilter   = document.getElementById("searchFilter");
     const clearFilters   = document.getElementById("clearFilters");
+    const countyWraps    = document.querySelectorAll(".county-pill-wrap");
+    const countyPills    = document.querySelectorAll(".county-pill[data-county-filter]");
+    const countyStars    = document.querySelectorAll(".county-star[data-county-star]");
 
-    const eventRows = Array.from(document.querySelectorAll(".event-row"));
+    const STORAGE_KEY = "frontrow.defaultCounty";
+
+    function getSavedDefault() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    }
+
+    function setSavedDefault(value) {
+      try {
+        if (value) { localStorage.setItem(STORAGE_KEY, value); }
+        else { localStorage.removeItem(STORAGE_KEY); }
+      } catch (e) {}
+    }
+
+    const savedDefault = getSavedDefault();
+    let activeCounty = savedDefault || "all";
+
+    function refreshCountyVisuals() {
+      countyWraps.forEach((wrap) => {
+        const c = wrap.getAttribute("data-county-filter");
+        wrap.setAttribute("data-active", c === activeCounty ? "true" : "false");
+        const isDefault = getSavedDefault() === c;
+        wrap.setAttribute("data-default", isDefault ? "true" : "false");
+      });
+    }
+
+    let eventRows = Array.from(document.querySelectorAll(".event-row"));
+
+    // When the CMS injects its rows, re-grab them and re-apply the filters
+    document.addEventListener("cms-shows-rendered", () => {
+      eventRows = Array.from(document.querySelectorAll(".event-row"));
+      refreshCountyVisuals();
+      applyFilters();
+    });
 
     function normalize(str) {
       return (str || "")
@@ -2463,6 +1824,149 @@ section#events::after,
         const rowSchool   = row.dataset.school || "all";
         const rowGenre    = row.dataset.genre || "all";
         const rowAudience = row.dataset.audience || "all";
+        const rowCounty   = row.dataset.county || "all";
+
+        const textBlob = normalize(row.textContent || "");
+
+        const seasonMatch   = season === "all"   || rowSeason === season;
+        const schoolMatch   = school === "all"   || rowSchool === school;
+        const genreMatch    = genre === "all"    || rowGenre === genre;
+        const audienceMatch = audience === "all" || rowAudience === audience;
+        const countyMatch   = activeCounty === "all" || rowCounty === activeCounty;
+        const searchMatch   = !search || textBlob.includes(search);
+
+        const isVisible =
+          seasonMatch && schoolMatch && genreMatch && audienceMatch && countyMatch && searchMatch;
+
+        row.style.display = isVisible ? "" : "none";
+      });
+    }
+
+    [seasonFilter, schoolFilter, genreFilter, audienceFilter].forEach((el) => {
+      el.addEventListener("change", applyFilters);
+    });
+
+    searchFilter.addEventListener("input", () => { applyFilters(); });
+
+    countyPills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        activeCounty = pill.getAttribute("data-county-filter");
+        refreshCountyVisuals();
+        applyFilters();
+      });
+    });
+
+    countyStars.forEach((star) => {
+      star.addEventListener("click", (evt) => {
+        evt.stopPropagation();
+        const c = star.getAttribute("data-county-star");
+        const current = getSavedDefault();
+        if (current === c) { setSavedDefault(null); }
+        else { setSavedDefault(c); activeCounty = c; }
+        refreshCountyVisuals();
+        applyFilters();
+      });
+    });
+
+    clearFilters.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      seasonFilter.value   = "all";
+      schoolFilter.value   = "all";
+      genreFilter.value    = "all";
+      audienceFilter.value = "all";
+      searchFilter.value   = "";
+      activeCounty = getSavedDefault() || "all";
+      refreshCountyVisuals();
+      applyFilters();
+    });
+
+    refreshCountyVisuals();
+    applyFilters();
+  });
+</script>
+
+    // Set copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const seasonFilter   = document.getElementById("seasonFilter");
+    const schoolFilter   = document.getElementById("schoolFilter");
+    const genreFilter    = document.getElementById("genreFilter");
+    const audienceFilter = document.getElementById("audienceFilter");
+    const searchFilter   = document.getElementById("searchFilter");
+    const clearFilters   = document.getElementById("clearFilters");
+    const countyWraps    = document.querySelectorAll(".county-pill-wrap");
+    const countyPills    = document.querySelectorAll(".county-pill[data-county-filter]");
+    const countyStars    = document.querySelectorAll(".county-star[data-county-star]");
+
+    const STORAGE_KEY = "frontrow.defaultCounty";
+
+    // Read saved default safely (localStorage may be disabled in some browsers)
+    function getSavedDefault() {
+      try {
+        return localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function setSavedDefault(value) {
+      try {
+        if (value) {
+          localStorage.setItem(STORAGE_KEY, value);
+        } else {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      } catch (e) {
+        // localStorage disabled; gracefully no-op
+      }
+    }
+
+    // Determine starting county: saved default OR "all"
+    const savedDefault = getSavedDefault();
+    let activeCounty = savedDefault || "all";
+
+    // Apply visual state for default + active on load
+    function refreshCountyVisuals() {
+      countyWraps.forEach((wrap) => {
+        const c = wrap.getAttribute("data-county-filter");
+        wrap.setAttribute("data-active", c === activeCounty ? "true" : "false");
+        const isDefault = getSavedDefault() === c;
+        wrap.setAttribute("data-default", isDefault ? "true" : "false");
+      });
+    }
+
+    let eventRows = Array.from(document.querySelectorAll(".event-row"));
+
+    // When the CMS injects its rows, re-grab them and re-apply the filters
+    document.addEventListener("cms-shows-rendered", () => {
+      eventRows = Array.from(document.querySelectorAll(".event-row"));
+      refreshCountyVisuals();
+      applyFilters();
+    });
+
+    function normalize(str) {
+      return (str || "")
+        .toString()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function applyFilters() {
+      const season   = seasonFilter.value;
+      const school   = schoolFilter.value;
+      const genre    = genreFilter.value;
+      const audience = audienceFilter.value;
+      const search   = normalize(searchFilter.value);
+
+      eventRows.forEach((row) => {
+        const rowSeason   = row.dataset.season || "all";
+        const rowSchool   = row.dataset.school || "all";
+        const rowGenre    = row.dataset.genre || "all";
+        const rowAudience = row.dataset.audience || "all";
+        const rowCounty   = row.dataset.county || "all";
 
         const textBlob = normalize(row.textContent || "");
 
@@ -2478,17 +1982,20 @@ section#events::after,
         const audienceMatch =
           audience === "all" || rowAudience === audience;
 
+        const countyMatch =
+          activeCounty === "all" || rowCounty === activeCounty;
+
         const searchMatch =
           !search || textBlob.includes(search);
 
         const isVisible =
-          seasonMatch && schoolMatch && genreMatch && audienceMatch && searchMatch;
+          seasonMatch && schoolMatch && genreMatch && audienceMatch && countyMatch && searchMatch;
 
         row.style.display = isVisible ? "" : "none";
       });
     }
 
-    // Wire up events
+    // Wire up dropdown filters
     [seasonFilter, schoolFilter, genreFilter, audienceFilter].forEach((el) => {
       el.addEventListener("change", applyFilters);
     });
@@ -2497,6 +2004,37 @@ section#events::after,
       applyFilters();
     });
 
+    // Pill click: change the active filter (session-level only, doesn't save)
+    countyPills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        activeCounty = pill.getAttribute("data-county-filter");
+        refreshCountyVisuals();
+        applyFilters();
+      });
+    });
+
+    // Star click: toggle saved default (this is the "official selection")
+    countyStars.forEach((star) => {
+      star.addEventListener("click", (evt) => {
+        evt.stopPropagation(); // don't also trigger the pill click
+        const c = star.getAttribute("data-county-star");
+        const current = getSavedDefault();
+
+        if (current === c) {
+          // Same county clicked twice -> unset default
+          setSavedDefault(null);
+        } else {
+          // Set new default AND make it the active filter immediately
+          setSavedDefault(c);
+          activeCounty = c;
+        }
+        refreshCountyVisuals();
+        applyFilters();
+      });
+    });
+
+    // Clear filters: resets dropdowns + active county to "all", but DOES NOT
+    // touch the saved default (that's identity, not a filter)
     clearFilters.addEventListener("click", (evt) => {
       evt.preventDefault();
       seasonFilter.value   = "all";
@@ -2504,10 +2042,14 @@ section#events::after,
       genreFilter.value    = "all";
       audienceFilter.value = "all";
       searchFilter.value   = "";
+      // Reset session filter to saved default (or "all" if no default)
+      activeCounty = getSavedDefault() || "all";
+      refreshCountyVisuals();
       applyFilters();
     });
 
-    // Initial state
+    // Initial render
+    refreshCountyVisuals();
     applyFilters();
   });
 </script>
@@ -2539,266 +2081,294 @@ section#events::after,
   });
 </script>
 
- 
+ <!-- Auto-hide past shows: hides any event-row whose start time + 5 minutes is in the past -->
+  <script>
+  (function () {
+    'use strict';
 
+    // Map abbreviations + full names to month index (0-11)
+    var MONTHS = {
+      'jan': 0, 'january': 0,
+      'feb': 1, 'february': 1,
+      'mar': 2, 'march': 2,
+      'apr': 3, 'april': 3,
+      'may': 4,
+      'jun': 5, 'june': 5,
+      'jul': 6, 'july': 6,
+      'aug': 7, 'august': 7,
+      'sep': 8, 'sept': 8, 'september': 8,
+      'oct': 9, 'october': 9,
+      'nov': 10, 'november': 10,
+      'dec': 11, 'december': 11
+    };
+
+    function parseShowDateTime(row) {
+      // Pull the month and day-number from .event-date children
+      var monthEl = row.querySelector('.event-date-month');
+      var numEl   = row.querySelector('.event-date-num');
+      if (!monthEl || !numEl) return null;
+
+      var monthKey = (monthEl.textContent || '').trim().toLowerCase().replace(/\.$/, '');
+      var month = MONTHS[monthKey];
+      if (month === undefined) return null;
+
+      var day = parseInt((numEl.textContent || '').trim(), 10);
+      if (isNaN(day)) return null;
+
+      // Find the time string. It's in one of the event-meta-line divs, e.g. "Sat, Sept 12 @ 7:30PM"
+      var metaLines = row.querySelectorAll('.event-meta-line');
+      var timeStr = null;
+      for (var i = 0; i < metaLines.length; i++) {
+        var txt = metaLines[i].textContent || '';
+        // Look for "@" followed by a time
+        var m = txt.match(/@\s*(\d{1,2})(?::(\d{2}))?\s*([AaPp][Mm])/);
+        if (m) { timeStr = m; break; }
+      }
+      if (!timeStr) return null;
+
+      var hour = parseInt(timeStr[1], 10);
+      var minute = timeStr[2] ? parseInt(timeStr[2], 10) : 0;
+      var ampm = timeStr[3].toLowerCase();
+
+      // Convert 12-hour to 24-hour
+      if (ampm === 'pm' && hour !== 12) hour += 12;
+      if (ampm === 'am' && hour === 12) hour = 0;
+
+      // Determine year: if month/day is already in the past relative to today, assume next year
+      var now = new Date();
+      var year = now.getFullYear();
+      var candidate = new Date(year, month, day, hour, minute, 0);
+      // If candidate is more than 60 days in the past, roll forward a year.
+      // 60 days buffer prevents flipping a show on the same week it ends.
+      var sixtyDaysAgo = new Date(now.getTime() - (60 * 24 * 60 * 60 * 1000));
+      if (candidate < sixtyDaysAgo) {
+        candidate = new Date(year + 1, month, day, hour, minute, 0);
+      }
+      return candidate;
+    }
+
+    function hidePastShows() {
+      var now = new Date();
+      var fiveMinAgo = new Date(now.getTime() - (5 * 60 * 1000));
+      var rows = document.querySelectorAll('.event-row');
+      var hiddenCount = 0;
+
+      rows.forEach(function (row) {
+        var dt = parseShowDateTime(row);
+        if (!dt) return; // can't parse -> leave it visible
+        // Hide if start time + 5 minutes is in the past (i.e. dt < fiveMinAgo)
+        if (dt < fiveMinAgo) {
+          row.setAttribute('data-past', 'true');
+          row.style.display = 'none';
+          hiddenCount++;
+        }
+      });
+
+      // Expose count for testing in the browser console
+      window.__frontRowHiddenCount = hiddenCount;
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', hidePastShows);
+    } else {
+      hidePastShows();
+    }
+  })();
+  </script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+  <!-- ===== CMS SHOW RENDERER ===== -->
+<!-- Fetches shows.json (built by Netlify), injects one event-row per performance
+     into #cms-shows (sorted chronologically), and populates the School/Company
+     filter dropdown from the organizations present in the data.
+     Mirrors the hand-coded markup exactly so the county filter, thumbnail
+     injector, and auto-hide script treat these rows identically. -->
+<script>
+(function () {
+  'use strict';
+
+  var GENRE_LABEL = { musical:"Musical", play:"Play", dance:"Dance", ballet:"Ballet", concert:"Concert", "murder-mystery":"Murder Mystery" };
+  var AUD_LABEL   = { family:"Family Friendly", teen:"PG-13", adult:"Adult" };
+  var MONTH_INDEX = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,June:5,July:6,Aug:7,Sept:8,Oct:9,Nov:10,Dec:11 };
+
+  function esc(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function rowHTML(show, perf) {
+    var imageAttr = show.image ? esc(show.image.replace(/^\/?images\//, "")) : "";
+    var genreLabel = GENRE_LABEL[show.genre] || show.genre;
+    var audLabel   = AUD_LABEL[show.audience] || show.audience;
+    var school     = esc(show.school_slug || "");
+    return ''
+      + '<article class="event-row"'
+      + ' data-season="' + esc(show.season) + '"'
+      + ' data-genre="' + esc(show.genre) + '"'
+      + ' data-county="' + esc(show.county) + '"'
+      + ' data-audience="' + esc(show.audience) + '"'
+      + (school ? ' data-school="' + school + '"' : '')
+      + (imageAttr ? ' data-image="' + imageAttr + '"' : '')
+      + '>'
+      +   '<div class="event-date">'
+      +     '<div class="event-date-day">' + esc(perf.weekday) + '</div>'
+      +     '<div class="event-date-main">'
+      +       '<span class="event-date-num">' + esc(perf.day) + '</span>'
+      +       '<span class="event-date-month">' + esc(perf.month) + '</span>'
+      +     '</div>'
+      +   '</div>'
+      +   '<div class="event-main">'
+      +     '<div class="event-title-line">'
+      +       '<h3 class="event-title">' + esc(show.title) + '</h3>'
+      +       '<span class="event-tag event-tag-gold">' + esc(genreLabel) + '</span>'
+      +     '</div>'
+      +     '<div class="event-meta-line">' + esc(show.venue) + ' • ' + esc(show.organization) + ' • ' + esc(show.city) + '</div>'
+      +     '<div class="event-meta-line">' + esc(perf.weekday) + ', ' + esc(perf.month) + ' ' + esc(perf.day) + ' @ ' + esc(perf.time) + '</div>'
+      +     '<div class="event-tags">'
+      +       '<span class="event-tag">' + esc(genreLabel) + '</span>'
+      +       '<span class="event-tag">' + esc(audLabel) + '</span>'
+      +     '</div>'
+      +   '</div>'
+      +   '<div class="event-actions">'
+      +     '<div class="event-price-note">' + esc(show.price) + '</div>'
+      +     '<div class="event-buttons">'
+      +       '<a href="' + esc(show.ticket_url) + '" class="btn btn-primary btn-small" target="_blank">Get Tickets</a>'
+      +       '<a href="' + esc(show.ticket_url) + '" class="btn btn-ghost btn-small" target="_blank">View Details</a>'
+      +     '</div>'
+      +   '</div>'
+      + '</article>';
+  }
+
+  function populateSchoolFilter(schools) {
+    var sel = document.getElementById('schoolFilter');
+    if (!sel || !Array.isArray(schools)) return;
+    schools.forEach(function (s) {
+      if (sel.querySelector('option[value="' + s.slug + '"]')) return;
+      var opt = document.createElement('option');
+      opt.value = s.slug;
+      opt.textContent = s.label;
+      sel.appendChild(opt);
+    });
+  }
+
+  function renderShows(shows) {
+    var mount = document.getElementById('cms-shows');
+    if (!mount) return;
+
+    var rows = [];
+    shows.forEach(function (show) {
+      (show.performances || []).forEach(function (perf) {
+        var mi = MONTH_INDEX[perf.month];
+        if (mi === undefined) return;
+        var now = new Date();
+        var d;
+        if (perf.year) {
+          d = new Date(parseInt(perf.year, 10), mi, perf.day);
+        } else {
+          var year = now.getFullYear();
+          d = new Date(year, mi, perf.day);
+          var sixtyAgo = new Date(now.getTime() - 60*24*60*60*1000);
+          if (d < sixtyAgo) d = new Date(year+1, mi, perf.day);
+        }
+        rows.push({ key: d.getTime(), html: rowHTML(show, perf) });
+      });
+    });
+    rows.sort(function(a,b){ return a.key - b.key; });
+
+    mount.innerHTML = rows.map(function(r){ return r.html; }).join('\n');
+    document.dispatchEvent(new CustomEvent('cms-shows-rendered'));
+  }
+
+  function init() {
+    fetch('shows.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : { shows: [], schools: [] }; })
+      .then(function (payload) {
+        var shows   = Array.isArray(payload) ? payload : (payload.shows || []);
+        var schools = Array.isArray(payload) ? []      : (payload.schools || []);
+        populateSchoolFilter(schools);
+        renderShows(shows);
+      })
+      .catch(function (e) { console.warn('Could not load shows.json:', e); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+  <!-- ===== CMS POST-RENDER HOOK ===== -->
+<!-- Runs AFTER the CMS injects its rows. Adds thumbnails and applies the
+     same auto-hide rule to the newly-added CMS rows only. Guarded so it
+     never double-processes. Place this immediately AFTER the renderer. -->
+<script>
+(function () {
+  'use strict';
+
+  var MONTHS = {jan:0,january:0,feb:1,february:1,mar:2,march:2,apr:3,april:3,may:4,
+    jun:5,june:5,jul:6,july:6,aug:7,august:7,sep:8,sept:8,september:8,
+    oct:9,october:9,nov:10,november:10,dec:11,december:11};
+
+  function addThumb(row){
+    if (row.__thumbDone) return;
+    var file = row.dataset ? row.dataset.image : null;
+    if (!file) { row.__thumbDone = true; return; }
+    if (row.querySelector('.event-thumb')) { row.__thumbDone = true; return; }
+    var main = row.querySelector('.event-main');
+    if (!main) return;
+    var thumb = document.createElement('div');
+    thumb.className = 'event-thumb';
+    thumb.innerHTML = '<img src="images/' + file + '" alt="" loading="lazy" />';
+    main.prepend(thumb);
+    row.__thumbDone = true;
+  }
+
+  function parseDT(row){
+    var monthEl = row.querySelector('.event-date-month');
+    var numEl   = row.querySelector('.event-date-num');
+    if (!monthEl || !numEl) return null;
+    var mk = (monthEl.textContent||'').trim().toLowerCase().replace(/\.$/,'');
+    var m = MONTHS[mk]; if (m === undefined) return null;
+    var day = parseInt((numEl.textContent||'').trim(),10); if (isNaN(day)) return null;
+    var metas = row.querySelectorAll('.event-meta-line'); var ts=null;
+    for (var i=0;i<metas.length;i++){
+      var mm=(metas[i].textContent||'').match(/@\s*(\d{1,2})(?::(\d{2}))?\s*([AaPp][Mm])/);
+      if(mm){ts=mm;break;}
+    }
+    if(!ts) return null;
+    var h=parseInt(ts[1],10), min=ts[2]?parseInt(ts[2],10):0, ap=ts[3].toLowerCase();
+    if(ap==='pm'&&h!==12)h+=12; if(ap==='am'&&h===12)h=0;
+    var now=new Date(), y=now.getFullYear();
+    var c=new Date(y,m,day,h,min,0);
+    var sixty=new Date(now.getTime()-60*24*60*60*1000);
+    if(c<sixty) c=new Date(y+1,m,day,h,min,0);
+    return c;
+  }
+
+  function hideIfPast(row){
+    var dt=parseDT(row); if(!dt) return;
+    var fiveAgo=new Date(Date.now()-5*60*1000);
+    if(dt<fiveAgo){ row.setAttribute('data-past','true'); row.style.display='none'; }
+  }
+
+  document.addEventListener('cms-shows-rendered', function(){
+    var mount=document.getElementById('cms-shows');
+    if(!mount) return;
+    var rows=mount.querySelectorAll('.event-row');
+    rows.forEach(function(r){ addThumb(r); hideIfPast(r); });
+  });
+})();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
