@@ -8,3 +8,15 @@
 
 # Note: publish = "." means "serve the site from the repo root" (where index.html lives).
 # The build command runs first, generating shows.json, then the whole folder is published.
+
+[[redirects]]
+  from = "https://frontrowharford.com/*"
+  to = "https://frontrowmaryland.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.frontrowharford.com/*"
+  to = "https://frontrowmaryland.com/:splat"
+  status = 301
+  force = true
