@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: maryland-expansion   # we build/test on the branch, switch to main at launch
+  branch: main
 
 # Editorial workflow = your approval queue.
 # Entries move through: Draft -> In Review -> Ready, and only a publish makes them live.
