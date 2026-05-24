@@ -1,7 +1,7 @@
 ---
 title: Rent - School Edition
 image: /images/rent-slp.jpg
-venue: Street Lamp Theatre
+venue: Street Lamp -  Black Box Theatre
 organization: Street Lamp Productions
 city: Rising Sun, MD
 county: cecil
