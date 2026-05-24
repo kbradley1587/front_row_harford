@@ -1,6 +1,6 @@
 ---
 title: Rent - School Edition
-image: ""
+image: /images/rent-slp.jpg
 venue: Street Lamp Theatre
 organization: Street Lamp Productions
 city: Rising Sun, MD
