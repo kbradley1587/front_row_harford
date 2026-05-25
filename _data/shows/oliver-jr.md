@@ -1,6 +1,6 @@
 ---
 title: Oliver Jr.
-image: /images/oliver.jpg
+image: /images/oliver-1-.jpg
 venue: Street Lamp - Black Box Theatre
 organization: Street Lamp Productions
 city: Rising Sun, MD
