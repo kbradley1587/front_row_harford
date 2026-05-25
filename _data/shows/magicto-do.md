@@ -1,5 +1,5 @@
 ---
-title: MagicTo Do!
+title: Magic To Do!
 image: /images/bel-air-chorus.jpg
 venue: Wm A. Humbert Amphitheater @ Shamrock Park
 organization: Bel Air Community Chorus
