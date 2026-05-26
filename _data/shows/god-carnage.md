@@ -8,7 +8,7 @@ county: baltimore-county
 season: summer
 genre: play
 audience: family
-price: "Tickets: Adults $18.00, Seniors $16.00"
+price: "Tickets: General Public $18.00, Seniors $16.00"
 ticket_url: https://ccbctickets.universitytickets.com/w/event.aspx?SeriesID=126
 performances:
   - year: 2026
