@@ -2,7 +2,7 @@
 title: Xanadu
 image: /images/xanadu_ccbc.jpg
 venue: F. Scott Black Theatre
-organization: Community College of Baltimore County
+organization: Cockpit in Court - CCBC
 city: Baltimore, MD
 county: baltimore-county
 season: summer
