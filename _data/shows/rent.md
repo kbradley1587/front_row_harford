@@ -7,7 +7,7 @@ city: Bel Air, MD
 county: harford
 season: spring
 genre: musical
-audience: family
+audience: teen
 price: Tickets $24.00 and $22.00
 ticket_url: https://harford.universitytickets.com/w/event.aspx?id=2354
 performances:
