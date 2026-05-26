@@ -2,7 +2,7 @@
 title: Deathtrap
 image: /images/deathtrap.jpg
 venue: Cabaret Theatre
-organization: Community College of Baltimore County
+organization: Cockpit in Court - CCBC
 city: Baltimore, MD
 county: baltimore-county
 season: summer
