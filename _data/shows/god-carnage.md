@@ -1,5 +1,5 @@
 ---
-title: God Carnage
+title: God of Carnage
 image: /images/god-of-carnage.jpg
 venue: Cabaret Theatre
 organization: Cockpit in Court - CCBC
