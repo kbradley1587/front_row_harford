@@ -8,7 +8,7 @@ county: harford
 season: summer
 genre: musical
 audience: family
-price: $11.50
+price: "Tickets: $11.50"
 ticket_url: https://cur8.com/projects/24402
 performances:
   - year: 2026
