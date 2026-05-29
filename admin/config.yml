@@ -57,6 +57,7 @@ collections:
           - { label: "Cecil", value: "cecil" }
           - { label: "Baltimore County", value: "baltimore-county" }
           - { label: "Baltimore City", value: "baltimore-city" }
+          - { label: "Carroll County", value: "carroll" }
 
       - label: "Season"
         name: "season"
