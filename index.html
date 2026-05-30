@@ -1844,7 +1844,12 @@ section#events::after,
         const isVisible =
           seasonMatch && schoolMatch && genreMatch && audienceMatch && countyMatch && searchMatch;
 
-        row.style.display = isVisible ? "" : "none";
+        // Don't un-hide rows that auto-hide already marked as past
+        if (row.getAttribute('data-past') === 'true') {
+          row.style.display = 'none';
+        } else {
+          row.style.display = isVisible ? "" : "none";
+        }
       });
     }
 
