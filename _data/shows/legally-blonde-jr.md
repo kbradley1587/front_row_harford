@@ -14,7 +14,7 @@ performances:
   - year: 2026
     weekday: Fri
     month: July
-    day: 19
+    day: 17
     time: 7:00PM
   - year: 2026
     weekday: Sat
