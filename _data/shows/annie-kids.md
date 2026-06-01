@@ -20,10 +20,10 @@ performances:
     weekday: Sat
     month: July
     day: 25
-    time: 4:00PM
+    time: 2:00PM
   - year: 2026
     weekday: Sat
     month: July
     day: 25
-    time: 7:00PM
+    time: 4:00PM
 ---
