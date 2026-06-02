@@ -1,8 +1,8 @@
 ---
 title: Legally Blonde Jr.
 image: /images/legally-blonde-jr.jpg
-venue: Starlight Theatricals - Whiteford Playhouse
-organization: Community Theater (Middle School)
+venue: The Whiteford Playhouse
+organization: Starlight Theatricals
 city: Whiteford, MD
 county: harford
 season: summer
