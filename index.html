@@ -2282,20 +2282,33 @@ section#events::after,
     var mount = document.getElementById('cms-shows');
     if (!mount) return;
 
+    function parseTime(str) {
+      // Accepts "7:00PM", "2PM", "11:30AM", with/without spaces
+      var m = (str || "").match(/(\d{1,2})(?::(\d{2}))?\s*([AaPp][Mm])/);
+      if (!m) return { h: 0, min: 0 };
+      var h = parseInt(m[1], 10);
+      var min = m[2] ? parseInt(m[2], 10) : 0;
+      var ap = m[3].toLowerCase();
+      if (ap === 'pm' && h !== 12) h += 12;
+      if (ap === 'am' && h === 12) h = 0;
+      return { h: h, min: min };
+    }
+
     var rows = [];
     shows.forEach(function (show) {
       (show.performances || []).forEach(function (perf) {
         var mi = MONTH_INDEX[perf.month];
         if (mi === undefined) return;
         var now = new Date();
+        var t = parseTime(perf.time);
         var d;
         if (perf.year) {
-          d = new Date(parseInt(perf.year, 10), mi, perf.day);
+          d = new Date(parseInt(perf.year, 10), mi, perf.day, t.h, t.min);
         } else {
           var year = now.getFullYear();
-          d = new Date(year, mi, perf.day);
+          d = new Date(year, mi, perf.day, t.h, t.min);
           var sixtyAgo = new Date(now.getTime() - 60*24*60*60*1000);
-          if (d < sixtyAgo) d = new Date(year+1, mi, perf.day);
+          if (d < sixtyAgo) d = new Date(year+1, mi, perf.day, t.h, t.min);
         }
         rows.push({ key: d.getTime(), html: rowHTML(show, perf) });
       });
