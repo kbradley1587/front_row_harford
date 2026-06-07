@@ -38,7 +38,7 @@ performances:
     year: 2026
   - weekday: Sat
     month: June
-    day: 14
+    day: 13
     time: 7:30PM
     year: 2026
   - weekday: Sun
