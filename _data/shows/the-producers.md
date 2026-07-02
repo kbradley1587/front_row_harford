@@ -1,5 +1,6 @@
 ---
 title: The Producers
+image: /images/untitled-design-3-.png
 venue: Chesapeake Theater
 organization: Harford Community College
 city: Bel Air
