@@ -8,7 +8,7 @@ county: harford
 season: summer
 genre: musical
 audience: family
-price: "Tickets:  $17.50 Adults  $14.50 Seniors and Students (plus fees)"
+price: "Tickets:  $17.50 Adults / $14.50 Seniors $ Students (plus fees)"
 ticket_url: https://www.starlighttheatricals.com/
 performances:
   - year: 2026
