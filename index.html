@@ -2151,12 +2151,15 @@ section#events::after,
       if (ampm === 'pm' && hour !== 12) hour += 12;
       if (ampm === 'am' && hour === 12) hour = 0;
 
-      // Determine year: if month/day is already in the past relative to today, assume next year
+      // Prefer the real year stamped on the row by the CMS renderer.
       var now = new Date();
+      var dataYear = parseInt(row.getAttribute('data-year'), 10);
+      if (!isNaN(dataYear)) {
+        return new Date(dataYear, month, day, hour, minute, 0);
+      }
+      // Fallback for hand-coded rows without a year: guess from today.
       var year = now.getFullYear();
       var candidate = new Date(year, month, day, hour, minute, 0);
-      // If candidate is more than 60 days in the past, roll forward a year.
-      // 60 days buffer prevents flipping a show on the same week it ends.
       var sixtyDaysAgo = new Date(now.getTime() - (60 * 24 * 60 * 60 * 1000));
       if (candidate < sixtyDaysAgo) {
         candidate = new Date(year + 1, month, day, hour, minute, 0);
@@ -2234,6 +2237,7 @@ section#events::after,
       + ' data-genre="' + esc(show.genre) + '"'
       + ' data-county="' + esc(show.county) + '"'
       + ' data-audience="' + esc(show.audience) + '"'
+      + (perf.year ? ' data-year="' + esc(perf.year) + '"' : '')
       + (school ? ' data-school="' + school + '"' : '')
       + (imageAttr ? ' data-image="' + imageAttr + '"' : '')
       + '>'
@@ -2379,6 +2383,8 @@ section#events::after,
     if(!ts) return null;
     var h=parseInt(ts[1],10), min=ts[2]?parseInt(ts[2],10):0, ap=ts[3].toLowerCase();
     if(ap==='pm'&&h!==12)h+=12; if(ap==='am'&&h===12)h=0;
+    var dy=parseInt(row.getAttribute('data-year'),10);
+    if(!isNaN(dy)) return new Date(dy,m,day,h,min,0);
     var now=new Date(), y=now.getFullYear();
     var c=new Date(y,m,day,h,min,0);
     var sixty=new Date(now.getTime()-60*24*60*60*1000);
