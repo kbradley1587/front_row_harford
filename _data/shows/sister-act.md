@@ -1,6 +1,6 @@
 ---
 title: Sister Act
-image: /images/lgvp_sister-act.png
+image: /images/lgvp_sister-act-1-.png
 venue: St. John the Evangelist Catholic Church
 organization: Long Green Valley Players
 city: Hydes, MD
