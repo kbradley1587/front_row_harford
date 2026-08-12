@@ -1,14 +1,14 @@
 ---
 title: Sister Act
 image: /images/lgvp_sister-act.png
-venue: "St. John the Evangelist "
+venue: St. John the Evangelist Catholic Church
 organization: Long Green Valley Players
 city: Hydes, MD
 county: baltimore-city
 season: summer
 genre: musical
 audience: family
-price: "Tickets: $30.00"
+price: "General Admission Tickets: $30.00"
 ticket_url: https://st-john-the-evangelist-catholic-church.square.site/
 performances:
   - year: 2026
