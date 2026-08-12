@@ -2,7 +2,7 @@
 title: Cabaret
 image: /images/rogue-swan_cabaret.png
 venue: The Star Centre - Havre De Grace
-organization: The Rogue  Swan
+organization: The Rogue Swan Theatre Company
 city: Havre De Grace, MD
 county: harford
 season: fall
