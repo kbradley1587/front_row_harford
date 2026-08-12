@@ -4,7 +4,7 @@ image: /images/lgvp_sister-act.png
 venue: St. John the Evangelist Catholic Church
 organization: Long Green Valley Players
 city: Hydes, MD
-county: baltimore-city
+county: baltimore-county
 season: summer
 genre: musical
 audience: family
