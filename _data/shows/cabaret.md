@@ -7,7 +7,7 @@ city: Havre De Grace, MD
 county: harford
 season: fall
 genre: musical
-audience: teen
+audience: adult
 price: "Ticket Prices: $22.00 and $17.60"
 ticket_url: https://starcentremd.com/event/rogue-swan-theatre-company-presents-cabaret/
 performances:
