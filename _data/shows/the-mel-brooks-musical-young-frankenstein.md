@@ -1,7 +1,7 @@
 ---
 title: The Mel Brooks Musical Young Frankenstein
 image: /images/young_frank.png
-venue: The Havre De Grace opera House
+venue: The Havre De Grace Opera House
 organization: The OH Broadway Series
 city: Havre De Grace, MD
 county: harford
