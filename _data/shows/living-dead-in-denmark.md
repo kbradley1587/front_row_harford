@@ -8,7 +8,7 @@ county: harford
 season: fall
 genre: play
 audience: adult
-price: "Tickets:  $12.00 Adults | $$8 HCC Students & Employees"
+price: "Tickets:  $12.00 Adults | $8.00 HCC Students & Employees"
 ticket_url: https://harford.universitytickets.com/w/event.aspx?SeriesID=29
 performances:
   - year: 2026
