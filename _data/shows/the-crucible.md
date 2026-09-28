@@ -1,7 +1,7 @@
 ---
 title: The Crucible
 image: /images/crucible.png
-venue: The Black Box Theater
+venue: The Black Box Theatre
 organization: Street Lamp Productions
 city: Rising Sun, MD
 county: cecil
