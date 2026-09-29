@@ -58,6 +58,11 @@ collections:
           - { label: "Baltimore County", value: "baltimore-county" }
           - { label: "Baltimore City", value: "baltimore-city" }
           - { label: "Carroll County", value: "carroll" }
+          - { label: "Wicomico County", value: "wicomico" }
+          - { label: "St. Mary's County", value: "st-marys" }
+          - { label: "Anne Arundel County", value: "anne-arundel" }
+          - { label: "Washington County", value: "washington" }
+          - { label: "Frederick County", value: "frederick" }
 
       - label: "Season"
         name: "season"
