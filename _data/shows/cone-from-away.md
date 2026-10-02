@@ -1,5 +1,5 @@
 ---
-title: Cone From Away
+title: Come From Away
 image: /images/come-from-away.png
 venue: Howard High School
 organization: Howard HS Theatre
