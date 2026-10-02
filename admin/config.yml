@@ -63,6 +63,7 @@ collections:
           - { label: "Anne Arundel County", value: "anne-arundel" }
           - { label: "Washington County", value: "washington" }
           - { label: "Frederick County", value: "frederick" }
+          - { label: "Howard County", value: "howard" }
 
       - label: "Season"
         name: "season"
