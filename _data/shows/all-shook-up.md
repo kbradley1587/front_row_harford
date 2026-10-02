@@ -8,7 +8,7 @@ county: harford
 season: fall
 genre: musical
 audience: family
-price: Tickets Adult :18.00 | Students $17.00 | Seniors $17.00
+price: "Tickets:  Adults $18.00 | Students $17.00 | Seniors $17.00"
 ticket_url: https://events.ticketleap.com/tickets/the-john-carroll-school-theatre-department/all-shook-up
 performances:
   - year: 2026
