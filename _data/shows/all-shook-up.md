@@ -19,12 +19,12 @@ performances:
   - year: 2026
     weekday: Sat
     month: Nov
-    day: 12
+    day: 14
     time: 2:00PM
   - year: 2026
     weekday: Sat
     month: Nov
-    day: 12
+    day: 14
     time: 7:00PM
   - year: 2026
     weekday: Sun
