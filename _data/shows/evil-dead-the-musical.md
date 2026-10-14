@@ -1,7 +1,7 @@
 ---
 title: Evil Dead - The Musical
 image: /images/evil-dead-1100x660.png
-venue: Havre De Grace Opera House
+venue: The Star Centre
 organization: Oddity Engine Productions
 city: Havre De Grace, MD
 county: harford
