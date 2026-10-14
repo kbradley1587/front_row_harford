@@ -2,7 +2,7 @@
 title: Much Ado About Nothing
 image: /images/marriottsridge-1-.png
 venue: Marriotts Ridge High School Auditorium
-organization: Marriotts Ridge High School
+organization: Marriotts Ridge Theatre
 city: Marriottsville, MD
 county: howard
 season: fall
