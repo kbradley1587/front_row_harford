@@ -3,7 +3,7 @@ title: Much Ado About Nothing
 image: /images/bel-air-drama.png
 venue: Bel Air High School Auditorium
 organization: Bel Air Drama Company
-city: Bel Air
+city: Bel Air, MD
 county: harford
 season: fall
 genre: play
