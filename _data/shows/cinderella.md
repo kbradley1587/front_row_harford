@@ -2,7 +2,7 @@
 title: Cinderella
 image: /images/cinderella.png
 venue: The Marva Theater
-organization: Theater Academy of Demarva
+organization: Theater Academy of Delmarva
 city: Pocomoke City, MD
 county: worcester
 season: fall
