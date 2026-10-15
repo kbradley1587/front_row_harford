@@ -59,6 +59,7 @@ collections:
           - { label: "Baltimore City", value: "baltimore-city" }
           - { label: "Carroll County", value: "carroll" }
           - { label: "Wicomico County", value: "wicomico" }
+          - { label: "Worcester County", value: "worcester" }
           - { label: "St. Mary's County", value: "st-marys" }
           - { label: "Anne Arundel County", value: "anne-arundel" }
           - { label: "Washington County", value: "washington" }
