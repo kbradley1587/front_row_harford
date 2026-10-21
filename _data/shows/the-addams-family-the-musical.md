@@ -1,7 +1,7 @@
 ---
 title: The Addams Family the Musical
 image: /images/addams-family.png
-venue: The Gilman School
+venue: "The Gilman School Alumni Auditorium "
 organization: Charm City Players
 city: Baltimore
 county: baltimore-city
