@@ -19,9 +19,9 @@ collections:
     slug: "{{slug}}"
     summary: "{{title}} — {{venue}} ({{county}})"
     description: >
-      Each entry is ONE production. Add every performance date under
-      "Performances" — the website turns each date into its own row,
-      sorted chronologically, exactly like the current site.
+      Each entry is ONE production and becomes ONE show card on the website.
+      Add every performance date under "Performances" — the card lists them
+      all, sorted chronologically, and crosses each one off as it passes.
     fields:
       - label: "Production Title"
         name: "title"
@@ -111,7 +111,7 @@ collections:
         widget: "list"
         collapsed: true
         summary: "{{fields.weekday}} {{fields.month}} {{fields.day}} — {{fields.time}}"
-        hint: "Add one row per performance. The site sorts these chronologically."
+        hint: "Add one entry per performance. The show card lists them in date order."
         fields:
           - label: "Weekday"
             name: "weekday"
