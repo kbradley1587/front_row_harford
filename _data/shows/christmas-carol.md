@@ -8,7 +8,7 @@ county: cecil
 season: holiday
 genre: musical
 audience: family
-price: "Tickets: On Sale June 1"
+price: "Tickets: $24.00 | $22.00 | $20.00 | $16.00"
 ticket_url: https://milburnstonetickets.universitytickets.com/w/event.aspx?id=2073
 performances:
   - weekday: Fri
