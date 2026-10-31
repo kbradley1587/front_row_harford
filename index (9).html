@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N49NR82SMQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N49NR82SMQ');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Front Row Maryland is your guide to high school musicals, community theater, and student performances across Maryland. Discover local shows, schedules, ticket links, and the best of Maryland's vibrant student and community arts scene.">
+  <title>Maryland High School & Community Theater | Front Row Maryland!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050608;
+      --bg-soft: #101118;
+      --gold: #f3c96b;
+      --gold-soft: #e0b45a;
+      --accent: #c38cff;
+      --text-main: #f7f7f7;
+      --text-soft: #c9c9d4;
+      --chip-bg: rgba(243, 201, 107, 0.08);
+      --card-bg: rgba(7, 8, 12, 0.92);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.7);
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+      --transition-fast: 180ms ease-out;
+    }
+
+    * ,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #2b1b08 0, #050608 42%, #010104 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header.hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+      padding: 26px 18px 32px;
+      margin-bottom: 32px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at top left, rgba(243, 201, 107, 0.35), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(195, 140, 255, 0.24), transparent 60%),
+        linear-gradient(135deg, rgba(8, 8, 14, 0.95), rgba(4, 5, 9, 0.98));
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(243, 201, 107, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08), transparent 55%);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      z-index: 1;
+    }
+
+    .logo-wrap img {
+      width: 460px;          /* larger logo */
+      max-width: 55vw;
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-text {
+      text-align: left;
+      max-width: 560px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(243, 201, 107, 0.4);
+      background: rgba(4, 4, 8, 0.7);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .eyebrow span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(243, 201, 107, 0.7);
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      letter-spacing: 0.03em;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-soft);
+      max-width: 34rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(10, 10, 16, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-meta-item .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, rgba(250, 245, 224, 0.35), transparent 55%), linear-gradient(135deg, #f9d77d, #f3b65c);
+      color: #1a1307;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 24px 44px rgba(0, 0, 0, 0.92);
+      background: linear-gradient(135deg, #ffe9a5, #f4c878);
+    }
+
+    .btn-ghost {
+      background: rgba(6, 6, 12, 0.7);
+      color: var(--gold-soft);
+      border-color: rgba(243, 201, 107, 0.5);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(12, 12, 18, 0.98);
+    }
+
+    .btn-icon {
+      font-size: 1.1rem;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .layout-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        align-items: flex-start;
+      }
+
+      .logo-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-text {
+        text-align: left;
+      }
+    }
+
+    section.card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    section.card + section.card {
+      margin-top: 18px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .section-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .section-title h2 {
+      font-size: 1.02rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .section-title p {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      border: 1px solid transparent;
+      background: var(--chip-bg);
+      color: var(--gold-soft);
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .chip[data-active="true"] {
+      background: linear-gradient(135deg, rgba(243, 201, 107, 0.28), rgba(195, 140, 255, 0.22));
+      border-color: rgba(243, 201, 107, 0.9);
+      color: #fff5da;
+      transform: translateY(-1px);
+    }
+
+    .chip span.dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-right: 6px;
+    }
+
+    .calendar-grid {
+      margin-top: 8px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 60%);
+      overflow: hidden;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: rgba(3, 3, 6, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .calendar-header-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .calendar-header-main h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .calendar-header-main span {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .calendar-controls {
+      display: inline-flex;
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .calendar-controls button {
+      background: transparent;
+      border: none;
+      color: var(--text-soft);
+      padding: 6px 9px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .calendar-controls button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .calendar-body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      font-size: 0.75rem;
+      background: rgba(3, 3, 6, 0.92);
+    }
+
+    .calendar-day-label {
+      text-align: center;
+      padding: 6px 4px;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .calendar-cell {
+      min-height: 64px;
+      border-right: 1px solid rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 6px 6px 4px;
+      position: relative;
+    }
+
+    .calendar-cell:nth-child(7n) {
+      border-right: none;
+    }
+
+    .calendar-date {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .calendar-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 6px;
+      margin-top: 2px;
+      border-radius: var(--radius-pill);
+      font-size: 0.68rem;
+      background: rgba(243, 201, 107, 0.18);
+      color: #fff9e4;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .calendar-tag span {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .calendar-footnote {
+      padding: 8px 10px 10px;
+      font-size: 0.74rem;
+      color: var(--text-soft);
+      background: radial-gradient(circle at bottom, rgba(195, 140, 255, 0.16), transparent 50%);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .calendar-footnote a {
+      color: var(--gold-soft);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(243, 201, 107, 0.6);
+      padding-bottom: 1px;
+    }
+
+    .calendar-footnote a:hover {
+      color: #ffe7a5;
+      border-bottom-style: solid;
+    }
+
+    .show-list {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+   /* spacing between cards */
+.show-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* the card */
+.show-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.2fr);
+  gap: 10px;
+  padding: 18px 16px;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 60%),
+    rgba(6, 6, 12, 0.98);
+
+  /* keep border modest (border isn't the separator) */
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.78);
+}
+
+/* hover */
+.show-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(243, 201, 107, 0.6);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.85);
+}
+    .show-main {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .show-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .show-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .show-meta-line {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    .show-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 3px;
+    }
+
+    .tag-pill {
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      background: rgba(10, 10, 18, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-soft);
+    }
+
+    .tag-pill.gold {
+      background: rgba(243, 201, 107, 0.16);
+      color: #ffeac0;
+      border-color: rgba(243, 201, 107, 0.6);
+    }
+
+    .show-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 6px;
+      text-align: right;
+    }
+
+    .show-actions .btn {
+      padding-inline: 12px;
+      font-size: 0.78rem;
+    }
+
+    .show-actions .price-line {
+      font-size: 0.74rem;
+      color: var(--text-soft);
+    }
+
+    .empty-state {
+      padding: 16px 14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255, 255, 255, 0.26);
+      background: rgba(7, 7, 13, 0.96);
+      font-size: 0.83rem;
+      color: var(--text-soft);
+    }
+
+    .empty-state strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .sidebar-section {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sidebar-blurb {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .sidebar-highlight {
+      padding: 10px 11px;
+      border-radius: 14px;
+      border: 1px solid rgba(243, 201, 107, 0.5);
+      background: radial-gradient(circle at top left, rgba(243, 201, 107, 0.22), transparent 65%), rgba(9, 8, 12, 0.98);
+      font-size: 0.8rem;
+      color: #fff7e0;
+    }
+
+    .sidebar-highlight strong {
+      color: #fff;
+    }
+
+    .sidebar-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .sidebar-columns h3 {
+      font-size: 0.8rem;
+      margin-bottom: 3px;
+      color: var(--gold-soft);
+    }
+
+    .sidebar-columns ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 12px;
+      font-size: 0.84rem;
+      color: var(--text-soft);
+    }
+
+    .about-grid h3 {
+      font-size: 0.9rem;
+      color: var(--gold-soft);
+      margin-bottom: 4px;
+    }
+
+    .about-grid p + p {
+      margin-top: 6px;
+    }
+
+    .submit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 12px;
+    }
+
+    .submit-grid h3 {
+      font-size: 0.9rem;
+      color: var(--gold-soft);
+      margin-bottom: 5px;
+    }
+
+    .submit-copy {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      font-size: 0.82rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 4px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.76rem;
+      color: var(--text-soft);
+    }
+
+    input,
+    select,
+    textarea {
+      border-radius: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(9, 9, 16, 0.96);
+      padding: 7px 9px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.82rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(201, 201, 212, 0.58);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(243, 201, 107, 0.8);
+      box-shadow: 0 0 0 1px rgba(243, 201, 107, 0.35);
+      background: rgba(11, 10, 16, 0.98);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+      max-height: 200px;
+    }
+
+    .helper-text {
+      font-size: 0.72rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 16px 24px;
+      font-size: 0.76rem;
+      color: var(--text-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 12px;
+    }
+
+    footer a {
+      color: var(--gold-soft);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #ffe4a4;
+      text-decoration: underline;
+    }
+
+    /* Kill any accidental gold divider under hero / cards */
+header.hero::after,
+section.card::after,
+section#events::after,
+.events-hub::after {
+  content: none !important;
+  display: none !important;
+}
+
+    @media (max-width: 720px) {
+      header.hero {
+        padding: 20px 16px 26px;
+      }
+
+      /* Make the hero logo much larger + centered on mobile */
+      .logo-wrap {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .logo-wrap img {
+        width: 90vw;         /* fills the width of the phone */
+        max-width: 360px;    /* prevents it from getting too huge */
+        display: block;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .calendar-body {
+        font-size: 0.72rem;
+      }
+
+      .show-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .show-actions {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+      }
+
+      .submit-grid,
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+/* Use Raleway for the main hero headline */
+.hero-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 3.3rem;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #ffffff; /* ensure white baseline */
+}
+
+/* Apply gold gradient ONLY to the words inside <span> */
+.hero-title span {
+  background: linear-gradient(90deg, #f5d491, #f9e7c4, #d9b670);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800; /* extra-bold for drama */
+  white-space: nowrap; /* <-- keeps Front Row on one line */
+}
+/* EVENTS HUB – main list layout */
+
+.events-hub {
+  margin-top: 20px;
+}
+
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.view-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  max-width: 230px;
+  margin-left: auto;
+}
+.view-toggle-btn {
+  border: 1px solid rgba(243, 201, 107, 0.35);
+  background: transparent;
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.view-toggle-btn:hover {
+  color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.7);
+  background: rgba(243, 201, 107, 0.1);
+}
+
+.view-toggle-btn.is-active {
+  background: rgba(243, 201, 107, 0.2);
+  color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.7);
+}
+
+.view-toggle-btn.is-active {
+  background: rgba(243, 201, 107, 0.2);
+  color: #fff7dd;
+  border-color: rgba(243, 201, 107, 0.7);
+}
+
+.events-filters {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  padding: 10px 11px;
+  background: rgba(6, 6, 12, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+.filters-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* bottom row layout */
+.filters-row-bottom {
+  grid-template-columns: minmax(0, 2.3fr) auto;
+  align-items: flex-end;
+}
+
+.filter-group label {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+  width: 100%;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(9, 9, 16, 0.96);
+  padding: 6px 8px;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* reuse your existing button styles */
+.btn-small {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+}
+
+/* Wrap a pill + its star into one visual unit */
+.county-pill-wrap {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(9, 9, 16, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+  transition: all 0.15s ease;
+}
+
+.county-pill-wrap:hover {
+  border-color: var(--gold-soft);
+}
+
+.county-pill-wrap[data-active="true"] {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.county-pill-wrap[data-active="true"] .county-pill {
+  color: #0a0a12;
+  font-weight: 600;
+}
+
+.county-pill {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 6px 4px 6px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s ease;
+}
+
+.county-pill:hover {
+  color: var(--gold);
+}
+
+.county-pill-wrap[data-active="true"] .county-pill:hover {
+  color: #0a0a12;
+}
+
+.county-star {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px 6px 4px;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.15s ease, transform 0.15s ease;
+  font-family: inherit;
+}
+
+.county-star:hover {
+  color: var(--gold);
+  transform: scale(1.15);
+}
+
+.county-pill-wrap[data-active="true"] .county-star {
+  color: rgba(10, 10, 18, 0.55);
+}
+
+.county-pill-wrap[data-active="true"] .county-star:hover {
+  color: #0a0a12;
+}
+
+.county-star .star-filled { display: none; }
+.county-star .star-empty  { display: inline; }
+
+.county-pill-wrap[data-default="true"] .county-star {
+  color: var(--gold);
+}
+
+.county-pill-wrap[data-default="true"] .county-star .star-filled { display: inline; }
+.county-pill-wrap[data-default="true"] .county-star .star-empty  { display: none; }
+
+.county-pill-wrap[data-active="true"][data-default="true"] .county-star {
+  color: #0a0a12;
+}
+.county-filter-hint {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  opacity: 0.75;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-style: italic;
+  line-height: 1.4;
+}
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 2.2fr) minmax(0, 1.4fr);
+  gap: 12px;
+
+  padding: 14px 14px;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 60%),
+    rgba(6, 6, 12, 0.98);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  margin-bottom: 18px; /* THIS is what gives separation */
+}
+
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background:
+    linear-gradient(rgba(3, 3, 6, 0.20), rgba(3, 3, 6, 0.20)),
+    url('images/md-flag.jpg') center/cover no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.event-date-day {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  margin-bottom: 2px;
+}
+
+.event-date-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-date-num {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.event-date-month {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+}
+
+.event-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+    
+    /* Small thumbnail image on event cards */
+.event-thumb {
+  width: 120px;              /* thumbnail size */
+  height: 72px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  background: rgba(10, 10, 18, 0.9);
+}
+
+.event-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* keeps the image nicely cropped */
+  display: block;
+}
+
+/* On smaller screens we can let it breathe a little */
+@media (max-width: 720px) {
+  .event-thumb {
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+  }
+
+  .event-thumb img {
+    height: auto;
+  }
+}
+
+
+.event-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.event-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.event-meta-line {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+.event-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 3px;
+}
+
+.event-tag {
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(10, 10, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-soft);
+}
+
+.event-tag-gold {
+  background: rgba(243, 201, 107, 0.18);
+  border-color: rgba(243, 201, 107, 0.7);
+  color: #ffeac6;
+}
+
+.event-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.event-price-note {
+  font-size: 0.76rem;
+  color: var(--text-soft);
+}
+
+.event-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.events-pagination {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.page-numbers {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.page-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(7, 7, 12, 0.96);
+  padding: 4px 9px;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.page-btn.is-active {
+  background: rgba(243, 201, 107, 0.22);
+  color: #fff9e6;
+  border-color: rgba(243, 201, 107, 0.9);
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.page-ellipsis {
+  opacity: 0.6;
+}
+
+    @media (max-width: 880px) {
+  /* View toggle: full width, left-aligned, even pills on mobile */
+  .view-toggle {
+    max-width: none;
+    width: 100%;
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-top: 10px;
+    gap: 8px;
+  }
+  .view-toggle-btn {
+    flex: 0 0 auto;
+  }
+
+  /* County filter: let pills wrap evenly with consistent spacing */
+  .county-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .county-filter-label {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+  .county-pill-wrap {
+    flex: 0 0 auto;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 880px) {
+  .events-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .filters-row-bottom {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .filter-actions {
+    justify-content: flex-start;
+  }
+
+  /* 💫 Mobile event layout: date on the LEFT, content on the RIGHT */
+  .event-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    align-items: flex-start;
+  }
+
+  /* Make sure the buttons live under the text, in the right column */
+  .event-actions {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .event-price-note {
+    width: 100%;
+    text-align: center;
+  }
+}
+    .social-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  display: inline-flex;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.6));
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+
+
+/* ---------------------------------------------------------------- */
+/* 🌟 NEW: Spotlight & Support SECTION LAYOUT                       */
+/* ---------------------------------------------------------------- */
+
+.spotlight-columns {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile default */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.spotlight-col h3 {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f8e0a0;
+  margin-bottom: 0.75rem;
+}
+
+.spotlight-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.spotlight-list li {
+  margin-bottom: 0.35rem;
+  font-weight: 300; 
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+ /* Make body text in all spotlight columns consistent */
+.spotlight-col p,
+.spotlight-col a,
+.spotlight-col li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-soft);
+}
+
+.spotlight-col a {
+  color: var(--gold-soft);
+  text-decoration: none;
+}
+
+.spotlight-col a:hover {
+  color: #ffe4a4;
+  text-decoration: underline;
+}
+   
+/* Full-width “About Front Row Harford” block */
+.spotlight-about {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.5rem;
+}
+
+/* 3 columns on desktop */
+@media (min-width: 900px) {
+  .spotlight-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+/* Make body text in all spotlight columns consistent */
+.spotlight-col p,
+.spotlight-col a,
+.spotlight-col li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-soft);
+}
+
+.spotlight-col a {
+  color: var(--gold-soft);
+  text-decoration: none;
+}
+
+.spotlight-col a:hover {
+  color: #ffe4a4;
+  text-decoration: underline;
+}
+/* Style the About Front Row Harford section */
+.spotlight-about h3 {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f8e0a0; /* same gold as the column headers */
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.spotlight-about p {
+  font-size: 0.82rem;      /* match column text size */
+  font-weight: 300;        /* lighter */
+  color: var(--text-soft); /* grey tone */
+  margin-bottom: 0.6rem;
+}
+  /* ===== Maryland flag divider (Option C — chip + line) ===== */
+.flag-divider {
+  margin: 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.flag-divider-chip {
+  width: 54px;
+  height: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 0;
+}
+.flag-divider-chip > div { flex: 1; }
+.flag-divider-chip .fd-gold {
+  background: repeating-linear-gradient(45deg, #1a1a1a 0 5px, var(--gold) 5px 10px);
+}
+.flag-divider-chip .fd-red {
+  background: repeating-linear-gradient(-45deg, #c0392b 0 5px, #f5f0e6 5px 10px);
+}
+.flag-divider-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.flag-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), rgba(243, 201, 107, 0.05));
+}
+
+/* ===== SHOW CARDS (one card per production) ===== */
+.view-toggle { max-width: 420px; }
+.view-toggle button.view-toggle-btn { font-family: inherit; }
+@media (min-width: 881px) {
+  .filters-row:not(.filters-row-bottom) { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+.show-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 18px;
+}
+.show-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 60%),
+    rgba(6, 6, 12, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+.show-card:hover { transform: translateY(-3px); border-color: rgba(243, 201, 107, 0.55); }
+.show-art {
+  position: relative;
+  display: block;
+  aspect-ratio: 5 / 3;
+  max-width: 100%;
+  background: var(--bg-soft);
+}
+.show-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.show-art::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,6,8,0.85) 100%);
+  pointer-events: none;
+}
+.show-badge {
+  position: absolute; z-index: 1;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+.show-badge-genre { top: 10px; left: 10px; background: rgba(243,201,107,0.22); border: 1px solid rgba(243,201,107,0.75); color: #ffeac6; }
+.show-badge-status { bottom: 10px; left: 10px; background: rgba(5,6,8,0.75); border: 1px solid rgba(255,255,255,0.25); color: var(--text-main); }
+.show-badge-status.is-live { border-color: rgba(126,224,163,0.7); color: #7ee0a3; }
+.show-badge-status.is-final { border-color: rgba(243,201,107,0.75); color: var(--gold); }
+
+.show-body { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 16px; flex: 1; }
+.show-title { font-family: "Raleway", "Poppins", sans-serif; font-weight: 800; font-size: 1.15rem; line-height: 1.2; margin: 0; }
+.show-meta { font-size: 0.8rem; color: var(--text-soft); line-height: 1.4; }
+.show-meta b { font-weight: 600; color: var(--text-main); }
+.show-meta .show-loc { opacity: 0.7; }
+.show-range {
+  display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap;
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-soft); font-weight: 600;
+}
+.show-range span:last-child { color: var(--text-soft); opacity: 0.8; letter-spacing: 0; text-transform: none; font-weight: 500; }
+
+.show-dates {
+  display: grid; grid-template-columns: auto 1fr; column-gap: 12px; row-gap: 3px;
+  font-size: 0.84rem; font-variant-numeric: tabular-nums; align-items: baseline;
+}
+.show-dates .sd { font-weight: 600; white-space: nowrap; }
+.show-dates .sd small { color: var(--text-soft); opacity: 0.75; font-weight: 500; margin-right: 5px; }
+.show-dates .st { color: var(--text-soft); }
+.show-dates .st b { font-weight: 500; color: var(--text-main); }
+/* A performance that has passed: struck through and grayed */
+.show-dates .is-past { opacity: 0.45; text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgba(255,255,255,0.85); }
+/* Today's performance */
+.show-dates .is-today, .show-dates .is-today small { color: #7ee0a3; }
+.show-dates-hidden { display: none; }
+.show-dates-hidden.is-open { display: contents; }
+.show-more {
+  grid-column: 1 / -1; justify-self: start;
+  background: none; border: 0; padding: 2px 0; cursor: pointer;
+  color: var(--gold-soft); font: inherit; font-size: 0.78rem; font-weight: 600;
+}
+.show-more:hover { text-decoration: underline; }
+
+.show-foot {
+  margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;
+  padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.07);
+}
+.show-price { font-size: 0.74rem; color: var(--text-soft); opacity: 0.8; line-height: 1.35; min-width: 0; }
+.show-foot .btn { flex-shrink: 0; white-space: nowrap; }
+
+.show-count { font-size: 0.78rem; color: var(--text-soft); opacity: 0.75; margin: 0 0 12px; font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  .show-card { transition: none; }
+  .show-card:hover { transform: none; }
+}
+  </style>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+    <header class="hero">
+      <div class="logo-wrap">
+        <!-- Maryland flag logo -->
+        <img src="Front Row Logo v5.jpg" alt="Front Row Maryland logo" />
+        <div class="hero-text">
+          <div class="eyebrow">
+            FRONT ROW MARYLAND! • STUDENT MUSICALS & LIVE STAGE SHOWS
+          </div>
+          <h1 class="hero-title">
+            Experience the <span>Front Row</span> of Maryland Theater
+          </h1>
+          <p class="hero-subtitle">
+            A comprehensive and elegant home for high school and community theater musicals and stage shows across Maryland.
+            Discover performance dates, ticket links, cast spotlights, and more — all in one place. Because every performance
+            deserves a packed house and standing ovation!
+          </p>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span class="pill-dot"></span>
+              Fall, Holiday, Winter and Spring Seasons
+            </div>
+            <div class="hero-meta-item">
+              <span class="pill-dot"></span>
+              Ticket links and show details
+            </div>
+            <div class="hero-meta-item">
+              <span class="pill-dot"></span>
+              Free listings for schools and programs
+            </div>
+          </div>
+          <div class="hero-cta-row">
+            <a href="#events" class="btn btn-primary">
+              <span class="btn-icon">🎟</span>
+              View Upcoming Shows
+            </a>
+            <a href="submit.html" class="btn btn-ghost">
+              <span class="btn-icon">⭐</span>
+              Submit a school or community show
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+        <!-- EVENTS HUB: main list view -->
+    <section id="events" class="card events-hub">
+      <div class="events-header">
+        <div class="section-title">
+          <h2>Upcoming Shows &amp; Performances</h2>
+          <p>
+            Browse Maryland’s live theatre, music, and performance calendar. Filter by season, school, genre,
+            or age, then jump into tickets or show details.
+          </p>
+        </div>
+
+        <div class="view-toggle">
+          <button type="button" class="view-toggle-btn is-active" id="layoutCards" data-layout="cards">Show Cards</button>
+          <button type="button" class="view-toggle-btn" id="layoutRows" data-layout="rows">List View</button>
+          <a href="calendar.html" class="view-toggle-btn">Calendar View</a>
+          <a href="past-seasons.html" class="view-toggle-btn">Show Archive</a>
+        </div>
+      </div>
+
+      <!-- FILTER BAR -->
+      <div class="events-filters">
+ <!-- County pill filter -->
+  <div class="county-filter" role="group" aria-label="Filter by county">
+    <span class="county-filter-label">County:</span>
+    <div class="county-pill-wrap" data-county-filter="all" data-active="true">
+      <button type="button" class="county-pill" data-county-filter="all">All Counties</button>
+      <button type="button" class="county-star" data-county-star="all" aria-label="Set All Counties as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="harford">
+      <button type="button" class="county-pill" data-county-filter="harford">Harford</button>
+      <button type="button" class="county-star" data-county-star="harford" aria-label="Set Harford as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="cecil">
+      <button type="button" class="county-pill" data-county-filter="cecil">Cecil</button>
+      <button type="button" class="county-star" data-county-star="cecil" aria-label="Set Cecil as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="baltimore-county">
+      <button type="button" class="county-pill" data-county-filter="baltimore-county">Baltimore County</button>
+      <button type="button" class="county-star" data-county-star="baltimore-county" aria-label="Set Baltimore County as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="baltimore-city">
+      <button type="button" class="county-pill" data-county-filter="baltimore-city">Baltimore City</button>
+      <button type="button" class="county-star" data-county-star="baltimore-city" aria-label="Set Baltimore City as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="carroll">
+      <button type="button" class="county-pill" data-county-filter="carroll">Carroll</button>
+      <button type="button" class="county-star" data-county-star="carroll" aria-label="Set Carroll as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+        <div class="county-pill-wrap" data-county-filter="wicomico">
+      <button type="button" class="county-pill" data-county-filter="wicomico">Wicomico</button>
+      <button type="button" class="county-star" data-county-star="wicomico" aria-label="Set Wicomico as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="worcester">
+      <button type="button" class="county-pill" data-county-filter="worcester">Worcester</button>
+      <button type="button" class="county-star" data-county-star="worcester" aria-label="Set Worcester as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="st-marys">
+      <button type="button" class="county-pill" data-county-filter="st-marys">St. Mary's</button>
+      <button type="button" class="county-star" data-county-star="st-marys" aria-label="Set St. Mary's as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="anne-arundel">
+      <button type="button" class="county-pill" data-county-filter="anne-arundel">Anne Arundel</button>
+      <button type="button" class="county-star" data-county-star="anne-arundel" aria-label="Set Anne Arundel as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="washington">
+      <button type="button" class="county-pill" data-county-filter="washington">Washington</button>
+      <button type="button" class="county-star" data-county-star="washington" aria-label="Set Washington as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="frederick">
+      <button type="button" class="county-pill" data-county-filter="frederick">Frederick</button>
+      <button type="button" class="county-star" data-county-star="frederick" aria-label="Set Frederick as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+    <div class="county-pill-wrap" data-county-filter="howard">
+      <button type="button" class="county-pill" data-county-filter="howard">Howard</button>
+      <button type="button" class="county-star" data-county-star="howard" aria-label="Set Howard as my default" title="Set as my default">
+        <span class="star-empty">☆</span><span class="star-filled">★</span>
+      </button>
+    </div>
+  </div>
+  <p class="county-filter-hint">
+    Tap a county to filter shows. Tap a ☆ to save it as your default — we'll remember it next time.
+  </p>
+        
+  <div class="filters-row">
+    <!-- Season -->
+    <div class="filter-group">
+      <label for="seasonFilter">Season</label>
+      <select id="seasonFilter">
+        <option value="all">All seasons</option>
+        <option value="fall">Fall</option>
+        <option value="holiday">Holiday</option>
+        <option value="winter">Winter</option>
+        <option value="spring">Spring</option>
+        <option value="summer">Summer</option>
+      </select>
+    </div>
+
+    <!-- School / Company -->
+    <div class="filter-group">
+      <label for="schoolFilter">School / Company</label>
+      <select id="schoolFilter">
+        <option value="all">All schools &amp; theatres</option>
+        <option value="harford-community-college">Harford Community College</option>
+         <option value="cecil-community-college">Cecil Community College</option>
+        <option value="actors-guild-harford-community-college">Actors Guild at Harford Community College</option>
+        <option value="harford-tech-hs">Harford Technical High School</option>
+        <option value="edgewood-hs">Edgewood High School</option>
+        <option value="cm-wright-hs">C Milton Wright High School</option>
+        <option value="bel-air-hs">Bel Air High School</option>
+        <option value="patterson-mill-hs">Patterson Mill High School</option>
+        <option value="fallston-hs">Fallston High School</option>
+        <option value="joppatowne-hs">Joppatowne High School</option>
+        <option value="the-john-carroll-hs">John Carroll High School</option>
+        <option value="starlight-theatricals">Starlight Theatricals</option>
+        <option value="tidewater-players">Tidewater Players</option>
+         <option value="river-stone-theatre-company">River Stone Theatre Company</option>
+        <option value="john-carroll-dance">John Carroll College Prep Dance Program</option>
+        <option value="scottfield-theatre-company">Scottfield Theatre Company</option>
+        <option value="harford-music-and-arts">Harford Music and Arts</option>
+        <option value="susquehanna-symphony">Susquehanna Symphony Orchestra</option>
+        <option value="theatreworks-live">TheatreWorks Live</option>
+        <option value="abingdon-community-theater">Abingdon Community Theater</option>
+        <option value="the-star-centre">The STAR Centre</option>
+        <option value="bel-air-armory">The Bel Air Armory</option>
+        <option value="bel-air-community-chorus">The Bel Air Community Chorus</option>
+        <option value="bel-air-dance-academy">The Bel Air Dance Academy</option>
+        <option value="vandiver-inn">The Vandiver Inn</option>
+        
+        <!-- add more here as needed -->
+      </select>
+    </div>
+
+    <!-- Genre -->
+    <div class="filter-group">
+      <label for="genreFilter">Genre</label>
+      <select id="genreFilter">
+        <option value="all">All genres</option>
+        <option value="musical">Musical</option>
+        <option value="play">Play</option>
+        <option value="ballet">Ballet</option>
+        <option value="concert">Concert</option>
+        <option value="murder-mystery">Murder Mystery</option>
+        <!-- add more as needed -->
+      </select>
+    </div>
+
+    <!-- Audience -->
+    <div class="filter-group">
+      <label for="audienceFilter">Audience</label>
+      <select id="audienceFilter">
+        <option value="all">All audiences</option>
+        <option value="family">Family Friendly</option>
+        <option value="teen">PG-13</option>
+        <option value="adult">Adult</option>
+      </select>
+    </div>
+
+    <!-- When -->
+    <div class="filter-group">
+      <label for="whenFilter">When</label>
+      <select id="whenFilter">
+        <option value="all">Any time</option>
+        <option value="weekend">This weekend</option>
+        <option value="14">Next 14 days</option>
+        <option value="30">Next 30 days</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="filters-row filters-row-bottom">
+    <!-- Search -->
+    <div class="filter-group">
+      <label for="searchFilter">Search</label>
+      <input
+        type="text"
+        id="searchFilter"
+        placeholder="Search by title, school, etc."
+      />
+    </div>
+
+    <!-- Clear button -->
+    <div class="filter-actions">
+      <button id="clearFilters" class="btn btn-ghost btn-small">
+        Clear filters
+      </button>
+    </div>
+  </div>
+</div>
+
+
+      <!-- EVENTS LIST -->  
+      
+ <!-- EVENTS LIST -->
+
+      <div style="text-align:center; margin:14px 0 4px;">
+        <a href="https://www.facebook.com/profile.php?id=61583971815225" target="_blank"
+           style="display:inline-flex; align-items:center; gap:8px; color:var(--gold-soft); text-decoration:none; font-weight:600; font-size:0.9rem;">
+          <svg width="20" height="20" viewBox="0 0 320 512" fill="currentColor" style="flex-shrink:0;">
+            <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06H295V6.26S259.5 0 225.36 0C141.09 0 89.33 44.38 89.33 124.72v70.62H0v92.66h89.33V512h107.7V288z"/>
+          </svg>
+          Follow us on Facebook for Show Updates
+        </a>
+      </div>
+
+      <div class="flag-divider">
+        <div class="flag-divider-chip">
+          <div class="fd-gold"></div>
+          <div class="fd-red"></div>
+        </div>
+        <div class="flag-divider-label">Upcoming Shows</div>
+        <div class="flag-divider-line"></div>
+      </div>
+
+<p class="show-count" id="showCount"></p>
+<div id="cms-shows" class="show-grid"></div>
+<div id="cms-rows" style="display:none;"></div>
+        
+    </section>
+
+          <div class="empty-state" id="emptyState" style="display:none;">
+            <strong>No shows match this season filter yet.</strong><br />
+            As schools and theater companies submit their productions, they will appear here. If you help with a program,
+            scroll down to the submission form and add your performance dates.
+          </div>
+        </div>
+      </section>
+
+        <!-- 3-column row -->
+  <div class="spotlight-columns">
+
+    <!-- Column 1: Perfect For -->
+    <div class="spotlight-col">
+      <h3>Perfect For:</h3>
+      <ul class="spotlight-list">
+        <li>Parents &amp; Families</li>
+        <li>Students &amp; Alumni</li>
+        <li>Teachers &amp; Directors</li>
+        <li>Community Supporters</li>
+        <li>Local Businesses &amp; Sponsors</li>
+        <li>Media Outlets</li>
+      </ul>
+    </div>
+
+    <!-- Column 2: Programs We List -->
+    <div class="spotlight-col">
+      <h3>Programs We List:</h3>
+      <ul class="spotlight-list">
+        <li>High School Musicals and Plays</li>
+        <li>Middle School Shows</li>
+        <li>Youth Theater Companies</li>
+        <li>Community Theater across Maryland</li>
+        <li>Local Community College Productions</li>
+        <li>High School Band, Orchestra, and Choir Performances</li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Key Contacts -->
+    <div class="spotlight-col">
+      <h3>Key Contacts</h3>
+      <p>
+        Have a question, correction, or idea?<br>
+       <strong>Front Row Maryland! team</strong>
+        <a href="mailto:kevin@solutionsfor3am.com">kevin@solutionsfor3am.com</a><br>
+        or 443-655-5818
+      </p>
+      <p>Each show listing will also include:</p>
+      <ul class="spotlight-list">
+        <li>Box office or Ticketing Contact</li>
+        <li>Director / Program Lead</li>
+        <li>Accessibility Notes &amp; Parking Details</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Full-width About block underneath -->
+ <div class="spotlight-about">
+
+  <h3>About Front Row Maryland!</h3>
+
+  <p>
+    <strong>Front Row Maryland!</strong> was created by Kevin Bradley, who believes every performance deserves a packed house and a standing ovation. A Harford County resident for more than 40 years, Kevin loves this community - especially its vibrant student and local theater scene.
+  </p>
+
+  <p>
+    Kevin has been producing and promoting live events for decades. He produced a Toyota concert series featuring Grammy-nominated singer/songwriter <em>Laura Branigan</em> and <em>Little River Band</em>, and together with his wife Marilyn and their family, created Harford County’s largest outdoor Christmas festival, <em>Celebrate the Light</em> in Joppa, MD, welcoming tens of thousands of guests.
+  </p>
+
+  <p>
+    Beyond Harford County, Kevin served as Chairman of the Board for the Roanoke Island Historical Association, which produces <em>The Lost Colony</em>, the longest-running outdoor symphonic drama in the United States. Before becoming chairman, he led the marketing committee, where his primary responsibility was ticket sales. During his tenure, both ticket sales and ticket revenue grew substantially.
+  </p>
+
+  <p>
+    <strong>Front Row Maryland!</strong> is Kevin’s gift to the community. Listings are free for schools and local theater companies, and the mission is simple: remove the barriers that make it hard for residents to discover and attend live performances. Through a clear, easy-to-use online calendar and an active social media campaign, Front Row Maryland! helps neighbors find shows, buy tickets, and fill the seats for the students and performers who have worked so hard to be on stage.
+  </p>
+
+</div>
+
+    
+  </main>
+
+  <footer>
+  <div>
+    © <span id="year"></span> Front Row Maryland!. All rights reserved.
+  </div>
+</footer>
+
+  <script>
+    // Set copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+
+<!-- ===== SHOW LISTINGS ENGINE =====
+     One script owns everything below the filter bar:
+       * fetches shows.json (built by Netlify from _data/shows/)
+       * builds ONE model per production (sorted performances, grouped days, status)
+       * renders Show Cards (default) or the classic List View, remembered per visitor
+       * filters by county / season / school / genre / audience / when / search
+       * strikes through each performance 5 minutes after curtain; drops the show
+         5 minutes after its final performance
+       * re-renders once a minute so an open tab stays current
+     There is no DOM date-parsing, no thumbnail injector and no separate auto-hide
+     script any more: the year comes straight from shows.json. -->
+<script>
+(function () {
+  'use strict';
+
+  var GENRE_LABEL = { musical:"Musical", play:"Play", dance:"Dance", ballet:"Ballet", concert:"Concert", "murder-mystery":"Murder Mystery" };
+  var AUD_LABEL   = { family:"Family Friendly", teen:"PG-13", adult:"Adult" };
+  var MONTH_INDEX = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,June:5,July:6,Aug:7,Sept:8,Oct:9,Nov:10,Dec:11,
+                      jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,sept:8,oct:9,nov:10,dec:11 };
+  var MONTH_LABEL = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sept","Oct","Nov","Dec"];
+  var WEEKDAY     = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var GRACE_MS    = 5 * 60 * 1000;        // a performance "passes" 5 minutes after curtain
+  var DAY_MS      = 24 * 60 * 60 * 1000;
+  var COUNTY_KEY  = "frontrow.defaultCounty";
+  var LAYOUT_KEY  = "frontrow.layout";
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { if (v) localStorage.setItem(k, v); else localStorage.removeItem(k); } catch (e) {} }
+
+  function parseTime(str) {
+    var m = (str || "").match(/(\d{1,2})(?::(\d{2}))?\s*([AaPp][Mm])/);
+    if (!m) return { h: 19, min: 0 };
+    var h = parseInt(m[1], 10), min = m[2] ? parseInt(m[2], 10) : 0, ap = m[3].toLowerCase();
+    if (ap === 'pm' && h !== 12) h += 12;
+    if (ap === 'am' && h === 12) h = 0;
+    return { h: h, min: min };
+  }
+  function fmtTime(str) {
+    var m = (str || "").match(/(\d{1,2})(?::(\d{2}))?\s*([AaPp][Mm])/);
+    if (!m) return str || "";
+    return m[1] + (m[2] && m[2] !== "00" ? ":" + m[2] : "") + " " + m[3].toUpperCase();
+  }
+  function sameDay(a, b) {
+    return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+  }
+  function imageSrc(show) {
+    if (!show.image) return "";
+    var p = String(show.image);
+    if (/^https?:\/\//.test(p) || p.charAt(0) === '/') return p;
+    return 'images/' + p.replace(/^images\//, '');
+  }
+
+  // ----- Build one model per production -----
+  function buildModel(show, now) {
+    var cutoff = new Date(now.getTime() - GRACE_MS);
+    var startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var perfs = (show.performances || []).map(function (p) {
+      var mi = MONTH_INDEX[p.month];
+      if (mi === undefined) return null;
+      var t = parseTime(p.time);
+      // Year priority: this performance's own year -> the production's show_year -> today's year.
+      // The build script fills the first from the second, so the last fallback should never run.
+      var year = p.year ? parseInt(p.year, 10) : (show.show_year ? parseInt(show.show_year, 10) : now.getFullYear());
+      return { dt: new Date(year, mi, parseInt(p.day, 10), t.h, t.min), time: p.time };
+    }).filter(Boolean).sort(function (a, b) { return a.dt - b.dt; });
+
+    var days = [];
+    perfs.forEach(function (p) {
+      var last = days[days.length - 1];
+      if (last && sameDay(last.dt, p.dt)) { last.times.push(p.time); last.lastDt = p.dt; }
+      else days.push({ dt: p.dt, lastDt: p.dt, times: [p.time] });
+    });
+
+    var upcoming = perfs.filter(function (p) { return p.dt >= cutoff; });
+    var next  = upcoming.length ? upcoming[0].dt : null;
+    var first = perfs.length ? perfs[0].dt : null;
+    var last  = perfs.length ? perfs[perfs.length - 1].dt : null;
+
+    var status = null, statusClass = "";
+    if (next) {
+      var daysToNext = Math.round((new Date(next.getFullYear(), next.getMonth(), next.getDate()) - startOfToday) / DAY_MS);
+      var daysToLast = Math.round((new Date(last.getFullYear(), last.getMonth(), last.getDate()) - startOfToday) / DAY_MS);
+      var started = first < cutoff;
+      if (days.length === 1)              { status = daysToNext === 0 ? "Tonight only" : "One night only"; statusClass = daysToNext === 0 ? "is-live" : ""; }
+      else if (started && daysToLast <= 3) { status = "Final weekend"; statusClass = "is-final"; }
+      else if (started)                    { status = "Now playing";   statusClass = "is-live"; }
+      else if (daysToNext === 0)           { status = "Opens today";   statusClass = "is-live"; }
+      else if (daysToNext <= 6)            { status = "Opens " + WEEKDAY[next.getDay()]; }
+    }
+
+    return {
+      show: show, perfs: perfs, days: days, upcoming: upcoming,
+      next: next, first: first, last: last, status: status, statusClass: statusClass
+    };
+  }
+
+  // ----- Card rendering -----
+  function rangeLabel(m, now) {
+    var f = m.first, l = m.last;
+    // Show the year only when the run is not in the current calendar year
+    // (e.g. a 2027 show listed in late 2026), so readers never mistake it for this year.
+    var yr = (now && f.getFullYear() !== now.getFullYear()) ? ", " + f.getFullYear() : "";
+    if (sameDay(f, l)) return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + yr;
+    if (f.getMonth() === l.getMonth() && f.getFullYear() === l.getFullYear())
+      return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + "–" + l.getDate() + yr;
+    if (f.getFullYear() !== l.getFullYear())   // a run that crosses New Year's
+      return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + ", " + f.getFullYear() + " – " + MONTH_LABEL[l.getMonth()] + " " + l.getDate() + ", " + l.getFullYear();
+    return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + " – " + MONTH_LABEL[l.getMonth()] + " " + l.getDate() + yr;
+  }
+  function dayLine(d, now) {
+    var cutoff = new Date(now.getTime() - GRACE_MS);
+    var isToday = sameDay(d.dt, now);
+    var isPast  = d.lastDt < cutoff;           // every time that day has passed
+    var cls = isPast ? "is-past" : (isToday ? "is-today" : "");
+    var seen = {}, times = [];
+    d.times.forEach(function (t) { var f = fmtTime(t); if (!seen[f]) { seen[f] = 1; times.push(f); } });
+    return '<span class="sd ' + cls + '"><small>' + WEEKDAY[d.dt.getDay()] + '</small>' + MONTH_LABEL[d.dt.getMonth()] + ' ' + d.dt.getDate() + '</span>'
+         + '<span class="st ' + cls + '">' + (isToday && !isPast ? '<b>Today</b> · ' : '') + esc(times.join(' & ')) + '</span>';
+  }
+  function cardHTML(m, now) {
+    var s = m.show, LIMIT = 5;
+    var many   = m.days.length > LIMIT;
+    var shown  = many ? m.days.slice(0, LIMIT - 1) : m.days;
+    var hidden = many ? m.days.slice(LIMIT - 1) : [];
+    var img = imageSrc(s);
+    var genreLabel = GENRE_LABEL[s.genre] || s.genre || "";
+    var audLabel   = AUD_LABEL[s.audience] || s.audience || "";
+    var n = m.perfs.length;
+    return '<article class="show-card">'
+      + '<a class="show-art" href="' + esc(s.ticket_url) + '" target="_blank" rel="noopener" aria-label="Tickets and details for ' + esc(s.title) + '">'
+      +   (img ? '<img src="' + esc(img) + '" alt="" loading="lazy">' : '')
+      +   (genreLabel ? '<span class="show-badge show-badge-genre">' + esc(genreLabel) + '</span>' : '')
+      +   (m.status ? '<span class="show-badge show-badge-status ' + m.statusClass + '">' + esc(m.status) + '</span>' : '')
+      + '</a>'
+      + '<div class="show-body">'
+      +   '<h3 class="show-title">' + esc(s.title) + '</h3>'
+      +   '<div class="show-meta"><b>' + esc(s.organization) + '</b><br>' + esc(s.venue) + ' <span class="show-loc">· ' + esc(s.city) + '</span></div>'
+      +   '<div class="show-range"><span>' + rangeLabel(m, now) + '</span><span>' + n + ' performance' + (n === 1 ? '' : 's') + (audLabel ? ' · ' + esc(audLabel) : '') + '</span></div>'
+      +   '<div class="show-dates">'
+      +     shown.map(function (d) { return dayLine(d, now); }).join('')
+      +     (hidden.length
+            ? '<span class="show-dates-hidden">' + hidden.map(function (d) { return dayLine(d, now); }).join('') + '</span>'
+              + '<button type="button" class="show-more">+ ' + hidden.length + ' more date' + (hidden.length === 1 ? '' : 's') + '</button>'
+            : '')
+      +   '</div>'
+      +   '<div class="show-foot">'
+      +     '<div class="show-price">' + esc(s.price) + '</div>'
+      +     '<a href="' + esc(s.ticket_url) + '" class="btn btn-primary btn-small" target="_blank" rel="noopener">🎟 Get Tickets</a>'
+      +   '</div>'
+      + '</div>'
+      + '</article>';
+  }
+
+  // ----- Classic row rendering (List View) — same markup/CSS as before -----
+  function rowHTML(m, perf) {
+    var s = m.show, img = imageSrc(s);
+    var genreLabel = GENRE_LABEL[s.genre] || s.genre || "";
+    var audLabel   = AUD_LABEL[s.audience] || s.audience || "";
+    var d = perf.dt;
+    return '<article class="event-row">'
+      +   '<div class="event-date">'
+      +     '<div class="event-date-day">' + WEEKDAY[d.getDay()] + '</div>'
+      +     '<div class="event-date-main">'
+      +       '<span class="event-date-num">' + d.getDate() + '</span>'
+      +       '<span class="event-date-month">' + MONTH_LABEL[d.getMonth()] + '</span>'
+      +     '</div>'
+      +   '</div>'
+      +   '<div class="event-main">'
+      +     (img ? '<div class="event-thumb"><img src="' + esc(img) + '" alt="" loading="lazy"></div>' : '')
+      +     '<div class="event-title-line">'
+      +       '<h3 class="event-title">' + esc(s.title) + '</h3>'
+      +       '<span class="event-tag event-tag-gold">' + esc(genreLabel) + '</span>'
+      +     '</div>'
+      +     '<div class="event-meta-line">' + esc(s.venue) + ' • ' + esc(s.organization) + ' • ' + esc(s.city) + '</div>'
+      +     '<div class="event-meta-line">' + WEEKDAY[d.getDay()] + ', ' + MONTH_LABEL[d.getMonth()] + ' ' + d.getDate() + ' @ ' + esc(perf.time) + '</div>'
+      +     '<div class="event-tags">'
+      +       '<span class="event-tag">' + esc(genreLabel) + '</span>'
+      +       '<span class="event-tag">' + esc(audLabel) + '</span>'
+      +     '</div>'
+      +   '</div>'
+      +   '<div class="event-actions">'
+      +     '<div class="event-price-note">' + esc(s.price) + '</div>'
+      +     '<div class="event-buttons">'
+      +       '<a href="' + esc(s.ticket_url) + '" class="btn btn-primary btn-small" target="_blank" rel="noopener">Get Tickets</a>'
+      +       '<a href="' + esc(s.ticket_url) + '" class="btn btn-ghost btn-small" target="_blank" rel="noopener">View Details</a>'
+      +     '</div>'
+      +   '</div>'
+      + '</article>';
+  }
+
+  // ----- State -----
+  var ALL_SHOWS = [];
+  var state = {
+    county: lsGet(COUNTY_KEY) || "all",
+    layout: lsGet(LAYOUT_KEY) === "rows" ? "rows" : "cards"
+  };
+
+  var el = {};
+  function grab() {
+    el.season   = document.getElementById("seasonFilter");
+    el.school   = document.getElementById("schoolFilter");
+    el.genre    = document.getElementById("genreFilter");
+    el.audience = document.getElementById("audienceFilter");
+    el.when     = document.getElementById("whenFilter");
+    el.search   = document.getElementById("searchFilter");
+    el.clear    = document.getElementById("clearFilters");
+    el.grid     = document.getElementById("cms-shows");
+    el.rows     = document.getElementById("cms-rows");
+    el.count    = document.getElementById("showCount");
+    el.empty    = document.getElementById("emptyState");
+    el.cards    = document.getElementById("layoutCards");
+    el.list     = document.getElementById("layoutRows");
+    el.wraps    = document.querySelectorAll(".county-pill-wrap");
+    el.pills    = document.querySelectorAll(".county-pill[data-county-filter]");
+    el.stars    = document.querySelectorAll(".county-star[data-county-star]");
+  }
+
+  function weekendWindow(now) {
+    var start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var d = start.getDay();
+    var fri = new Date(start);
+    if (d === 0) fri.setDate(fri.getDate() - 2);
+    else if (d >= 5) fri.setDate(fri.getDate() - (d - 5));
+    else fri.setDate(fri.getDate() + (5 - d));
+    var from = fri < start ? fri : start;
+    var to = new Date(fri); to.setDate(fri.getDate() + 3);   // through Sunday night
+    return [from, to];
+  }
+
+  function normalize(str) {
+    return (str || "").toString().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+
+  function matches(m, now) {
+    var s = m.show;
+    if (state.county !== "all" && (s.county || "") !== state.county) return false;
+    var season = el.season ? el.season.value : "all";
+    var school = el.school ? el.school.value : "all";
+    var genre  = el.genre ? el.genre.value : "all";
+    var aud    = el.audience ? el.audience.value : "all";
+    var when   = el.when ? el.when.value : "all";
+    var q      = normalize(el.search ? el.search.value : "");
+    if (season !== "all" && s.season !== season) return false;
+    if (school !== "all" && s.school_slug !== school) return false;
+    if (genre  !== "all" && s.genre !== genre) return false;
+    if (aud    !== "all" && s.audience !== aud) return false;
+    if (q) {
+      var blob = normalize([s.title, s.organization, s.venue, s.city, s.price, GENRE_LABEL[s.genre], AUD_LABEL[s.audience]].join(" "));
+      if (blob.indexOf(q) === -1) return false;
+    }
+    if (when === "weekend") {
+      var w = weekendWindow(now);
+      if (!m.upcoming.some(function (p) { return p.dt >= w[0] && p.dt < w[1]; })) return false;
+    } else if (when !== "all") {
+      var startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var end = new Date(startOfToday.getTime() + parseInt(when, 10) * DAY_MS);
+      if (!m.upcoming.some(function (p) { return p.dt < end; })) return false;
+    }
+    return true;
+  }
+
+  function refreshCountyVisuals() {
+    var saved = lsGet(COUNTY_KEY);
+    el.wraps.forEach(function (wrap) {
+      var c = wrap.getAttribute("data-county-filter");
+      wrap.setAttribute("data-active", c === state.county ? "true" : "false");
+      wrap.setAttribute("data-default", saved === c ? "true" : "false");
+    });
+  }
+  function refreshLayoutVisuals() {
+    if (el.cards) el.cards.classList.toggle("is-active", state.layout === "cards");
+    if (el.list)  el.list.classList.toggle("is-active", state.layout === "rows");
+    if (el.grid)  el.grid.style.display = state.layout === "cards" ? "" : "none";
+    if (el.rows)  el.rows.style.display = state.layout === "rows" ? "" : "none";
+  }
+
+  function render() {
+    if (!el.grid) return;
+    var now = new Date();
+    var models = ALL_SHOWS.map(function (s) { return buildModel(s, now); })
+      .filter(function (m) { return m.next; })                       // drop shows whose final curtain has passed
+      .sort(function (a, b) { return a.next - b.next; });            // next remaining performance first
+    var list = models.filter(function (m) { return matches(m, now); });
+
+    el.grid.innerHTML = list.map(function (m) { return cardHTML(m, now); }).join('\n');
+
+    var rows = [];
+    list.forEach(function (m) { m.upcoming.forEach(function (p) { rows.push({ k: p.dt.getTime(), h: rowHTML(m, p) }); }); });
+    rows.sort(function (a, b) { return a.k - b.k; });
+    el.rows.innerHTML = rows.map(function (r) { return r.h; }).join('\n');
+
+    var nPerf = rows.length;
+    if (el.count) {
+      el.count.textContent = list.length
+        ? list.length + " production" + (list.length === 1 ? "" : "s") + " · " + nPerf + " upcoming performance" + (nPerf === 1 ? "" : "s")
+        : "";
+    }
+    if (el.empty) el.empty.style.display = list.length ? "none" : "";
+
+    el.grid.querySelectorAll(".show-more").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var hid = b.previousElementSibling;
+        if (hid) hid.classList.add("is-open");
+        b.remove();
+      });
+    });
+
+    refreshLayoutVisuals();
+    document.dispatchEvent(new CustomEvent('cms-shows-rendered'));
+  }
+
+  function populateSchoolFilter(schools) {
+    if (!el.school || !Array.isArray(schools)) return;
+    schools.forEach(function (s) {
+      if (el.school.querySelector('option[value="' + s.slug + '"]')) return;
+      var opt = document.createElement('option');
+      opt.value = s.slug; opt.textContent = s.label;
+      el.school.appendChild(opt);
+    });
+  }
+
+  function wire() {
+    [el.season, el.school, el.genre, el.audience, el.when].forEach(function (x) { if (x) x.addEventListener("change", render); });
+    if (el.search) el.search.addEventListener("input", render);
+
+    el.pills.forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        state.county = pill.getAttribute("data-county-filter");
+        refreshCountyVisuals(); render();
+      });
+    });
+    el.stars.forEach(function (star) {
+      star.addEventListener("click", function (evt) {
+        evt.stopPropagation();
+        var c = star.getAttribute("data-county-star");
+        if (lsGet(COUNTY_KEY) === c) { lsSet(COUNTY_KEY, null); }
+        else { lsSet(COUNTY_KEY, c); state.county = c; }
+        refreshCountyVisuals(); render();
+      });
+    });
+    if (el.clear) {
+      el.clear.addEventListener("click", function (evt) {
+        evt.preventDefault();
+        [el.season, el.school, el.genre, el.audience, el.when].forEach(function (x) { if (x) x.value = "all"; });
+        if (el.search) el.search.value = "";
+        state.county = lsGet(COUNTY_KEY) || "all";
+        refreshCountyVisuals(); render();
+      });
+    }
+    function setLayout(v) { state.layout = v; lsSet(LAYOUT_KEY, v); refreshLayoutVisuals(); }
+    if (el.cards) el.cards.addEventListener("click", function () { setLayout("cards"); });
+    if (el.list)  el.list.addEventListener("click",  function () { setLayout("rows"); });
+
+    // Keep strike-throughs and "Today" tags current while the tab stays open
+    setInterval(render, 60 * 1000);
+  }
+
+  function init() {
+    grab();
+    refreshCountyVisuals();
+    refreshLayoutVisuals();
+    wire();
+    fetch('shows.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : { shows: [], schools: [] }; })
+      .then(function (payload) {
+        ALL_SHOWS = Array.isArray(payload) ? payload : (payload.shows || []);
+        populateSchoolFilter(Array.isArray(payload) ? [] : (payload.schools || []));
+        render();
+      })
+      .catch(function (e) { console.warn('Could not load shows.json:', e); render(); });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>
