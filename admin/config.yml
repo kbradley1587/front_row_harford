@@ -16,13 +16,44 @@ collections:
     label_singular: "Show"
     folder: "_data/shows"      # each production becomes one file here
     create: true
-    slug: "{{slug}}"
-    summary: "{{title}} — {{venue}} ({{county}})"
+    # New files are named "<year>-<title>.md" (e.g. 2027-the-nutcracker.md)
+    # so a 2027 production never collides with — or gets confused for — its 2026 run.
+    # Existing 2026 files keep their current names; nothing is renamed.
+    slug: "{{show_year}}-{{slug}}"
+    summary: "{{show_year}} · {{title}} — {{venue}} ({{county}})"
+    sortable_fields: ["show_year", "title", "venue", "organization"]
+    # The Shows list in the admin can be grouped and filtered by year.
+    view_groups:
+      - label: "Show Year"
+        field: "show_year"
+    view_filters:
+      - label: "2026 shows"
+        field: "show_year"
+        pattern: "2026"
+      - label: "2027 shows"
+        field: "show_year"
+        pattern: "2027"
+      - label: "2028 shows"
+        field: "show_year"
+        pattern: "2028"
     description: >
       Each entry is ONE production and becomes ONE show card on the website.
-      Add every performance date under "Performances" — the card lists them
-      all, sorted chronologically, and crosses each one off as it passes.
+      Set the SHOW YEAR first — it is the year of the production's first performance.
+      Then add every performance date under "Performances"; leave each performance's
+      Year blank unless it falls in a different year than the Show Year (a run that
+      crosses New Year's). The card lists all dates in order and crosses each one off
+      as it passes. After publishing, check frontrowmaryland.com/data-check.html —
+      it flags any date whose weekday doesn't match (the tell-tale sign of a wrong year).
     fields:
+      - label: "Show Year"
+        name: "show_year"
+        widget: "select"
+        hint: "REQUIRED. The year of this production's FIRST performance. A Fall 2026 show is 2026; a Spring 2027 show is 2027. Choose it before entering dates."
+        options:
+          - { label: "2026", value: 2026 }
+          - { label: "2027", value: 2027 }
+          - { label: "2028", value: 2028 }
+
       - label: "Production Title"
         name: "title"
         widget: "string"
@@ -110,8 +141,8 @@ collections:
         name: "performances"
         widget: "list"
         collapsed: true
-        summary: "{{fields.weekday}} {{fields.month}} {{fields.day}} — {{fields.time}}"
-        hint: "Add one entry per performance. The show card lists them in date order."
+        summary: "{{fields.weekday}} {{fields.month}} {{fields.day}} {{fields.year}} — {{fields.time}}"
+        hint: "Add one entry per performance. The show card lists them in date order. Leave Year blank — it comes from Show Year above."
         fields:
           - label: "Weekday"
             name: "weekday"
@@ -127,14 +158,14 @@ collections:
             value_type: "int"
             min: 1
             max: 31
-          - label: "Year"
+          - label: "Year (only if different from Show Year)"
             name: "year"
             widget: "number"
             value_type: "int"
-            default: 2026
+            required: false
             min: 2025
-            max: 2030
-            hint: "The 4-digit year, e.g. 2026"
+            max: 2031
+            hint: "Leave BLANK. Fill in only when this performance is in a different year than the Show Year — e.g. the January dates of a run that opens in December."
           - label: "Time"
             name: "time"
             widget: "string"
