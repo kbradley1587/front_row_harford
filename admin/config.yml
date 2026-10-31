@@ -96,6 +96,7 @@ collections:
           - { label: "Washington County", value: "washington" }
           - { label: "Frederick County", value: "frederick" }
           - { label: "Howard County", value: "howard" }
+          - { label: "Prince George's County", value: "prince-georges" }
 
       - label: "Season"
         name: "season"
