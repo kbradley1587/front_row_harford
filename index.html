@@ -1669,7 +1669,7 @@ section#events::after,
         <span class="star-empty">☆</span><span class="star-filled">★</span>
       </button>
     </div>
-        <div class="county-pill-wrap" data-county-filter="howard">
+    <div class="county-pill-wrap" data-county-filter="howard">
       <button type="button" class="county-pill" data-county-filter="howard">Howard</button>
       <button type="button" class="county-star" data-county-star="howard" aria-label="Set Howard as my default" title="Set as my default">
         <span class="star-empty">☆</span><span class="star-filled">★</span>
@@ -1992,7 +1992,9 @@ section#events::after,
       var mi = MONTH_INDEX[p.month];
       if (mi === undefined) return null;
       var t = parseTime(p.time);
-      var year = p.year ? parseInt(p.year, 10) : now.getFullYear();
+      // Year priority: this performance's own year -> the production's show_year -> today's year.
+      // The build script fills the first from the second, so the last fallback should never run.
+      var year = p.year ? parseInt(p.year, 10) : (show.show_year ? parseInt(show.show_year, 10) : now.getFullYear());
       return { dt: new Date(year, mi, parseInt(p.day, 10), t.h, t.min), time: p.time };
     }).filter(Boolean).sort(function (a, b) { return a.dt - b.dt; });
 
@@ -2027,12 +2029,17 @@ section#events::after,
   }
 
   // ----- Card rendering -----
-  function rangeLabel(m) {
+  function rangeLabel(m, now) {
     var f = m.first, l = m.last;
-    if (sameDay(f, l)) return MONTH_LABEL[f.getMonth()] + " " + f.getDate();
+    // Show the year only when the run is not in the current calendar year
+    // (e.g. a 2027 show listed in late 2026), so readers never mistake it for this year.
+    var yr = (now && f.getFullYear() !== now.getFullYear()) ? ", " + f.getFullYear() : "";
+    if (sameDay(f, l)) return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + yr;
     if (f.getMonth() === l.getMonth() && f.getFullYear() === l.getFullYear())
-      return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + "–" + l.getDate();
-    return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + " – " + MONTH_LABEL[l.getMonth()] + " " + l.getDate();
+      return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + "–" + l.getDate() + yr;
+    if (f.getFullYear() !== l.getFullYear())   // a run that crosses New Year's
+      return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + ", " + f.getFullYear() + " – " + MONTH_LABEL[l.getMonth()] + " " + l.getDate() + ", " + l.getFullYear();
+    return MONTH_LABEL[f.getMonth()] + " " + f.getDate() + " – " + MONTH_LABEL[l.getMonth()] + " " + l.getDate() + yr;
   }
   function dayLine(d, now) {
     var cutoff = new Date(now.getTime() - GRACE_MS);
@@ -2062,7 +2069,7 @@ section#events::after,
       + '<div class="show-body">'
       +   '<h3 class="show-title">' + esc(s.title) + '</h3>'
       +   '<div class="show-meta"><b>' + esc(s.organization) + '</b><br>' + esc(s.venue) + ' <span class="show-loc">· ' + esc(s.city) + '</span></div>'
-      +   '<div class="show-range"><span>' + rangeLabel(m) + '</span><span>' + n + ' performance' + (n === 1 ? '' : 's') + (audLabel ? ' · ' + esc(audLabel) : '') + '</span></div>'
+      +   '<div class="show-range"><span>' + rangeLabel(m, now) + '</span><span>' + n + ' performance' + (n === 1 ? '' : 's') + (audLabel ? ' · ' + esc(audLabel) : '') + '</span></div>'
       +   '<div class="show-dates">'
       +     shown.map(function (d) { return dayLine(d, now); }).join('')
       +     (hidden.length
