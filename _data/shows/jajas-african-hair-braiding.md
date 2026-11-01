@@ -1,10 +1,11 @@
 ---
+show_year: 2026
 title: Jajas African Hair Braiding
 image: /images/untitled-design-8-.png
 venue: Bowie Center for the Performing Arts
 organization: Bowie High School
 city: Bowie, MD
-county: anne-arundel
+county: prince-georges
 season: fall
 genre: play
 audience: teen
