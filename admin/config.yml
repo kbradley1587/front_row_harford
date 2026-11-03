@@ -50,9 +50,9 @@ collections:
         widget: "select"
         hint: "REQUIRED. The year of this production's FIRST performance. A Fall 2026 show is 2026; a Spring 2027 show is 2027. Choose it before entering dates."
         options:
-          - { label: "2026", value: 2026 }
-          - { label: "2027", value: 2027 }
-          - { label: "2028", value: 2028 }
+          - { label: "2026", value: "2026" }
+          - { label: "2027", value: "2027" }
+          - { label: "2028", value: "2028" }
 
       - label: "Production Title"
         name: "title"
