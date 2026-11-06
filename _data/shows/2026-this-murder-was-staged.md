@@ -12,11 +12,11 @@ audience: family
 price: "Tickets: $5.50"
 ticket_url: https://harford.schoolcashonline.com/Fee/Details/30726/351/False/True
 performances:
-  - weekday: Fri
+  - weekday: Thu
     month: Nov
     day: 19
     time: 7:00PM
-  - weekday: Sat
+  - weekday: Fri
     month: Nov
     day: 20
     time: 7:00PM
