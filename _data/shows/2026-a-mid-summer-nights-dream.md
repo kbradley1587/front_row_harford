@@ -1,7 +1,7 @@
 ---
 show_year: "2026"
 title: A Mid Summer Night's Dream
-image: /images/edgewood.png
+image: /images/edgewood-1-.png
 venue: Edgewood High School
 organization: Edgewood Theatre Group
 city: Edgewood, MD
