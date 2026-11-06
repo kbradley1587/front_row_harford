@@ -1,6 +1,7 @@
 ---
 show_year: "2026"
 title: Radium Girls
+image: /images/radium-girls.png
 venue: Fallston High School
 organization: Fallston High School Drama Company
 city: Fallston,MD
