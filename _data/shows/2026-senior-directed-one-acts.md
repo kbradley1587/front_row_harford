@@ -1,7 +1,7 @@
 ---
 show_year: "2026"
 title: Senior Directed One Acts
-image: /images/mvha-theater.png
+image: /images/senior-directed-one-acts.png
 venue: Maverick Theater
 organization: Manchester Valley High School Theater
 city: Manchester, MD
