@@ -1,7 +1,7 @@
 ---
 show_year: "2026"
 title: Alice In Wonderland
-image: /images/alice-in-wonderland.png
+image: /images/alice-in-wonderland-1-.png
 venue: Ridgeview Middle School
 organization: Ridgeview Middle School Theater Department
 city: Rockville, MD
