@@ -1,7 +1,7 @@
 ---
 show_year: "2026"
 title: The Santa Switch
-image: /images/river-stone.png
+image: /images/santa-switch-1-.png
 venue: "First Presbyterian Church "
 organization: River Stone Theatre Company
 city: Bel Air, MD
@@ -10,7 +10,7 @@ season: holiday
 genre: musical
 audience: family
 price: "Tickets: Adult $26.00 | Seniors, Military $20.00 | Children $19.00"
-ticket_url: https://www.riverstonetheatrecompany.com/
+ticket_url: https://www.riverstonetheatrecompany.com/shows-productions/the-santa-switch-december-2026
 performances:
   - weekday: Fri
     month: Dec
