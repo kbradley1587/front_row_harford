@@ -9,7 +9,7 @@ county: frederick
 season: fall
 genre: play
 audience: family
-price: "Tickets: $15 on Nov. 12 | Adults $12 | Students $10 11/13 & 11/14"
+price: "Tickets: Nov.12 $15.00 | Nov.13-14 Adults $12 | Students $10 "
 ticket_url: https://uhsdrama.ludus.com/index.php
 performances:
   - weekday: Thu
