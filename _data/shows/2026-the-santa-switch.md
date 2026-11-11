@@ -2,7 +2,7 @@
 show_year: "2026"
 title: The Santa Switch
 image: /images/river-stone.png
-venue: First Presbyterian Church - Bel Air
+venue: "First Presbyterian Church "
 organization: River Stone Theatre Company
 city: Bel Air, MD
 county: harford
