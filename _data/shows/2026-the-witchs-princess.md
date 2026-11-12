@@ -12,15 +12,15 @@ audience: family
 price: "Tickets: "
 ticket_url: "Tickets: Adults $15.00 | Students $7.00"
 performances:
-  - weekday: Fri
+  - weekday: Thu
     month: Nov
     day: 12
     time: 7:00PM
-  - weekday: Sat
+  - weekday: Fri
     month: Nov
     day: 13
     time: 7:00PM
-  - weekday: Sun
+  - weekday: Sat
     month: Nov
     day: 14
     time: 2:00PM
