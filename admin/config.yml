@@ -99,6 +99,7 @@ collections:
           - { label: "Prince George's County", value: "prince-georges" }
           - { label: "Montgomery County", value: "montgomery" }
           - { label: "Charles County", value: "charles" }
+          - { label: "Calvert County", value: "calvert" }
 
       - label: "Season"
         name: "season"
