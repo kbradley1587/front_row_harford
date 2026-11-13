@@ -9,6 +9,7 @@ county: frederick
 season: winter
 genre: musical
 audience: family
+price: "Tickets: Adults $15.00 (+$1.50 fee) | FCPS Students $12.00 (+$1.40 fee)"
 ticket_url: https://oakdale.ludus.com/index.php
 performances:
   - weekday: Thu
