@@ -1,5 +1,5 @@
 ---
-show_year: 2026
+show_year: "2026"
 title: Catch Me If You Can
 image: /images/catch-me-if-you-can.png
 venue: Oakdale High School
