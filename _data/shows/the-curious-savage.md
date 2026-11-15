@@ -1,4 +1,5 @@
 ---
+show_year: "2026"
 title: The Curious Savage
 image: /images/curious-savage.png
 venue: C. Milton Wright High School
@@ -30,5 +31,5 @@ performances:
     weekday: Sun
     month: Nov
     day: 22
-    time: 5:00PM
+    time: 3:00PM
 ---
