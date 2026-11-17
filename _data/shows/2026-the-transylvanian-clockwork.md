@@ -1,7 +1,7 @@
 ---
 show_year: "2026"
 title: The Transylvanian Clockwork
-image: /images/transylvania.png
+image: /images/transylvania-1-.png
 venue: The Church Hill Theatre
 organization: The Church Hill Theatre
 city: Church Hill, MD
