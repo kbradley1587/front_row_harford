@@ -1,7 +1,7 @@
 ---
 show_year: "2026"
 title: Parfumerie
-image: /images/parfumerie.png
+image: /images/parfumerie2.png
 venue: Govans Presbyterian Church
 organization: Woodbrook Players
 city: Baltimore, MD
