@@ -5,7 +5,7 @@ image: /images/little-women-queen-annes.png
 venue: Queen Anne's County High School
 organization: Queen Anne's County High School Theatre
 city: Centreville, MD
-county: calvert
+county: queen-annes
 season: fall
 genre: play
 audience: family
