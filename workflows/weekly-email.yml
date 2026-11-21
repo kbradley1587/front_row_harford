@@ -1,0 +1,68 @@
+# Weekly "This Weekend on Maryland Stages" email
+#
+# Runs every Monday at 7:00 AM Eastern (12:00 UTC; 8:00 AM during daylight time).
+# Builds shows.json from _data/shows/, assembles the Thu–Sun email, and schedules
+# it through Kit (kit.com) to every subscriber. If no show plays that weekend,
+# nothing is sent.
+#
+# To test without sending: Actions tab -> "Weekly email" -> Run workflow -> leave
+# "send" unchecked. The preview HTML is attached to the run as an artifact.
+#
+# Required repository secret:  KIT_API_KEY   (Settings -> Secrets and variables -> Actions)
+# Optional repository variables: KIT_FROM_EMAIL, KIT_TEMPLATE_ID, SITE_URL
+
+name: Weekly email
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+    inputs:
+      send:
+        description: "Actually send through Kit (unchecked = preview only)"
+        type: boolean
+        default: false
+      weekend_start:
+        description: "Force a Thursday (YYYY-MM-DD) for testing; blank = upcoming Thursday"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  email:
+    runs-on: ubuntu-latest
+    env:
+      TZ: America/New_York
+      SITE_URL: ${{ vars.SITE_URL || 'https://frontrowmaryland.com' }}
+      KIT_FROM_EMAIL: ${{ vars.KIT_FROM_EMAIL }}
+      KIT_TEMPLATE_ID: ${{ vars.KIT_TEMPLATE_ID }}
+      WEEKEND_START: ${{ github.event.inputs.weekend_start }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build shows.json
+        run: node scripts/build-shows.js
+
+      - name: Build (and send) the weekly email
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.send }}" = "true" ]; then
+            node scripts/build-weekly-email.js --send
+          else
+            node scripts/build-weekly-email.js
+          fi
+
+      - name: Save preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-email-preview
+          path: weekly-email-preview.html
+          if-no-files-found: ignore
