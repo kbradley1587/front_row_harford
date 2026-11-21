@@ -114,7 +114,7 @@ function render(shows, window) {
       <div style="font-size:14px;color:${ink};margin-top:2px;">${esc(s.org)}</div>
       <div style="font-size:13px;color:${muted};margin-top:1px;">${esc(s.venue)}${s.city ? ' · ' + esc(s.city) : ''}</div>
       <div style="font-size:14px;color:${ink};margin-top:8px;line-height:1.5;">
-        ${s.days.map(d => `<span style="white-space:nowrap;"><strong>${WEEKDAY[d.dt.getDay()]} ${MONTH_LABEL[d.dt.getMonth()]} ${d.dt.getDate()}</strong> · ${esc(d.times.join(' &amp; ').replace(/&amp;amp;/g,'&amp;'))}</span>`).join('<br>')}
+        ${s.days.map(d => `<span style="white-space:nowrap;"><strong>${WEEKDAY[d.dt.getDay()]} ${MONTH_LABEL[d.dt.getMonth()]} ${d.dt.getDate()}</strong> · ${esc(d.times.join(' & '))}</span>`).join('<br>')}
       </div>
       ${s.ticket ? `<div style="margin-top:10px;"><a href="${esc(s.ticket)}" style="display:inline-block;background:${gold};color:#111;text-decoration:none;font-weight:700;font-size:13px;padding:8px 16px;border-radius:999px;">Get Tickets</a></div>` : ''}
     </td></tr>`;
