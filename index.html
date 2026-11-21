@@ -1572,6 +1572,41 @@ section#events::after,
       </div>
     </header>
 
+    <!-- WEEKLY EMAIL SIGNUP
+         Posts straight to Kit (kit.com). Replace KIT_FORM_ID below with the number from
+         Kit -> Grow -> Landing Pages & Forms -> your form -> Publish -> HTML (the digits in
+         "forms/XXXXXXX/subscriptions"). In the form's Settings, set "Redirect to an external
+         page" to https://frontrowmaryland.com/subscribed.html -->
+    <style>
+      .signup { margin: 0 0 22px; background: var(--card-bg); border: 1px solid rgba(243,201,107,.32);
+                border-radius: 18px; padding: 22px 26px; display: flex; flex-wrap: wrap; align-items: center;
+                justify-content: space-between; gap: 16px 28px; }
+      .signup-text { flex: 1 1 320px; }
+      .signup-text .eyebrow { margin-bottom: 4px; }
+      .signup-text h2 { margin: 0 0 4px; font-size: 1.25rem; font-family: "Playfair Display", serif; }
+      .signup-text p { margin: 0; color: var(--text-soft); font-size: .93rem; line-height: 1.5; }
+      .signup-form { flex: 1 1 320px; display: flex; gap: 10px; }
+      .signup-form input { flex: 1 1 auto; min-width: 0; padding: 12px 16px; border-radius: 999px;
+                           border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06);
+                           color: var(--text-main); font: inherit; font-size: .95rem; }
+      .signup-form input::placeholder { color: rgba(201,201,212,.7); }
+      .signup-form input:focus { outline: none; border-color: var(--gold); }
+      .signup-form button { flex: 0 0 auto; white-space: nowrap; }
+      .signup-fine { flex-basis: 100%; margin: -4px 0 0; color: rgba(201,201,212,.65); font-size: .78rem; }
+      @media (max-width: 560px) { .signup-form { flex-direction: column; } .signup-form button { width: 100%; } }
+    </style>
+    <section class="signup" id="signup" aria-label="Weekly email signup">
+      <div class="signup-text">
+        <div class="eyebrow">EVERY MONDAY MORNING</div>
+        <h2>This weekend's shows, in your inbox</h2>
+        <p>One email a week with every high school and community production playing Thursday through Sunday across Maryland — dates, times, and ticket links.</p>
+      </div>
+      <form class="signup-form" action="https://app.kit.com/forms/10223559/subscriptions" method="post">
+        <input type="email" name="email_address" placeholder="you@example.com" required aria-label="Email address" autocomplete="email" />
+        <button type="submit" class="btn btn-primary">Sign me up</button>
+      </form>
+      <p class="signup-fine">Free. No spam, no sharing your address. Unsubscribe with one click, any week.</p>
+    </section>
 
         <!-- EVENTS HUB: main list view -->
     <section id="events" class="card events-hub">
