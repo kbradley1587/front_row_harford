@@ -1609,6 +1609,77 @@ section#events::after,
       <p class="signup-fine">Free. No spam, no sharing your address. Unsubscribe with one click, any week.</p>
     </section>
 
+    <!-- "Check your inbox" pop-up shown after signing up (the form posts to Kit in the background) -->
+    <style>
+      .signup-modal { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center;
+                      padding: 20px; background: rgba(0,0,0,.72); backdrop-filter: blur(3px); }
+      .signup-modal.open { display: flex; }
+      .signup-modal-card { max-width: 480px; width: 100%; background: #0b0c10; border: 1px solid rgba(243,201,107,.45);
+                           border-radius: 18px; padding: 30px 28px 26px; text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+      .signup-modal-card .eyebrow { margin-bottom: 10px; }
+      .signup-modal-card h3 { margin: 0 0 10px; font-size: 1.5rem; line-height: 1.2; color: var(--text-main); }
+      .signup-modal-card p { margin: 0 0 10px; color: var(--text-soft); line-height: 1.55; }
+      .signup-modal-card .to { color: var(--gold); font-weight: 600; word-break: break-all; }
+      .signup-modal-card .steps { text-align: left; margin: 16px 0 6px; padding: 14px 16px; border-radius: 12px;
+                                  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+      .signup-modal-card .steps div { display: flex; gap: 12px; align-items: flex-start; padding: 6px 0; color: var(--text-main); }
+      .signup-modal-card .steps b { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--gold); color: #111;
+                                    display: inline-flex; align-items: center; justify-content: center; font-size: .85rem; }
+      .signup-modal-card .fine { font-size: .82rem; color: rgba(201,201,212,.7); margin-top: 12px; }
+      .signup-modal-card .btn { margin-top: 16px; }
+      .signup-done { flex-basis: 100%; color: var(--gold); font-weight: 600; }
+    </style>
+    <div class="signup-modal" id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupModalTitle">
+      <div class="signup-modal-card">
+        <div class="eyebrow">ONE MORE STEP</div>
+        <h3 id="signupModalTitle">Check your inbox</h3>
+        <p>We just sent a confirmation email to <span class="to" id="signupModalEmail"></span>.</p>
+        <div class="steps">
+          <div><b>1</b><span>Open the email from <strong>Front Row Maryland</strong></span></div>
+          <div><b>2</b><span>Tap the <strong>confirm</strong> button inside it</span></div>
+          <div><b>3</b><span>That's it — you'll get this weekend's shows every Monday</span></div>
+        </div>
+        <p class="fine">Don't see it within a minute or two? Check your spam, junk, or Promotions folder — and drag it to your inbox so next week's lands where you'll see it.</p>
+        <button type="button" class="btn btn-primary" id="signupModalClose">Got it</button>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var form  = document.querySelector('#signup .signup-form');
+        var modal = document.getElementById('signupModal');
+        if (!form || !modal) return;
+        var input = form.querySelector('input[name="email_address"]');
+        var btn   = form.querySelector('button[type="submit"]');
+
+        function showModal(email) {
+          document.getElementById('signupModalEmail').textContent = email;
+          modal.classList.add('open');
+          document.getElementById('signupModalClose').focus();
+        }
+        function closeModal() { modal.classList.remove('open'); }
+        document.getElementById('signupModalClose').addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+        form.addEventListener('submit', function (e) {
+          if (!window.fetch || !window.FormData) return;          // very old browser: normal submit + redirect
+          e.preventDefault();
+          var email = input.value.trim();
+          btn.disabled = true; btn.textContent = 'Signing you up…';
+          fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+            .then(function (res) {
+              if (!res.ok) throw new Error('status ' + res.status);
+              form.innerHTML = '<p class="signup-done">✓ Almost there — check your inbox for the confirmation email.</p>';
+              showModal(email);
+            })
+            .catch(function () {                                    // anything odd: fall back to the normal redirect flow
+              btn.disabled = false; btn.textContent = 'Sign me up';
+              form.submit();
+            });
+        });
+      })();
+    </script>
+
         <!-- EVENTS HUB: main list view -->
     <section id="events" class="card events-hub">
       <div class="events-header">
