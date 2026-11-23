@@ -1,9 +1,13 @@
 # Weekly "This Weekend on Maryland Stages" email
 #
-# Runs every Monday at 7:00 AM Eastern (12:00 UTC; 8:00 AM during daylight time).
-# Builds shows.json from _data/shows/, assembles the Thu–Sun email, and schedules
-# it through Kit (kit.com) to every subscriber. If no show plays that weekend,
-# nothing is sent.
+# Runs every Monday morning. Builds shows.json from _data/shows/, assembles the
+# Thu–Sun email, and schedules it through Kit (kit.com) to every subscriber. If no
+# show plays that weekend, nothing is sent.
+#
+# Scheduling note: GitHub often delays or skips cron jobs that fall on :00, and
+# sometimes skips one entirely. So this runs at 7:17 AM Eastern with a backup at
+# 8:17 (12:17 / 13:17 UTC; one hour later during daylight time). The script checks
+# Kit first and will not send twice in one week, so the backup is a safe no-op.
 #
 # To test without sending: Actions tab -> "Weekly email" -> Run workflow -> leave
 # "send" unchecked. The preview HTML is attached to the run as an artifact.
@@ -15,7 +19,8 @@ name: Weekly email
 
 on:
   schedule:
-    - cron: "0 12 * * 1"
+    - cron: "17 12 * * 1"
+    - cron: "17 13 * * 1"
   workflow_dispatch:
     inputs:
       send:
