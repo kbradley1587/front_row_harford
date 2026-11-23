@@ -155,9 +155,24 @@ function render(shows, window) {
 }
 
 // ---- 4. Send via Kit -------------------------------------------------------
+// Has this week's email already been created? (The workflow runs on two backup
+// schedules in case GitHub skips one; this makes a second run a safe no-op.)
+async function alreadySentThisWeek(key, subject) {
+  try {
+    const res = await fetch('https://api.kit.com/v4/broadcasts?per_page=50', { headers: { 'X-Kit-Api-Key': key } });
+    if (!res.ok) { console.warn(`Could not list broadcasts (${res.status}); proceeding.`); return false; }
+    const json = await res.json();
+    const cutoff = Date.now() - 5 * 24 * 60 * 60 * 1000;   // anything created in the last 5 days counts
+    const dup = (json.broadcasts || []).find(b => b.subject === subject && new Date(b.created_at).getTime() > cutoff);
+    if (dup) { console.log(`Broadcast #${dup.id} with this subject already exists (created ${dup.created_at}). Skipping send.`); return true; }
+    return false;
+  } catch (e) { console.warn('Could not check existing broadcasts: ' + e.message + '; proceeding.'); return false; }
+}
+
 async function sendViaKit(html, subject, previewText) {
   const key = process.env.KIT_API_KEY;
   if (!key) throw new Error('KIT_API_KEY is not set');
+  if (await alreadySentThisWeek(key, subject)) return;
   const sendAt = new Date(Date.now() + 5 * 60 * 1000).toISOString();   // 5 minutes from now
   const body = {
     subject, preview_text: previewText, description: subject,
