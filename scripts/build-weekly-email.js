@@ -162,7 +162,7 @@ async function alreadySentThisWeek(key, subject) {
     const res = await fetch('https://api.kit.com/v4/broadcasts?per_page=50', { headers: { 'X-Kit-Api-Key': key } });
     if (!res.ok) { console.warn(`Could not list broadcasts (${res.status}); proceeding.`); return false; }
     const json = await res.json();
-    const cutoff = Date.now() - 5 * 24 * 60 * 60 * 1000;   // anything created in the last 5 days counts
+    const cutoff = Date.now() - 20 * 60 * 60 * 1000;   // same-morning only: covers the backup run, never blocks a later day
     const dup = (json.broadcasts || []).find(b => b.subject === subject && new Date(b.created_at).getTime() > cutoff);
     if (dup) { console.log(`Broadcast #${dup.id} with this subject already exists (created ${dup.created_at}). Skipping send.`); return true; }
     return false;
