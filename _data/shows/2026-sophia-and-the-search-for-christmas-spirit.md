@@ -14,10 +14,10 @@ ticket_url: https://hdgoperahouse.org/event/bel-air-dance-academy-presents-sophi
 performances:
   - weekday: Sat
     month: Dec
-    day: 18
+    day: 19
     time: 12:00PM
   - weekday: Sat
     month: Dec
-    day: 18
+    day: 19
     time: 5:00PM
 ---
