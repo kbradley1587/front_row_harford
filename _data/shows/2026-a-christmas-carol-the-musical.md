@@ -18,7 +18,7 @@ performances:
     time: 7:30PM
   - weekday: Sat
     month: Dec
-    day: 6
+    day: 5
     time: 7:30PM
   - weekday: Sun
     month: Dec
