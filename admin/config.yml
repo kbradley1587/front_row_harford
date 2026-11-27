@@ -175,3 +175,83 @@ collections:
             name: "time"
             widget: "string"
             hint: "e.g. '7:30PM' or '2:00PM' — include AM/PM, no space"
+
+  # ---------------------------------------------------------------------------
+  # AFTER THE APPLAUSE — show recaps & recognition (not reviews: no ratings,
+  # no critiques). One entry per recap; each links to a show already listed.
+  # Writers can be invited as CMS users; with editorial workflow on, their
+  # drafts wait in "In Review" until Kevin publishes.
+  # ---------------------------------------------------------------------------
+  - name: "recaps"
+    label: "After the Applause (Recaps)"
+    label_singular: "Recap"
+    folder: "_data/recaps"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    summary: "{{title}} — {{author}} ({{date_attended}})"
+    sortable_fields: ["date_attended", "title", "author"]
+    description: >
+      Show recaps and recognition. Pick the show it's about (type to search), write the
+      recap, and publish. The page, the "Read the recap" link on the show, and the
+      archive marker all appear automatically. Keep it celebratory — no star ratings,
+      no critiques of performers or staff.
+    fields:
+      - label: "Headline"
+        name: "title"
+        widget: "string"
+        hint: "Usually just the show's title, e.g. 'The Importance of Being Earnest'."
+
+      - label: "Show"
+        name: "show"
+        widget: "relation"
+        collection: "shows"
+        search_fields: ["title", "organization"]
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{organization}}"]
+        hint: "Start typing the show or company name. This links the recap to the listing."
+
+      - label: "Written by"
+        name: "author"
+        widget: "string"
+        hint: "Name as it should appear in the byline, e.g. 'Ryan J. Bordenski'."
+
+      - label: "Date attended"
+        name: "date_attended"
+        widget: "date"
+        format: "YYYY-MM-DD"
+        hint: "The performance you saw."
+
+      - label: "Publish date"
+        name: "date"
+        widget: "date"
+        format: "YYYY-MM-DD"
+        hint: "Controls the order on the After the Applause page (newest first)."
+
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: true
+        hint: "Turn off to hide a recap from the site without deleting it."
+
+      - label: "Photo (optional)"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "Leave blank to use the show's listing artwork. Production photos need the company's OK."
+
+      - label: "Short summary (optional)"
+        name: "summary"
+        widget: "string"
+        required: false
+        hint: "One sentence shown on the recap cards and in search results. If blank, the first lines of the recap are used."
+
+      - label: "Recap"
+        name: "body"
+        widget: "markdown"
+        hint: "250–400 words works well. Name the director and a few students. Celebrate; don't critique."
+
+      - label: "Recognition (optional)"
+        name: "recognition"
+        widget: "markdown"
+        required: false
+        hint: "Shout-outs in a highlighted box — crew, pit, stage management, parents, anyone who deserves a mention. One per line, starting with a dash."

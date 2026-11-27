@@ -1516,6 +1516,7 @@ section#events::after,
 }
 .show-price { font-size: 0.74rem; color: var(--text-soft); opacity: 0.8; line-height: 1.35; min-width: 0; }
 .show-foot .btn { flex-shrink: 0; white-space: nowrap; }
+.show-foot-btns { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
 
 .show-count { font-size: 0.78rem; color: var(--text-soft); opacity: 0.75; margin: 0 0 12px; font-variant-numeric: tabular-nums; }
 
@@ -1696,6 +1697,7 @@ section#events::after,
           <button type="button" class="view-toggle-btn" id="layoutRows" data-layout="rows">List View</button>
           <a href="calendar.html" class="view-toggle-btn">Calendar View</a>
           <a href="past-seasons.html" class="view-toggle-btn">Show Archive</a>
+          <a href="recaps.html" class="view-toggle-btn">After the Applause</a>
         </div>
       </div>
 
@@ -2210,7 +2212,10 @@ section#events::after,
       +   '</div>'
       +   '<div class="show-foot">'
       +     '<div class="show-price">' + esc(s.price) + '</div>'
-      +     '<a href="' + esc(s.ticket_url) + '" class="btn btn-primary btn-small" target="_blank" rel="noopener">🎟 Get Tickets</a>'
+      +     '<div class="show-foot-btns">'
+      +       (s.recap_url ? '<a href="' + esc(s.recap_url) + '" class="btn btn-ghost btn-small" title="After the Applause: show recap">📝 Recap</a>' : '')
+      +       '<a href="' + esc(s.ticket_url) + '" class="btn btn-primary btn-small" target="_blank" rel="noopener">🎟 Get Tickets</a>'
+      +     '</div>'
       +   '</div>'
       + '</div>'
       + '</article>';
@@ -2248,6 +2253,7 @@ section#events::after,
       +     '<div class="event-buttons">'
       +       '<a href="' + esc(s.ticket_url) + '" class="btn btn-primary btn-small" target="_blank" rel="noopener">Get Tickets</a>'
       +       '<a href="' + esc(s.ticket_url) + '" class="btn btn-ghost btn-small" target="_blank" rel="noopener">View Details</a>'
+      +       (s.recap_url ? '<a href="' + esc(s.recap_url) + '" class="btn btn-ghost btn-small">📝 Recap</a>' : '')
       +     '</div>'
       +   '</div>'
       + '</article>';
