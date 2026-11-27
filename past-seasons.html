@@ -47,6 +47,7 @@
     .show-meta { display: flex; align-items: center; gap: 14px; white-space: nowrap; }
     .show-dates { font-size: 0.85rem; color: var(--gold-soft); font-weight: 600; }
     .show-link { font-size: 0.75rem; color: var(--text-soft); text-decoration: none; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); padding: 5px 12px; transition: all 0.15s ease; }
+    .show-link-recap { border-color: rgba(243, 201, 107, 0.6); color: var(--gold-soft); margin-right: 6px; }
     .show-link:hover { border-color: rgba(243, 201, 107, 0.8); color: #fff7dd; background: rgba(243, 201, 107, 0.12); }
     .footnote { margin-top: 30px; font-size: 0.78rem; color: var(--text-soft); text-align: center; line-height: 1.6; }
     .footnote a { color: var(--gold-soft); }
@@ -62,7 +63,8 @@
     <div class="site-title">Front Row <span>Maryland!</span></div>
     <div class="subheader">
       Show Archive — an archive of productions previously listed on Front Row Maryland.
-      A record of what played, when, and where across our community.
+      A record of what played, when, and where across our community. Shows marked
+      <strong style="color:var(--gold-soft)">📝 Recap</strong> have an <a href="recaps.html" style="color:var(--gold-soft)">After the Applause</a> write-up.
     </div>
     <a href="index.html#events" class="back-btn">&lsaquo; Back to Current Shows</a>
   </header>
@@ -158,6 +160,7 @@
           range: range,
           month: MONTH_ABBR[first.mi]+" "+first.year,
           url: show.ticket_url || "#",
+          recap: show.recap_url || "",
           sortKey: last.date.getTime()
         });
       });
@@ -208,8 +211,10 @@
           const venueText = s.venue
             ? '<div class="show-venue">' + s.venue + '</div>'
             : '<div class="show-venue empty">Venue not recorded</div>';
-          const linkHtml = s.url && s.url !== "#"
-            ? '<a class="show-link" href="' + s.url + '" target="_blank">Info</a>' : '';
+          const recapHtml = s.recap
+            ? '<a class="show-link show-link-recap" href="' + s.recap + '">📝 Recap</a>' : '';
+          const linkHtml = recapHtml + (s.url && s.url !== "#"
+            ? '<a class="show-link" href="' + s.url + '" target="_blank">Info</a>' : '');
           row.innerHTML =
             '<div class="show-info"><div class="show-title">' + s.title + '</div>' + venueText + '</div>' +
             '<div class="show-meta"><span class="show-dates">' + s.range + '</span>' + linkHtml + '</div>';
